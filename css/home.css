@@ -5,7 +5,7 @@
 }
 
 #cta {
-    width: 35%;
+    width: 51%;
     display: flex;
     flex-direction: column;
     gap: 28px;
@@ -41,12 +41,12 @@
 
 #banner img {
     height: 75%;
-    width: 76%;
+    width: 83%;
 }
 
 .shape {
     background-color: #088127bb;
-    width: 48%;
+    width: 46%;
     height: 80%;
     position: absolute;
     border-radius: 20% 15% 15% 20%;
