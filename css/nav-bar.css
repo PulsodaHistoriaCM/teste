@@ -1,6 +1,11 @@
 header{
     width: 100%;
     padding: 28px 8%;
+    /*fazendo o nav-bar se sobrepor ao conteúdo quando for rolando a tela*/
+    position: sticky;
+    top: 0;
+    background-color: #afeba3;
+    z-index: 3;
 }
 
 #nav-bar{
