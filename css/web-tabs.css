@@ -12,28 +12,18 @@
     gap: 30px;
 }
 
-#art1{
+#articles img{
     width: 100%;
-    height: 50%;
 }
 
-#art2{
-    width: 100%;
-    height: 50%;
+#art1,
+#art2,
+#art4{
+    height: 170px;
 }
 
 #art3{
-    width: 100%;
-}
-
-#art4{
-    width: 100%;
-    height: 50%;
-}
-
-#art5{
-    width: 100%;
-    height: 50%;
+    height: 250px;
 }
 
 #article{
