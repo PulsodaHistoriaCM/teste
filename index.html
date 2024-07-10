@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="css/nav-bar.css">
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/web-tabs.css">
+    <link rel="stylesheet" href="css/health.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <title>Pulso da História CM</title>
@@ -18,7 +19,9 @@
 <body>
     <header>
         <nav id="nav-bar">
-            <i class="fa-solid fa-flag" id="nav-logo" > pulso cm</i>
+            <a href="http://127.0.0.1:5500/">
+                <em class="fa-solid fa-flag" id="nav-logo" > pulso cm</em>
+            </a>
 
             <ul id="nav-list">
                 <li class="nav-item active">
@@ -32,9 +35,11 @@
                 </li>
             </ul>
 
-            <button class="btn-default">
-                Login
-            </button>
+            <a href="login.html">
+                <button class="btn-default">
+                    Login
+                </button>
+            </a>
 
             <button id="mobile_btn">
                 <i class="fa-solid fa-bars"></i>
@@ -71,51 +76,69 @@
                 <div id="cta_button">
                     <a href="mailto: pulsodahistoriacm@gmail.com">
                         <button class="btn-default">
-                            <i>Contate-nos pelo email</i>
+                            <em>Contate-nos pelo email</em>
                         </button>
                     </a>
                 </div>
             </div>
             <div id="banner">
-                <img src="img/Bandeira_de_Ceará-Mirim_-_RN.svg.png" alt="">
+                <img src="img/Bandeira_de_Ceará-Mirim_-_RN.svg.png" alt="Bandeira de CM">
             </div>
         </section>
         
         <section id="web-tabs"> <!--tentar colocar tag a dps para cada quadro. Quando clicar, ir pros artigos.-->
+            <h2 class="section-title">Encontre Aqui</h2>
+
             <div id="articles">
-                <div id="article">
-                    <img id="art1" src="img/amo_cm.jpg" alt="">
-                    <h3 id="article-title">Conheça a cidade</h3>
-                    <h5 id="article-description">Veja a História, a bandeira, o hino e o rio que nomeia a cidade</h5>
+
+                <div class="article">
+                    <a href="#">
+                        <img id="art1" src="img/amo_cm.jpg" alt="Letreiro de CM" title="Letreiro de CM">
+                    </a>
+                    <h3 class="article-title">Conheça a cidade</h3>
+                    <h5 class="article-description">Veja a História, o hino, a cultura e o rio que nomeia a cidade</h5>
                 </div>
 
-                <div id="article">
-                    <img id="art2" src="img/barao_e_baronesa.jpg" alt="">
-                    <h3 id="article-title">Personalidades</h3>
-                    <h5 id="article-description">Descubra o nome e o legado de pessoas que marcaram o município</h5>
+                <div class="article">
+                    <a href="#">
+                        <img id="art2" src="img/barao_e_baronesa.jpg" alt="Telas à óleo do barão e baronesa de CM" title="Telas à óleo do barão e baronesa de CM">
+                    </a>
+                    <h3 class="article-title">Personalidades</h3>
+                    <h5 class="article-description">Descubra o nome e o legado de pessoas que marcaram o município</h5>
                 </div>
 
-                <div id="article">
-                    <img id="art3" src="img/lenda_baleia.jpg" alt="">
-                    <h3 id="article-title">Lendas</h3>
-                    <h5 id="article-description">Se assombre com as inusitadas lendas dos verdes canaviais</h5>
+                <div class="article">
+                    <a href="#">
+                        <img id="art3" src="img/lenda_baleia.jpg" alt="Pintura que retrata a lenda da baleia de CM" title="Pintura sobre a lenda da baleia de CM">
+                    </a>
+                    <h3 class="article-title">Lendas</h3>
+                    <h5 class="article-description">Se assombre com as inusitadas lendas dos verdes canaviais</h5>
                 </div>
 
-                <div id="article">
-                    <img id="art4" src="img/casa_verde nasce (gibson).jpg" alt="">
-                    <h3 id="article-title">Engenhos da Memória</h3>
-                    <h5 id="article-description">Entenda a influência dos açúcar e os tempos áureos da cidade</h5>
-                </div>
-
-                <div id="article">
-                    <img id="art5" src="img/caboclinhos.jpg" alt="">
-                    <h3 id="article-title">Cultura</h3>
-                    <h5 id="article-description">Encante-se com a rica cultura cearamirinense</h5>
+                <div class="article">
+                    <a href="#">
+                        <img id="art4" src="img/casa_verde nasce (gibson).jpg" alt="Casa-grande do Engenho Verde Nasce" title="Casa-grande do Engenho Verde Nasce">
+                    </a>
+                    <h3 class="article-title">Engenhos da Memória</h3>
+                    <h5 class="article-description">Entenda a influência dos açúcar e os tempos áureos da cidade</h5>
                 </div>
             </div>
         </section>
 
-        <section id="health"></section>
+        <section id="health">
+            
+            <img src="img/heart_rate.svg" id="health-heart">
+            
+            <div id="health-text">
+                <h2 class="section-title">Saúde</h2>
+
+                <h3 class="section-subtitle">Monitore os seus batimentos <br> cardíacos e histórico de saúde</h3>
+
+                <p>Mantenha-se saudável e informado com nossa tecnologia de monitoramento de saúde integrada. Registre seu batimento cardíaco em tempo real e acompanhe seu histórico para um estilo de vida mais consciente.</p>
+
+                <em><strong><a href="cadastro.html">Cadastre-se agora!</a></strong></em>
+            </div>
+        </section>
     </main>
 
     <footer></footer>
