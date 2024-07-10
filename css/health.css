@@ -1,0 +1,66 @@
+#health{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 100px;
+    margin-top: 30px;
+    
+}
+
+#health-heart{
+    width: 250px;
+    height: auto;
+    margin-top: 5%;
+    margin-left: 25px;
+}
+
+.section-subtitle{
+    text-align: center;
+    font-size: 2.453rem;
+}
+
+#health-text{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+
+#health-text p, a{
+    font-size: 20px;
+}
+
+#health-text a{
+    text-decoration: none;
+    color: black;
+}
+
+#health-text a:hover{
+    color: #0d09f8;
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+@media screen and (max-width: 1170px) {
+    #health{
+        flex-direction: column;
+    }
+
+    #health-heart{
+        display: none;
+    }
+
+    #health-text{
+        width: 70%;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 600px){
+    #health-text{
+        width: 100%;
+    }
+}
