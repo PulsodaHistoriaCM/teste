@@ -1,3 +1,7 @@
+.section-subtitle{
+    margin-top: 4%;
+}
+
 #web-tabs{
     display: flex;
     flex-direction: column;
@@ -15,6 +19,14 @@
 
 #articles img{
     width: 100%;
+}
+
+#articles p{
+    font-size: 10px;
+    background-color: #97919180;
+    padding: 2px;
+    position: relative;
+    bottom: 39px;
 }
 
 #art1,
