@@ -1,10 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap'); 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap'); /*fonte retirada do google*/
+@import url(bpm.css);
+@import url(nav-bar.css);
+@import url(home.css);
+@import url(web-tabs.css);
+@import url(health.css);
+@import url(footer.css);
 
 *{
     font-family: 'Inter', sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+html{
+    scroll-behavior: smooth;
 }
 
 body{
@@ -37,4 +47,9 @@ section{
     color: black;
     font-size: 3rem;
     text-align: center;
+}
+
+.section-subtitle{
+    text-align: center;
+    font-size: 2.453rem;
 }
