@@ -1,36 +1,32 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap'); /*fonte retirada do google*/
-@import url(bpm.css);
-@import url(nav-bar.css);
-@import url(home.css);
 @import url(web-tabs.css);
 @import url(health.css);
 @import url(footer.css);
 
 *{
-    font-family: 'Inter', sans-serif;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-}
-
-html{
-    scroll-behavior: smooth;
+    font-family:'Times New Roman', Times, serif;
 }
 
 body{
-    background-color: #afeba3;
+    background-color: antiquewhite;
+    min-height: 100vh;
 }
 
-section{
-    padding: 28px 8%;
+.up{
+    width: 100%;
+    height: 70vh;
 }
 
-.btn-default{
+#c1{
+    background-image: url('../img/marco0-1.png');
+}
+
+.btn-login{
+    margin-left: 93%;
+    margin-top: 15px;
     border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #269c22;
+    background-color: rgba(168, 128, 76, 0.753);
     border-radius: 12px;
     padding: 10px 14px;
     font-weight: 600;
@@ -39,17 +35,59 @@ section{
     transition: .3s ease;
 }
 
-.btn-default:hover{
-    background-color: #6ce068;
+.btn-login:hover{
+    background-color: rgba(136, 102, 57, 0.925);
 }
 
-.section-title{
-    color: black;
-    font-size: 3rem;
+#title, 
+#sub-title{
     text-align: center;
+    padding-right: 50%;
+    color: rgb(99, 69, 31);
+    font-size: 30px;
 }
 
-.section-subtitle{
-    text-align: center;
-    font-size: 2.453rem;
+#title{
+    padding-top: 130px;
+    font-size: 60px;
+}
+
+#legenda{
+    color: #fff;
+    text-align: right;
+    font-size: .8rem;
+    padding-top: 135px;
+    padding-right: 70px;
+}
+
+.pre-main{
+    background-color: #fff;
+    height: 70px;
+}
+
+.pre-main #cabecalho{
+    padding-left: 40px;
+    font-weight: bolder;
+    font-size: 20px;
+    color: rgb(105, 63, 8);
+} 
+
+#indice{
+    padding-top: 25px;
+    display: flex;
+    list-style: none;
+    gap: 50px;
+}
+
+#indice li a{
+    text-decoration: none;
+    color: #111;
+}
+
+#indice li a:hover{
+    color: rgb(105, 63, 8);
+}
+
+section{
+    padding: 28px 8%;
 }

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="/img/CM.png" type="image/x-icon">
+    <link rel="shortcut icon" href="/img/CM-icon.png" type="image/x-icon">
     <link rel="stylesheet" href="css/login.css">
     <title>Login</title>
 </head>
@@ -12,86 +12,43 @@
 <body>
     <div class="container">
         <div class="login-image">
-            <img src="img/oiteiro (gibson).jpg" alt="Imagem de fundo">
+            <img src="../img/oiteiro (gibson).jpg">
         </div>
         <div class="forms-login">
-            <form id="loginForm">
+            <form action="#">
                 <div class="login-header">
                     <div class="title">
                         <h1>Login</h1>
                     </div>
 
                     <div class="cadastro-button">
-                        <button type="button"><a href="cadastro.html">Criar Conta</a></button>
+                        <button><a href="cadastro.html">Criar Conta</a></button>
                     </div>
                 </div>
 
                 <div class="input-group">
                     <div class="input-box">
                         <label for="email">Email</label>
-                        <input type="email" id="email" placeholder="Digite seu email" required>
+                        <input type="email" placeholder="Digite seu email" required>
                     </div>
 
                     <div class="input-box">
                         <label for="password">Senha</label>
-                        <input type="password" id="password" placeholder="Digite sua senha" required>
+                        <input type="password" maxlength="6" placeholder="Digite sua senha" required>
                     </div>
                 </div>
 
                 <div class="login-button">
-                    <button type="submit">Entrar</button>
+                    <button type="submit"><a href="index.html"></a>Entrar</button> 
                 </div>
 
                 <div class="senha-nova">
                     <a href="#">Esqueci minha senha</a>
+                    
                 </div>
             </form>
         </div>
     </div>
-
-    <!-- Adicione o código Firebase SDK e autenticação -->
-    <script type="module">
-        // Import Firebase SDK
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
-        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
-
-        // Sua configuração do Firebase
-        const firebaseConfig = {
-            apiKey: "AIzaSyCMCR42h8ZM4ao4D5MSTZkg99PIhspSAZE",
-            authDomain: "pulso-da-historia.firebaseapp.com",
-            projectId: "pulso-da-historia",
-            storageBucket: "pulso-da-historia.appspot.com",
-            messagingSenderId: "285634655113",
-            appId: "1:285634655113:web:7e97210e9c6b2878d96758"
-            };
-
-
-        // Inicializa o Firebase
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth();
-
-        // Autenticação ao enviar o formulário
-        const loginForm = document.getElementById('loginForm');
-        loginForm.addEventListener('submit', async (event) => {
-            event.preventDefault(); // Evita o comportamento padrão do formulário
-
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-
-            try {
-                // Tentar logar com email e senha
-                const userCredential = await signInWithEmailAndPassword(auth, email, password);
-                const user = userCredential.user;
-                
-                // Redirecionar para a página pós-login
-                window.location.href = "pos-login.html";
-            } catch (error) {
-                // Exibir mensagem de erro
-                console.error("Erro ao autenticar:", error.message);
-                alert("Erro ao fazer login. Verifique suas credenciais.");
-            }
-        });
-    </script>
 </body>
 
 </html>

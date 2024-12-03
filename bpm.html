@@ -4,52 +4,113 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <link rel="shortcut icon" href="/img/CM.png" type="image/x-icon">
+    <link rel="shortcut icon" href="/img/CM-icon.png" type="image/x-icon">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" /> <!--biblioteca online de onde tirei o símbolo da bandeira-->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!--biblioteca Chart.js-->
     
     <title>Gráfico de Frequência Cardíaca</title>
 </head>
 <body>
     <header>
-        <nav id="nav-bar">
-            <a href="pos-login.html">
-                <em class="fa-solid fa-flag" id="nav-logo" > pulso cm</em>
-            </a>
-
-            <!--aparece o nome do usuário-->
-
-            <a href="#"> <!--colocar para a página com os dados do usuário-->
-                <i class="fa-solid fa-user"></i>
-            </a>
-        </nav>
+        <h6>
+            <a href="index.html">HOME</a> > <a href="bpm.html">SAÚDE</a>
+        </h6>
     </header>
 
     <main>
-        <h1 id="title">SAÚDE</h1>
-        <h2 id="subtitle">Gráfico de Frequência Cardíaca</h2>
-        <img src="img/oiteiro (gibson).jpg"> <!--colocar o gráfico do sensor-->
+        <h1>Gráfico de Frequência Cardíaca</h1>
+        
+        <div id="chartContainer">
+            <canvas id="heartRateChart"></canvas>
+        </div>
+
+        <script>
+            // Configuração inicial do gráfico de batimentos cardíacos
+            const ctx = document.getElementById('heartRateChart').getContext('2d');
+            const heartRateChart = new Chart(ctx, {
+              type: 'line',
+              data: {
+                labels: ['10:00', '10:01', '10:02', '10:03', '10:04'], // Etiquetas fixas
+                datasets: [{
+                  label: 'Batimentos por Minuto (BPM)',
+                  backgroundColor: 'rgba(144, 238, 144, 0.2)', // Cor de fundo verde claro
+                  borderColor: 'rgba(0, 128, 0, 1)',           // Cor da borda verde vibrante
+                  data: [75, 80, 78, 82, 76], // Dados fixos
+                  tension: 0.4, // curva suave para simular um ritmo cardíaco
+                  pointRadius: 0 // remove os pontos visíveis
+                }]
+              },
+              options: {
+                responsive: true,
+                scales: {
+                  x: {
+                    title: {
+                      display: true,
+                      text: 'Tempo'
+                    }
+                  },
+                  y: {
+                    beginAtZero: true,
+                    title: {
+                      display: true,
+                      text: 'Batimentos por Minuto (BPM)'
+                    },
+                    suggestedMax: 120 // valor máximo sugerido para batimentos cardíacos
+                  }
+                }
+              }
+            });
+        
+            // Função para gerar valores de batimentos cardíacos simulados
+            function generateHeartRate() {
+              const baseRate = 75; // Batimento cardíaco base
+              const variation = Math.floor(Math.random() * 10) - 5; // Variação aleatória entre -5 e 5
+              return baseRate + variation;
+            }
+        
+            // Função para atualizar os dados do gráfico
+            function updateChart() {
+              const newTime = new Date().toLocaleTimeString(); // Novo rótulo de tempo
+              const newBPM = generateHeartRate(); // Novo valor de BPM simulado
+        
+              // Adiciona novos dados ao gráfico
+              heartRateChart.data.labels.push(newTime);
+              heartRateChart.data.datasets[0].data.push(newBPM);
+        
+              // Remove o primeiro dado se houver mais de 10 pontos
+              if (heartRateChart.data.labels.length > 10) {
+                heartRateChart.data.labels.shift();
+                heartRateChart.data.datasets[0].data.shift();
+              }
+        
+              // Atualiza o gráfico
+              heartRateChart.update();
+            }
+        
+            // Atualiza o gráfico a cada 2 segundos
+            setInterval(updateChart, 3000);
+          </script>
     </main>
 
     <footer>
         <div class="links">
             <a href="https://cearamirim.rn.gov.br/" target="_blank">
-                <img src="/img/brasaoCM.svg">
+                <img src="../img/brasaoCM.svg">
                 <p>Prefeitura de Ceará-Mirim</p>
             </a>
 
             <a href="https://www.facebook.com/people/ACLA-Pedro-Sim%C3%B5es-Neto/100064889582779/" target="_blank">
-                <img src="/img/ACLA.png">
+                <img src="../img/ACLA.png">
                 <p>ACLA</p>
             </a>
 
             <a href="https://www.cearamirim.rn.leg.br/" target="_blank">
-                <img src="/img/camara.png">
+                <img src="../img/camara.png">
                 <p>Câmara Municipal</p>
             </a>
 
             <a href="https://gibsonmachadocm.blogspot.com/" target="_blank">
-                <img src="/img/blogger.png">
+                <img src="../img/blogger.png">
                 <p>Ceará-Mirim Cultura e Arte</p>
             </a> 
         </div>
