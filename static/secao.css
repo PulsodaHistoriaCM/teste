@@ -1,0 +1,76 @@
+*{
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+.caminho{
+    margin-top: 80px;
+    margin-bottom: 40px;
+}
+
+.caminho h2{
+    padding-left: 45px;
+    margin-bottom: 15px;
+}
+
+.caminho a{
+    font-weight: lighter;
+}
+
+.caminho a:hover{
+    text-decoration: underline;
+}
+
+.caminho h6{
+    background-color: #8ac44f;
+    padding: 25px;
+    padding-left: 45px;
+    margin-bottom: 20px;
+    font-size: 15px;
+}
+
+a{
+    color: #050505;
+    text-decoration: none;
+}
+
+.artigos{
+    display: block;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.artigo{
+    background-color: #ffffffc0;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.363);
+    border-width: 2px;
+    border-radius: 25px;
+    box-shadow: 4px 4px rgb(179, 169, 169);
+    width: 93%;
+    display: flex;
+}
+
+.content{
+    padding: 40px;
+}
+
+.content p{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: justify;
+}
+
+.content a:hover{
+    color: rgb(148, 148, 44);
+}
+
+#access{
+    font-size: 15px;
+}
+
+.artigos{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}

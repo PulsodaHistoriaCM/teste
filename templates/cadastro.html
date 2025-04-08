@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/static/img/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="/static/cadastro.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    
+    <title>Cadastro</title>
+</head>
+
+<body>
+    <main>
+        <form>
+            <h1>Cadastre-se</h1>
+
+            <div class="input-group">
+                <div class="input-box">
+                    <label for="name">Nome Completo</label>
+                    <input type="text" id="nome" placeholder="Nome Completo" required>
+                </div>
+
+                <div class="input-box">
+                    <label for="date">Data de nascimento</label>
+                    <input type="date" id="dataNascimento" required>
+                </div>
+
+                <div class="input-box">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="Email" required>
+                </div>
+
+                <div class="input-box">
+                    <label for="phone">Celular</label>
+                    <input  type="tel" id="phone" placeholder="xx xxxx-xxxx" required>
+                </div>
+
+                <div class="input-box">
+                    <label for="phone">Celular Emergência</label>
+                    <input  type="tel" id="phoneEmergencia" placeholder="xx xxxx-xxxx" required>
+                </div>
+
+                <div class="input-box">
+                    <label for="address">Endereço</label>
+                    <input type="text" id="endereco" placeholder="Endereço" required>
+                </div>
+
+                <div class="input-box">
+                    <label for="blood-type">Tipo Sanguíneo</label>
+                    <input type="text" id="sangue" placeholder="Tipo Sanguíneo" required>
+                </div>
+
+                <div class="input-box">
+                    <label for="allergy">Alergias</label>
+                    <input type="text" id="alergia" placeholder="Alergias">
+                </div>
+                    
+                <div class="input-box">
+                    <label for="password">Senha</label>
+                    <input type="password" id="senha" maxlength="6" placeholder="Até 6 caracteres" required>
+                </div>
+
+                <div class="input-box">
+                    <label for="Confirepassword">Confirme sua senha</label>
+                    <input type="password" id="confirmeSenha" maxlength="6" placeholder="Digite novamente" required>
+                </div>
+            </div>
+
+            <div class="bottom-form">
+                <div class="gender-inputs">
+                    <h6>Gênero</h6>
+                    <div class="gender-group">
+                        <div class="gender-input">
+                            <input type="radio" id="female" name="gender">
+                            <label for="female">Feminino</label>
+                        </div>
+                        <div class="gender-input">
+                            <input type="radio" id="male" name="gender">
+                            <label for="male">Masculino</label>
+                        </div>
+                        <div class="gender-input">
+                            <input type="radio">
+                            <label for="none">Prefiro não dizer</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="heart">
+                    <div class="heart-title">
+                        <h6>Cardíaco?</h6>
+                    </div>
+                
+                    <div class="heart-radios">
+                        <div class="heart-input">
+                            <input type="radio" id="sim" name="cardiaco" value="sim">
+                            <label for="yes">Sim</label>
+                        </div>
+                        <div class="heart-input">
+                            <input type="radio" id="nao" name="cardiacoNao" value="nao">
+                            <label for="no">Não</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit">Continuar</button>
+        </form>
+    </main>
+
+    <script src="/static/javascript/cadastro.js"></script>
+</body>
+</html>

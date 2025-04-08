@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/static/img/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="/static/cadastro.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    
+    <title>Cadastro</title>
+</head>
+
+<body>
+    <main>
+        <div class="forms-login">
+            <form class="cad2" action="#">
+                <h1>Termos e Condições - Pulso da História CM</h1>
+
+                <p>O <strong>Pulso da História CM</strong> é um projeto que utiliza dados pessoais dos usuários, incluindo <strong>batimentos cardíacos</strong> e <strong>localização</strong>, para oferecer uma experiência personalizada. Ao utilizar nossa pulseira monitor cardíaco, você concorda que seus dados de saúde serão coletados para gerar gráficos acessíveis exclusivamente a você, permitindo um acompanhamento mais detalhado do seu bem-estar.</p>  
+                    
+                <p>Além disso, o algoritmo do dispositivo acessará sua <strong>localização em tempo real</strong> para sugerir pontos turísticos de Ceará-Mirim próximos ao seu trajeto, aprimorando sua imersão na história local.</p>  
+                    
+                <p>Os dados coletados serão utilizados apenas para os fins descritos, respeitando sua privacidade e garantindo a segurança das informações. Caso não concorde com esses termos, recomendamos não utilizar o dispositivo.</p>
+
+                <p>A pulseira será entregue no endereço cadastrado, sem o usuário precisar pagar frete. <strong>O custo de entrega será de total responsabilidade do projeto</strong>. <br><br>Para mais detalhes sobre o uso dos seus dados, consulte nossa <a href="/templates/politica.html">Política de Privacidade</a>.</p>
+
+                <p><input type="checkbox" name="checkbox" id="check"> Afirmo que li os termos e concordo com o projeto ter acesso a minha localização e batimentos cardíacos durante o uso da pulseira monitor cardíaco para montar gráfico de saúde</p>
+
+                <button type="submit">Salvar</button>
+
+                <!-- Mensagem de sucesso 
+                <p id="mensagem" style="display: none; color: green; font-weight: bold;"></p> -->
+            </form>
+        </div>
+    </main>
+
+    <script type="module">
+        // Importar Firebase
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
+        import { getFirestore, doc, updateDoc } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
+    
+        // Configuração do Firebase
+        const firebaseConfig = {
+            apiKey: "SUA_API_KEY",
+            authDomain: "SEU_DOMINIO.firebaseapp.com",
+            projectId: "SEU_PROJETO",
+            storageBucket: "SEU_BUCKET",
+            messagingSenderId: "SEU_ID",
+            appId: "SUA_APP_ID"
+        };
+    
+        // Inicializar Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+    
+        // Capturar evento de submissão do formulário
+        document.getElementById("termosForm").addEventListener("submit", async function (event) {
+            event.preventDefault(); // Evita o reload da página
+    
+            // Verifica se o checkbox foi marcado
+            const autorizado = document.getElementById("check").checked;
+            if (!autorizado) {
+                alert("Você precisa aceitar os termos para continuar.");
+                return;
+            }
+    
+            // Recuperar o email salvo na primeira parte do cadastro
+            const email = localStorage.getItem("email");
+            if (!email) {
+                alert("Erro: Nenhum usuário encontrado. Por favor, preencha a primeira parte do cadastro.");
+                window.location.href = "cadastro1.html"; // Redireciona de volta para a primeira parte se necessário
+                return;
+            }
+    
+            const userId = email.replace(/[^a-zA-Z0-9]/g, ""); // Criar ID baseado no e-mail
+    
+            // Atualizar dados no Firestore
+            try {
+                await updateDoc(doc(db, "usuarios", userId), {
+                    autorizacao: true,
+                    status: "completo"
+                });
+    
+                // Mostrar mensagem de sucesso
+                const mensagem = document.getElementById("mensagem");
+                mensagem.innerText = "Cadastro concluído com sucesso!";
+                mensagem.style.display = "block";
+    
+                // Redirecionar para login após 2 segundos
+                setTimeout(() => {
+                    window.location.href = "login.html";
+                }, 2000);
+            } catch (error) {
+                console.error("Erro ao salvar dados:", error);
+                alert("Erro ao salvar. Tente novamente.");
+            }
+        });
+    </script>
+</body>
+</html>

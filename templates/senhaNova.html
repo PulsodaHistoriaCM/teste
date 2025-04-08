@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/static/img/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="/static/senhaNova.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    
+    <title>Esqueci Minha Senha</title>
+</head>
+
+<body>
+    <main>
+        <form action="#" method="post">
+            <h1>Alterar Senha</h1>
+            <div class="input-group">
+                <div class="input-box">
+                    <label for="password"><p class="paragrafo">Senha</p></label>
+                    <input type="password" maxlength="6" placeholder="Até 6 caracteres" required>
+                </div>
+                <div class="input-box">
+                    <label for="password"><p class="paragrafo">Senha</p></label>
+                    <input type="password" maxlength="6" placeholder="Digite novamente" required>
+                </div>
+            </div>
+        
+          <button type="submit">Atualizar</button> 
+
+          <!-- Mensagem de sucesso 
+          <p id="mensagem" style="display: none; color: green; font-weight: bold;"></p> -->
+        </form>
+    </main>
+
+    <script type="module">
+        // Importar Firebase
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
+        import { getFirestore, doc, updateDoc } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
+    
+        // Configuração do Firebase
+        const firebaseConfig = {
+            apiKey: "SUA_API_KEY",
+            authDomain: "SEU_DOMINIO.firebaseapp.com",
+            projectId: "SEU_PROJETO",
+            storageBucket: "SEU_BUCKET",
+            messagingSenderId: "SEU_ID",
+            appId: "SUA_APP_ID"
+        };
+    
+        // Inicializar Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+    
+        // Capturar evento de submissão do formulário
+        document.getElementById("alterarSenhaForm").addEventListener("submit", async function (event) {
+            event.preventDefault(); // Evita recarregar a página
+    
+            // Capturar valores dos campos
+            const novaSenha = document.getElementById("novaSenha").value;
+            const confirmarSenha = document.getElementById("confirmarSenha").value;
+    
+            // Verificar se as senhas coincidem
+            if (novaSenha !== confirmarSenha) {
+                alert("As senhas não coincidem!");
+                return;
+            }
+    
+            // Recuperar o email do usuário salvo no localStorage (ou outra forma de autenticação)
+            const email = localStorage.getItem("email");
+            if (!email) {
+                alert("Erro: Nenhum usuário encontrado. Por favor, faça login novamente.");
+                window.location.href = "/templates/login.html"; // Redireciona para login se necessário
+                return;
+            }
+    
+            const userId = email.replace(/[^a-zA-Z0-9]/g, ""); // Criar ID baseado no e-mail
+    
+            // Atualizar senha no Firestore
+            try {
+                await updateDoc(doc(db, "usuarios", userId), {
+                    senha: novaSenha
+                });
+    
+                // Mostrar mensagem de sucesso
+                const mensagem = document.getElementById("mensagem");
+                mensagem.innerText = "Senha alterada com sucesso!";
+                mensagem.style.display = "block";
+    
+                // Redirecionar para login após 2 segundos
+                setTimeout(() => {
+                    window.location.href = "/templates/login.html";
+                }, 2000);
+            } catch (error) {
+                console.error("Erro ao atualizar senha:", error);
+                alert("Erro ao atualizar senha. Tente novamente.");
+            }
+        });
+    </script>
+</body>
+</html>

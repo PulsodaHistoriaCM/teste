@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/static/img/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="/static/login.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    
+    <title>Login</title>
+</head>
+
+<body>
+    <main>
+        <div class="forms-login">
+            <form action="#">
+                <h1>Login</h1>
+
+                <div class="input-group">
+                    <div class="input-box">
+                        <label for="email"><p class="paragrafo">Email</p></label>
+                        <input type="email" placeholder="Digite seu email">
+                    </div>
+
+                    <div class="input-box">
+                        <label for="password"><p class="paragrafo">Senha</p></label>
+                        <input type="password" maxlength="6" placeholder="Digite sua senha">
+                    </div>
+                </div>
+
+                <div class="login-button">
+                    <button type="submit"><a href="logado.html"></a><p>Entrar</p></button> 
+                </div>
+
+                <!--fazendo a página home logado aparecer após 2seg-->
+                <p id="mensagem" style="display: none;">Aguarde...</p> 
+
+                <script src="/static/javascript/delay.js"></script>
+                <!--fim codigo do delay-->
+                
+                <div class="login-button">
+                    <button><a href="/templates/cadastro.html"></a><p>Realizar cadastro</p></button> 
+                </div>
+
+                <div class="senha-nova">
+                    <a href="/templates/senhaNova.html">Esqueci minha senha</a> 
+                </div>
+
+                <!-- Mensagem de Erro ou Sucesso -->
+                <div id="message" style="color: red;"></div>
+            </form>
+        </div>
+    </main>
+
+
+     <!-- //Adicionar Firebase SDK -->
+     <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+     <script>
+         // Configuração do Firebase
+         const firebaseConfig = {
+     apiKey: "AIzaSyAAClL4iZKFciDoS8VZvE5x1lHGnXi2b7Q",
+     authDomain: "pulso-da-historia-cm-f77ca.firebaseapp.com",
+     projectId: "pulso-da-historia-cm-f77ca",
+     storageBucket: "pulso-da-historia-cm-f77ca.appspot.com",
+     messagingSenderId: "728038290374",
+     appId: "1:728038290374:web:cf0a166cdcbd5de09678c7"
+   };
+ 
+ 
+         //Firebase
+         firebase.initializeApp(firebaseConfig);
+ 
+ 
+         // identificação do formulário de login e  mensagem de erro ou de sucesso
+         const loginForm = document.getElementById('login-form');
+         const messageDiv = document.getElementById('message');
+ 
+ 
+         loginForm.addEventListener('submit', (e) => {
+             e.preventDefault();
+ 
+ 
+             const email = document.getElementById('email').value;
+             const password = document.getElementById('password').value;
+ 
+ 
+             // Autenticação a
+             firebase.auth().signInWithEmailAndPassword(email, password)
+                 .then((userCredential) => {
+                     // Login com sucesso
+                     const user = userCredential.user;
+                     console.log('Login realizado com sucesso:', user);
+                     messageDiv.style.color = 'green';
+                     messageDiv.textContent = 'Login realizado com sucesso!';
+                     // ir a página
+                     setTimeout(() => {
+                         window.location.href = "/templates/logado.html"; // Coloque a URL da sua página inicial
+                     }, 2000);
+                 })
+                 .catch((error) => {
+                     const errorCode = error.code;
+                     const errorMessage = error.message;
+                     console.error('Erro no login:', errorCode, errorMessage);
+                     // mensagem erro
+                     messageDiv.style.color = 'red';
+                     messageDiv.textContent = 'Erro no login: ' + errorMessage;
+                 });
+         });
+     </script>
+</body>
+</html>

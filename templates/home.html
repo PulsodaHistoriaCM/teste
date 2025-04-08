@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/static/img/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="/static/home.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+
+    <title>Pulso da História CM</title>
+</head>
+<body>
+    <header id="header">
+        <a class="empresa" href="/templates/home.html">
+            <img id="logo" src="/static/img/logo.png" alt="logo">
+            <p>Pulso da História CM</p>
+        </a>
+
+        <nav>
+            <ul>
+                <li class="drop-hover"><a id="history" href="#">História <i class="fa-solid fa-caret-down"></i></a>
+                    <div class="drop">
+                        <a href="/templates/secaoCM.html">Conheça CM</a>
+                        <a href="/templates/secaoP.html">Personalidades</a>
+                        <a href="/templates/secaoF.html">Folclore</a>
+                    </div>
+                </li>
+                <li><a href="/templates/secaoE.html">Engenhos</a></li>
+                <li><a href="/templates/rotas.html">Rotas</a></li>
+                <li><a href="/templates/about.html">Sobre Nós</a></li>
+            </ul>
+        </nav>
+
+        <a href="/templates/login.html"><button>Login</button></a>
+    </header>
+
+    <section class="slider">
+        <div class="slides">
+            <!--BOTOES CIRCULARES-->
+            <input type="radio" name="radio-btn" id="radio1">
+            <input type="radio" name="radio-btn" id="radio2">
+            <input type="radio" name="radio-btn" id="radio3">
+            <input type="radio" name="radio-btn" id="radio4">
+            <input type="radio" name="radio-btn" id="radio5">
+
+            <!--IMAGENS SLIDER-->
+            <div class="slide first">
+                <img src="/static/img/cruzeiro2.jpeg" alt="imagem1">
+            </div>
+            <div class="slide">
+                <img src="/static/img/biblioteca2.jpg" alt="imagem2">
+            </div>
+            <div class="slide">
+                <img src="/static/img/jacuma.jpg" alt="imagem3">
+            </div>
+            <div class="slide">
+                <img src="/static/img/igreja4.jpg" alt="imagem4">
+            </div>
+            <div class="slide">
+                <img src="/static/img/trigueiro2.jpg" alt="imagem5">
+            </div>
+
+            <!--NAVEGAÇÃO-->
+            <div class="navegacao">
+                <div class="auto-btn1"></div>
+                <div class="auto-btn2"></div>
+                <div class="auto-btn3"></div>
+                <div class="auto-btn4"></div>
+                <div class="auto-btn5"></div>
+            </div>
+        </div>
+
+        <div class="manual-navegacao">
+            <label for="radio1" class="manual-btn"></label>
+            <label for="radio2" class="manual-btn"></label>
+            <label for="radio3" class="manual-btn"></label>
+            <label for="radio4" class="manual-btn"></label>
+            <label for="radio5" class="manual-btn"></label>
+        </div>
+    </section>
+
+    <h2 id="frase">Descubra Ceará-Mirim:Tradição, cultura<br>e os verdes canavias esperam por você</h2>
+
+    <main>
+        <section class="poema">
+            <p>Venha conhecer a nossa cidade, <br>
+                A maior igreja do estado, a casa do barão; <br>
+                A usina São Francisco; o engenho União <br>
+                O túmulo da linda Emma, a fazenda Nascença. <br>
+                O banho das escravas, a casa grande do Guaporé, <br>
+                o olheiro diamante, o engenho Verde Nasce, a fazenda Igarapé. <br>
+                Os quilombolas em Coqueiros, Capela, Matas, Mineiros. <br>
+                Orgulho-me quando falo sempre assim, <br>
+                Do Vale do Ceará-Mirim, dos verdes canaviais. <br>
+                (Múcio Vicente, 2020)</p>
+        </section>
+
+        <section class="artigos">
+            <h2 id="title">Artigos</h2>
+
+            <div class="cards">
+                <!--CARD 1-->
+                <div class="card one">
+                    <img id="img1" src="/static/img/rio.jpg" alt="Rio Ceará-Mirim">
+                    <a href="#"> <!--como tô apresnetando cada artigo, vai direto pra lá. a seção de artigos em si fica pro veja mais-->
+                        <p>Conheça a cidade >></p>
+                    </a>
+                    <p>Às margens do Rio Ceará-Mirim,<br>teve início a história da cidade.</p>
+                </div>
+
+                <!--CARD 2-->
+                <div class="card second">
+                    <img id="img2" src="/static/img/barao_e_baronesa.jpg" alt="Barão e Baronesa de CM">
+                    <a href="#">
+                        <p>Personalidades >></p>
+                    </a>
+                    <p>Conheça Emanuel Varela e sua esposa, <br>um casal que marcou a história da cidade.</p>
+                </div>
+
+                <!--CARD 3-->
+                <div class="card third">
+                    <img id="img3" src="/static/img/trajano-emma.jpg" alt="Pintura túmulo de Emma">
+                    <a href="#">
+                        <p>Folclore >></p>
+                    </a>
+                    <p>O amor de Emma Thompson e Mar- <br>celo Barroca atravessou gerações.</p>
+                </div>
+
+                <!--CARD 4-->
+                <div class="card">
+                    <img id="img4" src="/static/img/timbo.jpg" alt="Casa Grande Timbó">
+                    <a href="#">
+                        <p>Conheça a cidade >></p>
+                    </a>
+                    <p>Os verdes canaviais guardam as <br> memórias do período escravocrata.</p>
+                </div>
+
+                <!--CARD 5-->
+                <div class="card">
+                    <img id="img5" src="/static/img/nssenhora.png" alt="Padroeira da cidade">
+                    <a href="#">
+                        <p>Conheça a cidade >></p>
+                    </a>
+                    <p>Nossa Senhora da Conceição, <br> a padroeira que guia Ceará-Mirim.</p>
+                </div>
+
+                <!--CARD 6-->
+                <div class="card">
+                    <img id="img6" src="/static/img/Ilha Bela casa grande.jpg" alt="Casa Grande Ilha Bela">
+                    <a href="#">
+                        <p>Engenhos da Memória >></p>
+                    </a>
+                    <p>No fim do século XIX, a Casa Grande <br> da Usina Ilha Bela teve sua glória.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="acesso">
+            <h2 id="title">Veja Mais</h2>
+
+            <a href="/templates/secaoCM.html"><button>Conheça a Cidade</button></a>
+            <a href="/templates/secaoP.html"><button>Personalidades</button></a>
+            <a href="/templates/secaoF.html"><button>Folclore</button></a>
+            <a href="/templates/secaoE.html"><button>Engenhos</button></a>
+        </section>
+
+        <section class="juvenal">
+            <img src="/static/img/poeta Juvenal Antunes.jpg" alt="Juvenal Antunes">
+            <div class="texto">
+                <h2>Juvenal  Antunes de Oliveira</h2>
+                <p>Poeta consagrado no Acre e esquecido por sua cidade, conheça o boêmio <br> e sarcástico Juvenal Antunes.</p>
+                <a href="/templates/artigosP/art7.html">Leia mais aqui >></a>
+            </div>
+        </section>
+
+        <section class="rotas">
+            <h2 id="title">Rotas Únicas, Experiências Memoráveis</h2>
+
+            <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1dbG8RLl-xm8Ql0HrbcJ3FKfVXx1xlEM&ehbc=2E312F" width="640" height="480"></iframe>
+            <a href="/templates/rotas.html"><button>Veja mais Aqui</button></a>
+        </section>
+
+        <section class="saude">
+            <img src="/static/img/prototipo.jpg" alt="Protótipo">
+            <div class="texto">
+                <h2>Descubra Ceará-Mirim <br> cuidando do seu bem-estar!</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni veritatis, laborum omnis dolores dolore at incidunt ducimus doloremque cum libero cumque eum natus qui fugit blanditiis ipsum eveniet necessitatibus sunt!</p>
+                <a href="/templates/cadastro.html"><button>Se cadastre já!</button></a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+            <div class="links">
+                <a href="https://cearamirim.rn.gov.br/" target="_blank">
+                    <img src="/static/img/brasaoCM.svg">
+                    <p>Prefeitura <br> Municipal</p>
+                </a>
+    
+                <a href="https://www.facebook.com/people/ACLA-Pedro-Sim%C3%B5es-Neto/100064889582779/" target="_blank">
+                    <img src="/static/img/ACLA.png">
+                    <p>ACLA</p>
+                </a>
+    
+                <a href="https://www.cearamirim.rn.leg.br/" target="_blank">
+                    <img src="/static/img/camara.png">
+                    <p>Câmara Municipal</p>
+                </a>
+    
+                <a href="https://gibsonmachadocm.blogspot.com/" target="_blank">
+                    <img src="/static/img/blogger.png">
+                    <p>Ceará-Mirim <br> Cultura e Arte</p>
+                </a> 
+            </div>
+
+            <div class="sobre">
+                <h2>Se aventure conosco!</h2>
+                <ul>
+                    <li>
+                        <a href="/templates/politica.html">
+                            Políticas e Termos
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="mailto: pulsodahistoriacm@gmail.com">
+                            Mande sua dúvida
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/templates/about.html">
+                            Sobre Nós
+                        </a>
+                    </li>
+                </ul>
+            </div>
+    
+            <div class="bottom-footer">
+                <span id="copyright">
+                    &copy 2025 Pulso da História CM - Todos os direitos reservados.
+                </span>
+            </div>
+    </footer>
+
+    <!-- Botão Voltar ao  Topo-->
+    <button id="btnTopo" onclick="voltarAoTopo()"><i class="fa-solid fa-arrow-up"></i></button>
+
+    <!--SCRIPTS-->
+    <script src="/static/javascript/slider.js"></script>
+    <script src="/static/javascript/scroll.js"></script>
+    <script src="/static/javascript/voltar.js"></script>
+</body>
+</html>

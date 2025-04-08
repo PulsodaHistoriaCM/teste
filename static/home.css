@@ -1,0 +1,529 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'Nunito  Sans', sans-serif;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    width: 100%;
+    height: 100%;
+    background-color: #f3fadc;
+}
+
+.empresa{
+    display: flex;
+    align-items: center;
+    color: #fff;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.6);
+}
+
+#logo{
+    width: 20%;
+    margin-right: 10px;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 40px;
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    width: 95%;
+}
+
+header.rolagem{
+    background-color:#f3fadc;
+}
+
+header.rolagem .empresa,
+header.rolagem nav ul li a,
+header.rolagem button{
+    color: #050505;
+    text-shadow: none;
+} 
+
+header nav ul{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    font-size: 15px;
+    padding-top: 15px;
+    transform: translateX(-30%);
+}
+
+header nav ul li a{
+    display: block;
+    color: #fff;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.6);
+}
+
+.drop-hover{
+    position: relative;
+}
+
+.drop-hover .drop{
+    position: absolute;
+    background-color: #d2ec7b;
+    width: 215%;
+    height: 0;
+    overflow: hidden;
+    margin-left: -35px;
+}
+
+.drop a{
+    background-color: #d2ec7b;
+    padding: 20px;
+    padding-bottom: 15px;
+    text-align: center;
+}
+
+/*altura drop*/
+.drop-hover:hover .drop{
+    height: 155px;
+}
+
+/*para seta girar*/
+.drop-hover:hover i{
+    transform: rotate(180deg);
+    transition: .3s;
+}
+
+/*efeito nas tags a do drop*/
+.drop-hover .drop a:hover{
+    color: #050505;
+    background-color: #75bd2e;
+    transition: .3s;
+}
+
+header nav ul li a:hover{
+    color: #7cc644;
+    transition: .3s;
+}
+
+/*para que historia+seta permaneçam verdes com drop ativo*/
+.drop-hover:hover #history,
+.drop-hover:hover i,
+.drop-hover:has(.drop:hover) #history,
+.drop-hover:has(.drop:hover) i {
+    color: #7cc644; 
+}
+
+a{
+    text-decoration: none;
+    color: #050505;
+}
+
+header button{
+    padding: 12px;
+    border-radius: 19px;
+    border: none;
+    background-color: #7cc644;
+    cursor: pointer;
+    color: #fff;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.6);
+}
+
+header button:hover{
+    background-color: #75bd2e;
+    transition: .2s;
+}
+
+/*SLIDER*/
+#frase{
+    top: 20%;
+    right: 3%;
+    position: absolute;
+    background-color: transparent;
+    /*background: rgba(0, 0, 0, 0.3);*/
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.6);
+    color: white;  
+    /*border-radius: 5px;*/
+    font-size: 40px;
+}
+
+.slider{
+    margin: 0 auto;
+    width: 100%; 
+    height: 607px; 
+    overflow: hidden;
+}
+
+.slides{
+    display: flex;
+}
+
+.slides input{
+    display: none;
+}
+
+.slide{
+    width: 100%;
+    position: relative;
+    transition: .8s ease-in; /*inicio e fim lentos*/
+}
+
+.slide img{
+    width: 100vw;
+    opacity: 95%;
+}
+
+.manual-navegacao{
+    position: absolute;
+    width: 800px;
+    bottom: 30px;
+    display: flex;
+    justify-content: center;
+    background: none;
+    transform: translateX(35.5%);
+}
+
+.manual-btn{
+    border: 2px solid #fff;
+    padding: 6px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: .1s;
+    background-color: transparent;
+}
+
+.manual-btn:not(:last-child){
+    margin-right: 25px;
+}
+
+.manual-btn:hover{
+    background-color: #fff;
+}
+
+/*fazendo as imagens virem ao apertar btn*/
+#radio1:checked ~ .first{
+    margin-left: 0;
+}
+
+#radio2:checked ~ .first{
+    margin-left: -100%;
+}
+
+#radio3:checked ~ .first{
+    margin-left: -200%;
+}
+
+#radio4:checked ~ .first{
+    margin-left: -300%;
+}
+
+#radio5:checked ~ .first{
+    margin-left: -400%;
+}
+
+.navegacao div{
+    border: 2px solid #fff;
+    padding: 6px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: .1s;
+    background-color: transparent;
+    transform: translateX(45%);
+}
+
+.navegacao{
+    position: absolute;
+    width: 100%;
+    bottom: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: none;
+}
+
+.navegacao div:not(:last-child){
+    margin-right: 25px;
+}
+
+#radio1:checked ~ .navegacao .auto-btn1{
+    background-color: #fff;
+}
+
+#radio2:checked ~ .navegacao .auto-btn2{
+    background-color: #fff;
+}
+
+#radio3:checked ~ .navegacao .auto-btn3{
+    background-color: #fff;
+}
+
+#radio4:checked ~ .navegacao .auto-btn4{
+    background-color: #fff;
+}
+
+#radio5:checked ~ .navegacao .auto-btn5{
+    background-color: #fff;
+}
+
+/*MAIN*/
+.poema p{
+    background-color: #8ac44f;
+    text-align: center;
+    padding: 50px;
+    font-size: 20px;
+    letter-spacing: 1px;
+}
+
+/*ARTIGOS*/
+#title{
+    margin-top: 100px;
+    margin-bottom: 100px;
+    text-align: center;
+    font-size: 30px;
+}
+
+.cards{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 65px;
+    margin-left: 20px;
+    justify-content: center;
+}
+
+.card{
+    width: 25%; 
+    text-align: center;
+}
+
+.one, .second, .third{
+    margin-bottom: 50px;
+}
+
+.card img{
+    width: 65%;
+    border-radius: 15px;
+}
+
+#img2, #img3, #img5, #img6{
+    height: 68%;
+}
+
+.card a{
+    color: #3d550c;
+    font-weight: bold;
+}
+
+.card a:hover{
+    text-decoration: underline;
+}
+
+.card p{
+    text-align: center;
+    padding-top: 10px;
+}
+
+/*ACESSO*/
+.acesso button{
+    background-color: #7cc644;
+    border: 1px solid gray;
+    border-radius: 10px;
+    padding: 20px 30px;
+    margin-left: 12%;
+    margin-bottom: 100px;
+}
+
+.acesso button:hover{
+    background-color: #75bd2e;
+    cursor: pointer;
+}
+
+/*JUVENAL*/
+.juvenal{
+    background-color: #8ac44f;
+    height: 400px;
+    display: flex;
+}
+
+.juvenal img{
+    width: 20%;
+    height: 90%;
+    border-radius: 50%;
+    margin-top: 25px;
+    margin-left: 150px;
+}
+
+.juvenal .texto{
+    padding-top: 100px;
+    padding-left: 130px;
+}
+
+.juvenal .texto h2{
+    font-size: 35px;
+}
+
+.juvenal .texto p{
+    padding-bottom: 15px;
+    font-size: 20px;
+}
+
+.juvenal .texto a{
+    text-decoration: none;
+    color: #3d550c;
+    font-weight: bold;
+}
+
+.juvenal .texto a:hover{
+    text-decoration: underline;
+}
+
+/*ROTAS*/
+.rotas iframe{
+    transform: translateX(16%);
+    width: 77%;
+}
+
+.rotas a button{
+    padding: 20px 477px;
+    margin-top: -6px;
+    margin-left: 167px;
+    background: #fff;
+    border: 1px solid rgb(199, 198, 198);
+}
+
+.rotas a button:hover{
+    background: #f5f5f5;
+    cursor: pointer;
+}
+
+/*SAUDE*/
+.saude{
+    height: 300px;
+    display: flex;
+    margin-top: 100px;
+    margin-bottom: 50px;
+    gap: 50px;
+    background-color: #8ac44f;
+    padding: 30px 150px;
+}
+
+.saude img{
+    width: 35%;
+    border-radius: 35px;
+    padding-left: 20px;
+}
+
+.saude .texto{
+    padding-top: 50px;
+}
+
+.texto h2{
+    text-align: center;
+    font-size: 30px;
+}
+
+.texto p{
+    padding-top: 30px;
+    padding-bottom: 15px;
+    text-align: justify;
+}
+
+.texto a button{
+    padding: 5px 50px;
+    transform: translateX(200px);
+    background: #fff;
+    border: 1px solid gray;
+    border-radius: 15px;
+}
+
+.texto a button:hover{
+    box-shadow: 1px 1px #050505;
+    cursor: pointer;
+}
+
+/*FOOTER*/
+footer{
+    position: absolute;
+    width: 100%;
+    background-color: #7cc644;
+    padding-top: 15px;
+}
+
+.links{
+    display: flex;
+    justify-content: center;
+    gap: 285px;
+    padding-top: 20px;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.links img{
+    width: 45px;
+    margin-bottom: 5px;
+}
+
+.links a{
+    text-decoration: none;
+    margin: auto;
+    text-align: center;
+    font-size: 11px;
+}
+
+.links a:hover{
+    color: #3d550c;
+}
+
+.sobre{
+    padding: 50px 60px;
+    display: flex;
+    gap: 560px;
+}
+
+.sobre h2{
+    font-size: 25px;
+}
+
+.sobre ul{
+    display: flex;
+    list-style: none;
+    gap: 40px;
+    padding-top: 10px;
+}
+
+.sobre a:hover{
+    text-decoration: underline;
+}
+
+.bottom-footer{
+    background-color: #8ac44f;
+    padding: 20px 20px;
+}
+
+#copyright{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px; 
+}
+
+/*BOTÃO VOLTAR AO TOPO*/
+#btnTopo {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #7cc644; 
+    color: #050505;
+    border: none;
+    padding: 15px 20px;
+    font-size: 18px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+    transition: opacity 0.3s;
+}
+
+#btnTopo:hover {
+    background-color: #75bd2e; 
+}
