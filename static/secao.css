@@ -48,15 +48,17 @@ a{
     box-shadow: 4px 4px rgb(179, 169, 169);
     width: 93%;
     display: flex;
+    align-items: flex-start;
 }
 
-.content{
-    padding: 40px;
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px; 
 }
 
 .content p{
-    padding-top: 10px;
-    padding-bottom: 10px;
     text-align: justify;
 }
 
@@ -73,4 +75,77 @@ a{
     flex-direction: column;
     align-items: center;
     gap: 30px;
+}
+
+@media screen and (max-width: 480px) {
+    .caminho {
+        margin-top: 50px;
+        margin-bottom: 30px;
+    }
+
+
+    .caminho h2 {
+        padding-left: 20px;
+        font-size: 1.2rem;
+    }
+
+
+    .caminho h6 {
+        font-size: 14px;
+        padding: 15px 20px;
+    }
+
+
+    .artigo {
+        flex-direction: column;
+        width: 95%;
+        border-width: 1.5px;
+        box-shadow: 2px 2px rgb(179, 169, 169);
+    }
+
+
+    .content {
+        padding: 20px;
+    }
+
+
+    .content p {
+        font-size: 14px;
+    }
+
+
+    #access {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 1366px) {
+    .caminho h2 {
+        font-size: 1.5rem;
+    }
+
+
+    .caminho h6 {
+        font-size: 15px;
+    }
+
+
+    .artigo {
+        width: 95%;
+    }
+
+
+    .content {
+        padding: 30px;
+    }
+
+
+    .content p {
+        font-size: 15px;
+    }
+
+
+    #access {
+        font-size: 15px;
+    }
 }
