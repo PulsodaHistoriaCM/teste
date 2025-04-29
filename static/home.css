@@ -442,56 +442,74 @@ header button:hover{
 }
 
 /*FOOTER*/
-footer{
-    position: absolute;
+footer {
     width: 100%;
     background-color: #7cc644;
-    padding-top: 15px;
+}
+  
+.content{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 40px 50px;
+    gap: 20px;
+}
+ 
+.a{
+    flex: 1;
+    max-width: 400px; 
+}
+  
+#frase-cta{
+    margin: 50px 0px;
+    margin-left: 150px;
 }
 
 .links{
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 30px;
     justify-content: center;
-    gap: 285px;
-    padding-top: 20px;
-    padding-left: 50px;
-    padding-right: 50px;
 }
-
-.links img{
+  
+.links a{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 11px;
+    text-decoration: none;
+    color: black;
+    text-align: center;
+}
+  
+.links img {
     width: 45px;
     margin-bottom: 5px;
 }
-
-.links a{
-    text-decoration: none;
-    margin: auto;
-    text-align: center;
-    font-size: 11px;
-}
-
-.links a:hover{
+  
+.links a:hover {
     color: #3d550c;
 }
 
-.sobre{
-    padding: 50px 60px;
-    display: flex;
-    gap: 560px;
+.sobre h3{
+    padding-bottom: 20px;
 }
-
-.sobre h2{
-    font-size: 25px;
-}
-
-.sobre ul{
-    display: flex;
+  
+.sobre ul {
     list-style: none;
-    gap: 40px;
-    padding-top: 10px;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
-
-.sobre a:hover{
+  
+.sobre a {
+    text-decoration: none;
+    color: black;
+}
+  
+.sobre a:hover {
     text-decoration: underline;
 }
 
@@ -499,7 +517,7 @@ footer{
     background-color: #8ac44f;
     padding: 20px 20px;
 }
-
+  
 #copyright{
     display: flex;
     align-items: center;
@@ -527,3 +545,69 @@ footer{
 #btnTopo:hover {
     background-color: #75bd2e; 
 }
+
+@media (max-width: 1600px) {
+    header button{
+        text-shadow: none;
+    }
+
+    .slider,
+    .slide img{
+        height: 775px;
+    }
+
+    .manual-navegacao{
+        transform: translateX(50%);
+    }
+
+    .poema p{
+        padding-top: 70px;
+        padding-bottom: 70px;
+        letter-spacing: 1.5px;
+    }
+
+    .acesso{
+        margin-left: 2%;
+    }
+
+    .acesso button{
+        margin-left: 12.5%;
+    }
+
+    .juvenal img{
+        margin-left: 220px;
+    }
+
+    .juvenal .texto{
+        padding-left: 175px;
+    }
+
+    .rotas iframe{
+        transform: translateX(17%);
+    }
+
+    .rotas a button{
+        margin-left: 208px;
+        padding: 20px 567px;
+    }
+
+    .saude{
+        padding: 30px 185px;
+    }
+
+    .texto a button{
+        transform: translateX(270px);
+    }
+}
+
+@media (max-width: 780px) {
+    .footer-container {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+  
+    .links {
+      grid-template-columns: 1fr 1fr;
+    }
+  }

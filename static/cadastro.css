@@ -1,57 +1,61 @@
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: 'Nunito  Sans', sans-serif;
+    font-family: 'Nunito Sans', sans-serif;
 }
 
-body{
+body {
     width: 100vw;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #8ac44f; 
+    background: #8ac44f;
+    overflow-x: hidden;
 }
 
-form{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    /*margin: 0 15px 0 215px;
-    transform: translateX(23%);*/
+form {
     width: 70%;
-    height: 430px;
+    max-width: 800px;
+    min-width: 300px;
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: #f3fadc;
-    padding: 2rem;
+    padding: 1.5rem;
     border-radius: 30px;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.212);
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%);
 }
 
-h1{
+h1 {
     color: #3d550c;
     padding-bottom: 40px;
     text-align: center;
 }
 
-.input-group{
+/* FORM GRUPOS */
+.input-group {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    width: 100%;
 }
 
-.input-box{
+.input-box {
     display: flex;
     flex-direction: column;
+    width: 48%;
     margin-bottom: 10px;
 }
 
-.input-box input{
+.input-box input {
     margin: 10px 0;
     padding: 15px 20px;
     border: none;
@@ -61,36 +65,30 @@ h1{
     color: #6b5c5c;
 }
 
-.input-box input:hover{
+.input-box input:hover {
     background-color: #eeeeee75;
 }
 
-.input-box input:focus-visible{
+
+.input-box input:focus-visible {
     outline: 1px solid black;
 }
 
 .input-box label,
 .gender-inputs h6,
-.heart{
+.heart {
     font-size: 13px;
     font-weight: 600;
     color: #3d550c;
 }
 
-.bottom-form{ 
+.bottom-form {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    gap: 100px;
+    width: 100%;
 }
 
-.gender-inputs,
-.heart{
-    display: flex;
-    flex-direction: column;
-}
-
-.gender-group{
+.gender-group {
     display: flex;
     justify-content: space-between;
     gap: 10px;
@@ -100,72 +98,70 @@ h1{
 }
 
 .gender-input input,
-.heart-input input{
+.heart-input input {
     margin-right: 2px;
 }
 
-.gender-input label{
+.gender-input label {
     font-size: 0.81rem;
     font-weight: 600;
     color: #3d550c;
 }
 
-.heart{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    font-weight: 600;
-    color: #3d550c;
-}
-
-.heart-title{
+.heart-title {
     white-space: nowrap;
     margin-bottom: 10px;
     font-size: 1.2rem;
 }
 
-.heart-radios{
+.heart-radios {
     display: flex;
     gap: 20px;
 }
 
-.heart-input{
+.heart-input {
     display: flex;
     flex-direction: row;
 }
 
-button{
+button {
     border: none;
-    background: #3d550c; 
+    background: #3d550c;
     color: #fff;
     padding: 0.5rem 1rem;
     width: 50%;
     border-radius: 5px;
     cursor: pointer;
+    transition: 0.3s;
 }
 
-button:hover{
+button:hover {
     background-color: #75bd2e;
     border: 1px solid #c4c2c275;
 }
 
 /*PARTE 2*/
-.cad2{
+.cad2 {
     height: 85%;
 }
 
-.cad2 p{
+.cad2 p {
     text-align: justify;
     letter-spacing: 0.5px;
     padding-bottom: 15px;
 }
 
-/*VERSÃO MOBILE*/
+
 @media screen and (max-width: 320px) and (max-height: 780px) {
+    body{
+        overflow-x: hidden;
+        padding: 0 10px;
+    }
+
     form{
-        width: 80%;
-        margin-bottom: 0;
-        height: 465px;
+        width: 100%;
+        padding: 1rem;
+        height: auto;
     }
 
     .input-group{
@@ -203,8 +199,25 @@ button:hover{
     }
 
     .heart-input{
-        margin-top: 10px;
         margin-left: 15px;
         margin-bottom: 20px;
+    }
+
+    button{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 1366px) {
+    form {
+        width: 80%;
+    }
+
+    .input-box {
+        width: 48%;
+    }
+
+    .bottom-form {
+        gap: 60px;
     }
 }
