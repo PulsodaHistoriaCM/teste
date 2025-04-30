@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="/static/img/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="/static/home.css">
-    <link rel="stylesheet" href="/static/secao.css"> <!--criar um ou colocar no home.css-->
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
 
@@ -15,11 +14,114 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
     
     <title>Sobre Nós</title>
+
+    <style> 
+        h1{
+            padding-top: 70px;
+            padding-bottom: 5px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            text-align: justify;
+        }
+        
+        .container h2 {
+            margin-bottom: 20px;
+        }
+
+        .container p{
+            margin-bottom: 10px;
+        }
+        
+        .container h3 {
+            margin-top: 20px;
+            margin-bottom: 15px;
+        }
+
+        .container #second,
+        .developers{
+            margin-top: -20px;
+        }
+     
+        .developers .team-photo img {
+            width: 90%;
+            max-width: 400px;
+            display: block;
+            margin: 20px auto;
+            border-radius: 10px;
+        }
+        
+        .dev-photos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .dev-card {
+            text-align: center;
+            max-width: 150px;
+        }
+        
+        .dev-card img {
+            width: 130px;
+            height: 130px;
+            object-fit: cover;
+            border-radius: 50%;
+            /* Foto redonda */
+            display: block;
+            margin: 0 auto 10px auto;
+        }
+      
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.5em;
+            }
+        
+        
+            .container {
+                padding: 10px;
+            }
+        
+        
+            .dev-photos {
+                flex-direction: column;
+                align-items: center;
+            }
+        
+        
+            .dev-card {
+                max-width: 80%;
+            }
+        
+        
+            .developers .team-photo img {
+                max-width: 300px;
+            }
+        }
+        
+        
+        @media (min-width: 1024px) {
+            .container {
+                display: flex;
+                flex-direction: column;
+                gap: 40px;
+                padding: 40px;
+            }
+        
+            .dev-photos {
+                justify-content: space-evenly;
+            }
+        }
+    </style>
 </head>
 
 <body>
     <header id="header">
-        <a class="empresa" href="home.html">
+        <a class="empresa" href="/PulsoCM/index.html">
             <img id="logo" src="/static/img/logo.png" alt="logo">
             <p>Pulso da História CM</p>
         </a>
@@ -28,24 +130,76 @@
             <ul>
                 <li class="drop-hover"><a id="history" href="#">História <i class="fa-solid fa-caret-down"></i></a>
                     <div class="drop">
-                        <a href="secaoCM.html">Conheça CM</a>
-                        <a href="secaoP.html">Personalidades</a>
-                        <a href="secaoF.html">Folclore</a>
+                        <a href="/PulsoCM/static/templates/secaoCM.html">Conheça CM</a>
+                        <a href="/PulsoCM/static/templates/secaoP.html">Personalidades</a>
+                        <a href="/PulsoCM/static/templates/secaoF.html">Folclore</a>
                     </div>
                 </li>
-                <li><a href="secaoE.html">Engenhos</a></li>
-                <li><a href="rotas.html">Rotas</a></li>
-                <li><a href="about.html">Sobre Nós</a></li>
+                <li><a href="/PulsoCM/static/templates/secaoE.html">Engenhos</a></li>
+                <li><a href="/PulsoCM/static/templates/rotas.html">Rotas</a></li>
+                <li><a href="/PulsoCM/static/templates/about.html">Sobre Nós</a></li>
             </ul>
         </nav>
 
-        <a href="login.html"><button>Login</button></a>
+        <a href="/PulsoCM/static/templates/login.html"><button>Login</button></a>
     </header>
 
-    <main></main>
+   <div class="container">
+    <h1>Sobre Nós</h1>
+    <section>
+        <h2>O que é?</h2>
+        <p>Nosso aplicativo é uma plataforma interativa voltada para o turismo saudável em Ceará-Mirim. Ele combina tecnologia, saúde e cultura, oferecendo rotas personalizadas para pontos turísticos da cidade, ao mesmo tempo em que monitora sua saúde durante os trajetos — incluindo seus batimentos cardíacos.</p>
+        <p>Além disso, ele funciona como uma rede social local, onde os usuários podem compartilhar suas experiências, comentar, curtir e trocar informações sobre os trajetos percorridos.</p>
+    </section>
 
-    <footer>
-        <div class="links">
+    <section id="second">
+      <h2>Como funciona?</h2>
+      <h3>- Rotas Inteligentes</h3>
+      <p>O usuário escolhe o ponto turístico que deseja visitar e o meio de transporte preferido (bicicleta, carro ou a pé). O app então oferece a melhor rota, considerando segurança, acessibilidade e conforto.</p>
+
+      <h3>- Monitoramento de Saúde</h3>
+      <p>Durante o percurso, o aplicativo monitora os batimentos cardíacos em tempo real (com dispositivos compatíveis), fornecendo dados importantes para sua segurança e bem-estar.</p>
+
+      <h3>- Conteúdo Cultural e Histórico</h3>
+      <p>Cada ponto turístico conta com imagens e uma breve explicação histórica, permitindo que o usuário conheça mais sobre o local que está visitando.</p>
+
+      <h3>- Comunidade Ativa</h3>
+      <p>No chat integrado, os usuários podem comentar suas experiências, dar dicas, avaliar as rotas e interagir com outros viajantes, ajudando a construir uma comunidade colaborativa em torno do turismo consciente e saudável.</p>
+    </section>
+
+    <section class="developers">
+      <h2>Desenvolvedoras</h2>
+
+      <!-- Foto das três juntas -->
+      <div class="team-photo">
+        <img src="/static/img/grupo.jpg" alt="Equipe de Desenvolvedoras" />
+      </div>
+
+      <!-- Fotos individuais -->
+      <div class="dev-photos">
+        <div class="dev-card">
+          <img src="/PulsoCM/static/img/bia.jpg" alt="Desenvolvedora 1" />
+          <p>Nome 1</p>
+        </div>
+        <div class="dev-card">
+          <img src="/PulsoCM/static/img/kali.jpg" alt="Desenvolvedora 2" />
+          <p>Nome 2</p>
+        </div>
+        <div class="dev-card">
+          <img src="/PulsoCM/static/img/maria.jpg" alt="Desenvolvedora 3" />
+          <p>Nome 3</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <div class="content">
+        <div class="a cta">
+            <h2 id="frase-cta">Se aventure conosco!</h2>
+        </div>
+
+        <div class="a links">
             <a href="https://cearamirim.rn.gov.br/" target="_blank">
                 <img src="/static/img/brasaoCM.svg">
                 <p>Prefeitura <br> Municipal</p>
@@ -67,11 +221,12 @@
             </a> 
         </div>
 
-        <div class="sobre">
-            <h2>Se aventure conosco!</h2>
+        <div class="a sobre">
+            <h3>Recursos</h3>
+
             <ul>
                 <li>
-                    <a href="/templates/politica.html">
+                    <a href="static/templates/politica.html">
                         Políticas e Termos
                     </a>
                 </li>
@@ -82,19 +237,20 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/templates/about.html">
+                    <a href="static/templates/about.html">
                         Sobre Nós
                     </a>
                 </li>
             </ul>
         </div>
-
-        <div class="bottom-footer">
-            <span id="copyright">
-                &copy 2025 Pulso da História CM - Todos os direitos reservados.
-            </span>
-        </div>
-    </footer>
+    </div>
+    
+    <div class="bottom-footer">
+        <span id="copyright">
+            &copy 2025 Pulso da História CM - Todos os direitos reservados.
+        </span>
+    </div>
+</footer>
 
     <script src="/static/javascript/headerColorido.js"></script>
 </body>
