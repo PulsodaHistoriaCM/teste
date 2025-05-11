@@ -18,11 +18,11 @@
     <header id="header">
         <a class="empresa" href="/templates/home.html">
             <img id="logo" src="/static/img/logo.png" alt="logo">
-            <p>Pulso da História CM</p>
+            <p id="nome">Pulso da História CM</p>
         </a>
 
         <!--DESKTOP-->
-        <nav>
+        <nav id="desktop">
             <ul>
                 <li class="drop-hover"><a id="history" href="#">História <i class="fa-solid fa-caret-down"></i></a>
                     <div class="drop">
@@ -38,7 +38,15 @@
         </nav>
 
         <!--MOBILE-->
-        <div class="off-menu">
+        <div class="nav-mobile">
+            <div class="ham-menu" id="hamburguer">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+
+        <div class="off-menu" id="menu">
             <ul>
                 <li><a href="/templates/secaoCM.html">Conheça CM</a></li>
                 <li><a href="/templates/secaoP.html">Personalidades</a></li>
@@ -47,16 +55,8 @@
                 <li><a href="/templates/rotas.html">Rotas</a></li>
                 <li><a href="/templates/about.html">Sobre Nós</a></li>
             </ul>
+            <a href="/templates/login.html"><button>Login</button></a>
         </div>
-
-        <!--fazendo o sanduiche-->
-        <nav class="nav-mobile">
-            <div class="ham-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </nav>
 
         <a href="/templates/login.html"><button>Login</button></a>
     </header>
@@ -123,13 +123,13 @@
         </section>
 
         <section class="artigos">
-            <h2 id="title">Artigos</h2>
+            <h2 class="title">Artigos</h2>
 
             <div class="cards">
                 <!--CARD 1-->
                 <div class="card one">
                     <img id="img1" src="/static/img/rio.jpg" alt="Rio Ceará-Mirim">
-                    <a href="#"> <!--como tô apresnetando cada artigo, vai direto pra lá. a seção de artigos em si fica pro veja mais-->
+                    <a href="#"> <!--como tô apresentando cada artigo, vai direto pra lá. a seção de artigos em si fica pro veja mais-->
                         <p>Conheça a cidade >></p>
                     </a>
                     <p>Às margens do Rio Ceará-Mirim,<br>teve início a história da cidade.</p>
@@ -183,9 +183,9 @@
         </section>
 
         <section class="acesso">
-            <h2 id="title">Veja Mais</h2>
+            <h2 class="title">Veja Mais</h2>
 
-            <a href="/templates/secaoCM.html"><button>Conheça a Cidade</button></a>
+            <a href="/templates/secaoCM.html" style="white-space: nowrap;"><button>Conheça a cidade</button></a>
             <a href="/templates/secaoP.html"><button>Personalidades</button></a>
             <a href="/templates/secaoF.html"><button>Folclore</button></a>
             <a href="/templates/secaoE.html"><button>Engenhos</button></a>
@@ -195,16 +195,15 @@
             <img src="/static/img/poeta Juvenal Antunes.jpg" alt="Juvenal Antunes">
             <div class="texto">
                 <h2>Juvenal  Antunes de Oliveira</h2>
-                <p>Poeta consagrado no Acre e esquecido por sua cidade, conheça o boêmio <br> e sarcástico Juvenal Antunes.</p>
+                <p>Poeta consagrado no Acre e esquecido por sua cidade, conheça o <br> boêmio e sarcástico Juvenal Antunes.</p>
                 <a href="/templates/artigosP/art7.html">Leia mais aqui >></a>
             </div>
         </section>
 
         <section class="rotas">
-            <h2 id="title">Rotas Únicas, Experiências Memoráveis</h2>
-
+            <h2 class="title">Rotas Únicas, Experiências Memoráveis</h2>
             <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1dbG8RLl-xm8Ql0HrbcJ3FKfVXx1xlEM&ehbc=2E312F" width="640" height="480"></iframe>
-            <a href="/templates/rotas.html"><button>Veja mais Aqui</button></a>
+            <a href="/templates/rotas.html" style="white-space: nowrap;">Veja mais Aqui</a>
         </section>
 
         <section class="saude">
@@ -283,5 +282,20 @@
     <script src="/static/javascript/slider.js"></script>
     <script src="/static/javascript/scroll.js"></script>
     <script src="/static/javascript/voltar.js"></script>
+
+    <script>
+        const hamburguer = document.getElementById("hamburguer");
+        const menu = document.getElementById("menu");
+
+        hamburguer.addEventListener("click", () => {
+            hamburguer.classList.toggle("ativado");
+            menu.classList.toggle("ativado");
+
+            // Bloquear scroll ao abrir menu
+            document.body.style.overflow = menu.classList.contains("ativado") ? "hidden" : "auto";
+        });
+    </script>
+
+
 </body>
 </html>
