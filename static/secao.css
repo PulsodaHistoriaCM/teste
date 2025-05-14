@@ -51,18 +51,18 @@ a{
     align-items: flex-start;
 }
 
-.content {
+.artigo .content {
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 20px; 
 }
 
-.content p{
+.artigo .content p{
     text-align: justify;
 }
 
-.content a:hover{
+.artigo .content a:hover{
     color: rgb(148, 148, 44);
 }
 

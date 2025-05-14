@@ -284,15 +284,13 @@
     <script src="/static/javascript/voltar.js"></script>
 
     <script>
-        const hamburguer = document.getElementById("hamburguer");
-        const menu = document.getElementById("menu");
+        const hamburguer = document.getElementById('hamburguer');
+        const menu = document.getElementById('menu');
 
-        hamburguer.addEventListener("click", () => {
-            hamburguer.classList.toggle("ativado");
-            menu.classList.toggle("ativado");
-
-            // Bloquear scroll ao abrir menu
-            document.body.style.overflow = menu.classList.contains("ativado") ? "hidden" : "auto";
+        // Ao clicar no botão hambúrguer
+        hamburguer.addEventListener('click', () => {
+            hamburguer.classList.toggle('ativado');
+            menu.classList.toggle('ativado');
         });
     </script>
 
