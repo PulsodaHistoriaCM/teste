@@ -31,6 +31,12 @@
             padding-bottom: 20px;
             font-size: 17px;
         }
+
+        @media (max-width: 480px) {
+            main{
+                padding: 20px;
+            }
+        }
     </style>
 </head>
 
@@ -38,10 +44,11 @@
     <header id="header">
         <a class="empresa" href="/templates/home.html">
             <img id="logo" src="/static/img/logo.png" alt="logo">
-            <p>Pulso da História CM</p>
+            <p id="nome">Pulso da História CM</p>
         </a>
 
-        <nav>
+        <!--DESKTOP-->
+        <nav id="desktop">
             <ul>
                 <li class="drop-hover"><a id="history" href="#">História <i class="fa-solid fa-caret-down"></i></a>
                     <div class="drop">
@@ -56,11 +63,32 @@
             </ul>
         </nav>
 
+        <!--MOBILE-->
+        <div class="nav-mobile">
+            <div class="ham-menu" id="hamburguer">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+
+        <div class="off-menu" id="menu">
+            <ul>
+                <li><a href="/templates/secaoCM.html">Conheça CM</a></li>
+                <li><a href="/templates/secaoP.html">Personalidades</a></li>
+                <li><a href="/templates/secaoF.html">Folclore</a></li>
+                <li><a href="/templates/secaoE.html">Engenhos</a></li>
+                <li><a href="/templates/rotas.html">Rotas</a></li>
+                <li><a href="/templates/about.html">Sobre Nós</a></li>
+            </ul>
+            <a href="/templates/login.html"><button>Login</button></a>
+        </div>
+
         <a href="/templates/login.html"><button>Login</button></a>
     </header>
 
     <main>
-        <h1>Política de Privacidade - Pulso da História CM</h1>
+        <h1>Política de Privacidade</h1>
         
         <p>A sua privacidade é nossa prioridade. O <strong>Pulso da História CM</strong> coleta e processa dados pessoais para proporcionar uma experiência personalizada e informativa. Ao utilizar nossa pulseira monitor cardíaco, você concorda com a coleta e o uso das seguintes informações: </p>  
             
@@ -76,50 +104,57 @@
     </main>
 
     <footer>
-        <div class="links">
-            <a href="https://cearamirim.rn.gov.br/" target="_blank">
-                <img src="/static/img/brasaoCM.svg">
-                <p>Prefeitura Municipal</p>
-            </a>
+        <div class="content">
+            <div class="a cta">
+                <h2 id="frase-cta">Se aventure conosco!</h2>
+            </div>
 
-            <a href="https://www.facebook.com/people/ACLA-Pedro-Sim%C3%B5es-Neto/100064889582779/" target="_blank">
-                <img src="/static/img/ACLA.png">
-                <p>ACLA</p>
-            </a>
+            <div class="a links">
+                <a href="https://cearamirim.rn.gov.br/" target="_blank">
+                    <img src="/static/img/brasaoCM.svg">
+                    <p>Prefeitura <br> Municipal</p>
+                </a>
 
-            <a href="https://www.cearamirim.rn.leg.br/" target="_blank">
-                <img src="/static/img/camara.png">
-                <p>Câmara Municipal</p>
-            </a>
+                <a href="https://www.facebook.com/people/ACLA-Pedro-Sim%C3%B5es-Neto/100064889582779/" target="_blank">
+                    <img src="/static/img/ACLA.png">
+                    <p>ACLA</p>
+                </a>
 
-            <a href="https://gibsonmachadocm.blogspot.com/" target="_blank">
-                <img src="/static/img/blogger.png">
-                <p>Ceará-Mirim <br> Cultura e Arte</p>
-            </a> 
+                <a href="https://www.cearamirim.rn.leg.br/" target="_blank">
+                    <img src="/static/img/camara.png">
+                    <p>Câmara Municipal</p>
+                </a>
+
+                <a href="https://gibsonmachadocm.blogspot.com/" target="_blank">
+                    <img src="/static/img/blogger.png">
+                    <p>Ceará-Mirim <br> Cultura e Arte</p>
+                </a> 
+            </div>
+
+            <div class="a sobre">
+                <h3>Recursos</h3>
+
+                <ul>
+                    <li>
+                        <a href="templates/politica.html">
+                            Políticas e Termos
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="mailto: pulsodahistoriacm@gmail.com">
+                            Mande sua dúvida
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/templates/about.html">
+                            Sobre Nós
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
-
-        <div class="sobre">
-            <h2>Se aventure conosco!</h2>
-            <ul>
-                <li>
-                    <a href="/templates/politica.html">
-                        Políticas e Termos
-                    </a>
-                </li>
-            
-                <li>
-                    <a href="mailto: pulsodahistoriacm@gmail.com">
-                        Mande sua dúvida
-                    </a>
-                </li>
-                <li>
-                    <a href="/templates/about.html">
-                        Sobre Nós
-                    </a>
-                </li>
-            </ul>
-        </div>
-
+        
         <div class="bottom-footer">
             <span id="copyright">
                 &copy 2025 Pulso da História CM - Todos os direitos reservados.
@@ -128,4 +163,5 @@
     </footer>
 
     <script src="/static/javascript/headerColorido.js"></script>
+    <script src="/static/javascript/burguer.js"></script>
 </body>

@@ -21,10 +21,11 @@
     <header id="header">
         <a class="empresa" href="/templates/home.html">
             <img id="logo" src="/static/img/logo.png" alt="logo">
-            <p>Pulso da História CM</p>
+            <p id="nome">Pulso da História CM</p>
         </a>
 
-        <nav>
+        <!--DESKTOP-->
+        <nav id="desktop">
             <ul>
                 <li class="drop-hover"><a id="history" href="#">História <i class="fa-solid fa-caret-down"></i></a>
                     <div class="drop">
@@ -39,13 +40,34 @@
             </ul>
         </nav>
 
+        <!--MOBILE-->
+        <div class="nav-mobile">
+            <div class="ham-menu" id="hamburguer">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+
+        <div class="off-menu" id="menu">
+            <ul>
+                <li><a href="/templates/secaoCM.html">Conheça CM</a></li>
+                <li><a href="/templates/secaoP.html">Personalidades</a></li>
+                <li><a href="/templates/secaoF.html">Folclore</a></li>
+                <li><a href="/templates/secaoE.html">Engenhos</a></li>
+                <li><a href="/templates/rotas.html">Rotas</a></li>
+                <li><a href="/templates/about.html">Sobre Nós</a></li>
+            </ul>
+            <a href="/templates/login.html"><button>Login</button></a>
+        </div>
+
         <a href="/templates/login.html"><button>Login</button></a>
     </header>
 
     <main>
         <div class="caminho">
             <h6>
-                <a href="/templates/home.html">HOME</a> > <a href="secaoE.html">ENGENHOS DA MEMÓRIA</a>
+                <a href="/templates/home.html"><i class="fa-solid fa-house"></i></a> > <a href="secaoE.html">ENGENHOS DA MEMÓRIA</a>
             </h6>
         </div>
     
@@ -145,7 +167,7 @@
 
                 <ul>
                     <li>
-                        <a href="static/templates/politica.html">
+                        <a href="templates/politica.html">
                             Políticas e Termos
                         </a>
                     </li>
@@ -156,7 +178,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="static/templates/about.html">
+                        <a href="/templates/about.html">
                             Sobre Nós
                         </a>
                     </li>
@@ -172,5 +194,6 @@
     </footer>
 
     <script src="/static/javascript/headerColorido.js"></script>
+    <script src="/static/javascript/burguer.js"></script>
 </body>
 </html>

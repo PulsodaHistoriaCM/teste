@@ -79,22 +79,14 @@ a{
 
 @media screen and (max-width: 480px) {
     .caminho {
-        margin-top: 50px;
+        margin-top: 70px;
         margin-bottom: 30px;
     }
 
-
-    .caminho h2 {
-        padding-left: 20px;
-        font-size: 1.2rem;
-    }
-
-
     .caminho h6 {
-        font-size: 14px;
+        font-size: 13px !important;
         padding: 15px 20px;
     }
-
 
     .artigo {
         flex-direction: column;
@@ -103,16 +95,21 @@ a{
         box-shadow: 2px 2px rgb(179, 169, 169);
     }
 
+    .artigo img{
+        object-fit: cover;
+        width: 85% !important;
+        margin: 0 auto;
+        margin-top: 20px;
+        padding: 0 !important;
+    }
 
     .content {
         padding: 20px;
     }
 
-
     .content p {
         font-size: 14px;
     }
-
 
     #access {
         font-size: 14px;
@@ -124,26 +121,21 @@ a{
         font-size: 1.5rem;
     }
 
-
     .caminho h6 {
         font-size: 15px;
     }
-
 
     .artigo {
         width: 95%;
     }
 
-
     .content {
         padding: 30px;
     }
 
-
     .content p {
         font-size: 15px;
     }
-
 
     #access {
         font-size: 15px;

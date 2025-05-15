@@ -81,28 +81,36 @@
                 font-size: 1.5em;
             }
         
-        
             .container {
                 padding: 10px;
             }
-        
+
+            .container section{
+                padding-top: 30px;
+            }
         
             .dev-photos {
                 flex-direction: column;
                 align-items: center;
             }
         
-        
             .dev-card {
                 max-width: 80%;
             }
-        
+
+            .developers{
+                margin-bottom: 50px;
+            }
+
+            .developers h2{
+                padding-bottom: 10px;
+            }
         
             .developers .team-photo img {
                 max-width: 300px;
+                padding-bottom: 15px;
             }
         }
-        
         
         @media (min-width: 1024px) {
             .container {
@@ -111,7 +119,7 @@
                 gap: 40px;
                 padding: 40px;
             }
-        
+
             .dev-photos {
                 justify-content: space-evenly;
             }
@@ -121,32 +129,54 @@
 
 <body>
     <header id="header">
-        <a class="empresa" href="/PulsoCM/index.html">
+        <a class="empresa" href="/templates/home.html">
             <img id="logo" src="/static/img/logo.png" alt="logo">
-            <p>Pulso da História CM</p>
+            <p id="nome">Pulso da História CM</p>
         </a>
 
-        <nav>
+        <!--DESKTOP-->
+        <nav id="desktop">
             <ul>
                 <li class="drop-hover"><a id="history" href="#">História <i class="fa-solid fa-caret-down"></i></a>
                     <div class="drop">
-                        <a href="/PulsoCM/static/templates/secaoCM.html">Conheça CM</a>
-                        <a href="/PulsoCM/static/templates/secaoP.html">Personalidades</a>
-                        <a href="/PulsoCM/static/templates/secaoF.html">Folclore</a>
+                        <a href="/templates/secaoCM.html">Conheça CM</a>
+                        <a href="/templates/secaoP.html">Personalidades</a>
+                        <a href="/templates/secaoF.html">Folclore</a>
                     </div>
                 </li>
-                <li><a href="/PulsoCM/static/templates/secaoE.html">Engenhos</a></li>
-                <li><a href="/PulsoCM/static/templates/rotas.html">Rotas</a></li>
-                <li><a href="/PulsoCM/static/templates/about.html">Sobre Nós</a></li>
+                <li><a href="/templates/secaoE.html">Engenhos</a></li>
+                <li><a href="/templates/rotas.html">Rotas</a></li>
+                <li><a href="/templates/about.html">Sobre Nós</a></li>
             </ul>
         </nav>
 
-        <a href="/PulsoCM/static/templates/login.html"><button>Login</button></a>
+        <!--MOBILE-->
+        <div class="nav-mobile">
+            <div class="ham-menu" id="hamburguer">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+
+        <div class="off-menu" id="menu">
+            <ul>
+                <li><a href="/templates/secaoCM.html">Conheça CM</a></li>
+                <li><a href="/templates/secaoP.html">Personalidades</a></li>
+                <li><a href="/templates/secaoF.html">Folclore</a></li>
+                <li><a href="/templates/secaoE.html">Engenhos</a></li>
+                <li><a href="/templates/rotas.html">Rotas</a></li>
+                <li><a href="/templates/about.html">Sobre Nós</a></li>
+            </ul>
+            <a href="/templates/login.html"><button>Login</button></a>
+        </div>
+
+        <a href="/templates/login.html"><button>Login</button></a>
     </header>
 
    <div class="container">
     <h1>Sobre Nós</h1>
-    <section>
+    <section id="inicio">
         <h2>O que é?</h2>
         <p>Nosso aplicativo é uma plataforma interativa voltada para o turismo saudável em Ceará-Mirim. Ele combina tecnologia, saúde e cultura, oferecendo rotas personalizadas para pontos turísticos da cidade, ao mesmo tempo em que monitora sua saúde durante os trajetos — incluindo seus batimentos cardíacos.</p>
         <p>Além disso, ele funciona como uma rede social local, onde os usuários podem compartilhar suas experiências, comentar, curtir e trocar informações sobre os trajetos percorridos.</p>
@@ -178,80 +208,81 @@
       <!-- Fotos individuais -->
       <div class="dev-photos">
         <div class="dev-card">
-          <img src="/PulsoCM/static/img/bia.jpg" alt="Desenvolvedora 1" />
-          <p>Nome 1</p>
+          <img src="/static/img/kali.jpg" alt="Desenvolvedora 1" />
+          <p>Kaliane Silva</p>
         </div>
         <div class="dev-card">
-          <img src="/PulsoCM/static/img/kali.jpg" alt="Desenvolvedora 2" />
-          <p>Nome 2</p>
+          <img src="/static/img/maria.jpeg" alt="Desenvolvedora 2" />
+          <p>Maria Vitória</p>
         </div>
         <div class="dev-card">
-          <img src="/PulsoCM/static/img/maria.jpg" alt="Desenvolvedora 3" />
-          <p>Nome 3</p>
+          <img src="/static/img/bia.jpg" alt="Desenvolvedora 3" />
+          <p>Vitória Beatriz</p>
         </div>
       </div>
     </section>
-  </div>
+   </div>
 
-  <footer>
-    <div class="content">
-        <div class="a cta">
-            <h2 id="frase-cta">Se aventure conosco!</h2>
+    <footer>
+        <div class="content">
+            <div class="a cta">
+                <h2 id="frase-cta">Se aventure conosco!</h2>
+            </div>
+
+            <div class="a links">
+                <a href="https://cearamirim.rn.gov.br/" target="_blank">
+                    <img src="/static/img/brasaoCM.svg">
+                    <p>Prefeitura <br> Municipal</p>
+                </a>
+
+                <a href="https://www.facebook.com/people/ACLA-Pedro-Sim%C3%B5es-Neto/100064889582779/" target="_blank">
+                    <img src="/static/img/ACLA.png">
+                    <p>ACLA</p>
+                </a>
+
+                <a href="https://www.cearamirim.rn.leg.br/" target="_blank">
+                    <img src="/static/img/camara.png">
+                    <p>Câmara Municipal</p>
+                </a>
+
+                <a href="https://gibsonmachadocm.blogspot.com/" target="_blank">
+                    <img src="/static/img/blogger.png">
+                    <p>Ceará-Mirim <br> Cultura e Arte</p>
+                </a> 
+            </div>
+
+            <div class="a sobre">
+                <h3>Recursos</h3>
+
+                <ul>
+                    <li>
+                        <a href="templates/politica.html">
+                            Políticas e Termos
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="mailto: pulsodahistoriacm@gmail.com">
+                            Mande sua dúvida
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/templates/about.html">
+                            Sobre Nós
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
-
-        <div class="a links">
-            <a href="https://cearamirim.rn.gov.br/" target="_blank">
-                <img src="/static/img/brasaoCM.svg">
-                <p>Prefeitura <br> Municipal</p>
-            </a>
-
-            <a href="https://www.facebook.com/people/ACLA-Pedro-Sim%C3%B5es-Neto/100064889582779/" target="_blank">
-                <img src="/static/img/ACLA.png">
-                <p>ACLA</p>
-            </a>
-
-            <a href="https://www.cearamirim.rn.leg.br/" target="_blank">
-                <img src="/static/img/camara.png">
-                <p>Câmara Municipal</p>
-            </a>
-
-            <a href="https://gibsonmachadocm.blogspot.com/" target="_blank">
-                <img src="/static/img/blogger.png">
-                <p>Ceará-Mirim <br> Cultura e Arte</p>
-            </a> 
+        
+        <div class="bottom-footer">
+            <span id="copyright">
+                &copy 2025 Pulso da História CM - Todos os direitos reservados.
+            </span>
         </div>
-
-        <div class="a sobre">
-            <h3>Recursos</h3>
-
-            <ul>
-                <li>
-                    <a href="static/templates/politica.html">
-                        Políticas e Termos
-                    </a>
-                </li>
-            
-                <li>
-                    <a href="mailto: pulsodahistoriacm@gmail.com">
-                        Mande sua dúvida
-                    </a>
-                </li>
-                <li>
-                    <a href="static/templates/about.html">
-                        Sobre Nós
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
-    
-    <div class="bottom-footer">
-        <span id="copyright">
-            &copy 2025 Pulso da História CM - Todos os direitos reservados.
-        </span>
-    </div>
-</footer>
+    </footer>
 
     <script src="/static/javascript/headerColorido.js"></script>
+    <script src="/static/javascript/burguer.js"></script>
 </body>
 </html>

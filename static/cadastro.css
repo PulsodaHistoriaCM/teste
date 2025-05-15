@@ -160,6 +160,7 @@ button:hover {
         height: 550px;
         align-items: flex-start !important;
         margin: 0 auto;
+        margin-top: 10px !important;
     }
 
     .input-box{
