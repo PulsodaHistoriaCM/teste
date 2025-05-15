@@ -646,15 +646,20 @@ footer .bottom-footer{
     }
 
     header {
-        width: 10%;
+        width: 100%;
         padding: 10px !important; 
+    }
+
+    #logo{
+        width: 45%;
+        margin-top: -1px;
     }
 
     /*fazendo menu hamburguer*/
     .off-menu {
         background-color: #75bd2e;
-        height: 14%;
-        width: 20%;
+        height: 40%;
+        width: 58%;
         position: fixed;
         top: 0;
         left: -100%;
@@ -666,18 +671,29 @@ footer .bottom-footer{
     }
 
     .off-menu.ativado {
-        left: 100px;
+        left: 62px;
+        top: 10px;
+    }
+
+    .off-menu ul li{
+        list-style: none;
+        padding: 3px;
+    }
+
+    header button{
+        color: #050505;
     }
 
     .nav-mobile {
-        padding: 5px;
+        padding: 2px 5px;
         display: flex;
         background-color: #75bd2e;
-        
+        position: fixed;
+        left: 250px;
     }
 
     .ham-menu {
-        height: 50px;
+        height: 38px;
         width: 50px;
         margin-left: auto;
         position: relative;
@@ -695,21 +711,23 @@ footer .bottom-footer{
         transition: 0.3s ease;
     }
 
+    /*posicao span*/
     .ham-menu span:nth-child(1) {
-        top: 12px;
+        top: 7px;
     }
 
     .ham-menu span:nth-child(2) {
-        top: 22px;
+        top: 17px;
     }
 
     .ham-menu span:nth-child(3) {
-        top: 32px;
+        top: 27px;
     }
 
+    /*posicao x quando menu está ativado*/
     .ham-menu.ativado span:nth-child(1) {
         transform: translateX(-50%) rotate(45deg);
-        top: 22px;
+        top: 17px;
     }
 
     .ham-menu.ativado span:nth-child(2) {
@@ -718,7 +736,154 @@ footer .bottom-footer{
 
     .ham-menu.ativado span:nth-child(3) {
         transform: translateX(-50%) rotate(-45deg);
-        top: 22px;
+        top: 17px;
+    }
+
+    #frase{
+        font-size: 27px;
+        text-align: center;
+    }
+
+    .slider{
+        height: 780px !important;
+    }
+
+    .slide img{
+        object-fit: cover;
+        height: 781px;
+    }
+
+    .cards{
+        margin-left: 0px;
+        justify-content: space-between;
+    }
+
+    .card{
+        width: 100%;
+        font-size: 16.5px;
+    }
+
+    .one, .second, .third{
+        margin-bottom: 0;
+    }
+
+    .card img{
+        width: 80%;
+        object-fit: cover;
+    }
+
+    .acesso h2{
+        margin-bottom: 50px;
+    }
+
+    .acesso a{
+        margin: 30px;
+        margin-left: -5px;
+    }
+
+    .acesso button{
+        padding: 20px 69px;
+    }
+
+    #menor{
+        padding-left: 100px !important;
+        padding-right: 100px !important;
+    }
+
+    #menor2{
+        padding-left: 95px !important;
+        padding-right: 95px !important;
+    }
+
+    #menor3{
+        padding-left: 77px !important;
+        padding-right: 76px !important;
+    }
+
+    .juvenal{
+        flex-direction: column;
+        height: 625px;
+    }
+
+    .juvenal img{
+        width: 80%;
+        object-fit: cover;
+        margin: 0 auto !important;
+        margin-top: 30px !important;
+    }
+
+    .juvenal .texto h2{
+        font-size: 30px;
+        text-align: center;
+        margin-left: -165px;
+        margin-top: -50px;
+        padding-bottom: 5px;
+    }
+
+    .juvenal .texto p{
+        margin-left: -160px;
+        padding-right: 10px;
+        padding-bottom: 20px;
+        font-size: 17px;
+    }
+
+    .juvenal .texto a{
+        margin-left: -160px;
+    }
+
+    .rotas a{
+        margin-left: 41px;
+        margin-right: 32px;
+    }
+
+    .saude{
+        flex-direction: column;
+        gap: 0;
+        height: 500px;
+        padding: 10px;
+    }
+
+    .saude img{
+        width: 80%;
+        margin-top: 20px !important;
+        margin: 0 auto;
+        object-fit: cover;
+    }
+
+     .saude .texto h2{
+        font-size: 22px;
+    }
+
+    .saude .texto p{
+        padding-top: 20px;
+        padding-bottom: 25px;
+    }
+
+    .saude .texto a button{
+        padding: 10px 50px;
+        transform: translateX(50px) !important;
+    }
+
+    footer .content{
+        flex-direction: column;
+    }
+
+    #frase-cta{
+        margin-left: 0;
+        margin: 0 auto;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    footer .sobre{
+        margin-left: 0;
+        margin: 0 auto;
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    #copyright{
+        font-size: 10px;
     }
 
   }
