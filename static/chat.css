@@ -1,15 +1,213 @@
-*{
-    padding: 0;
-    margin: 0;
-    font-family: 'Nunito  Sans', sans-serif;
+* {
+  padding: 0;
+  margin: 0;
+  font-family: 'Nunito Sans', sans-serif;
 }
 
-html{
-    scroll-behavior: smooth;
+html {
+  scroll-behavior: smooth;
 }
 
-body{
+body {
+  width: 100%;
+  height: 100%;
+  background-color: #f3fadc;
+  background: url('https://live.staticflickr.com/4346/36255885122_458b5de0b3_b.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  max-width: 800px;
+  height: 90vh;
+  margin: 30px auto;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  z-index: 1;
+  margin-top: 150px;
+  margin-bottom: 100px;
+}
+
+.side-image {
+  width: 100%;
+  background-color: #e0f7fa;
+  padding: 20px;
+  text-align: center;
+}
+
+.sugestao {
+  font-style: italic;
+  font-size: 1.1rem;
+  color: #00796b;
+}
+
+.chat-box {
+  flex: 1;
+  overflow-y: auto;
+  padding: 15px;
+  background-color: #fafafa;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-container {
+  display: flex;
+  padding: 10px;
+  border-top: 1px solid #ccc;
+  background-color: white;
+}
+
+#userInput {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+button {
+  margin-left: 10px;
+  padding: 10px 20px;
+  background-color: #009688;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.mensagem {
+  background-color: #ffffff;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  position: relative;
+}
+
+.mensagem strong {
+  color: #00796b;
+}
+
+.mensagem small {
+  display: block;
+  font-size: 0.75rem;
+  color: #555;
+  margin-top: 4px;
+}
+
+.interacoes {
+  margin-top: 8px;
+}
+
+.interacoes i {
+  margin-right: 12px;
+  cursor: pointer;
+  color: #888;
+}
+
+.interacoes i:hover {
+  color: #e91e63;
+}
+
+.comentario-resposta {
+  margin-top: 10px;
+  margin-left: 20px;
+  background-color: #f0f0f0;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.responder-input {
+  display: flex;
+  margin-top: 8px;
+}
+
+.responder-input input {
+  flex: 1;
+  padding: 5px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.responder-input button {
+  margin-left: 5px;
+  padding: 6px 10px;
+  border: none;
+  background-color: #00796b;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+@media (max-width: 480px) {
+  .chat-container {
+    width: 95%;
+    height: 85vh;
+    margin-top: 100px;
+    margin-bottom: 50px;
+    border-radius: 8px;
+  }
+
+  .input-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  #userInput,
+  .responder-input input {
     width: 100%;
-    height: 100%;
-    background-color: #f3fadc;
+  }
+
+  .responder-input {
+    flex-direction: column;
+  }
+
+  .responder-input button {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  button {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .mensagem {
+    font-size: 0.95rem;
+  }
+
+  .sugestao {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 1366px) {
+  .chat-container {
+    width: 95%;
+    max-width: 900px;
+    height: 90vh;
+    margin-top: 120px;
+    margin-bottom: 80px;
+  }
+
+  .input-container {
+    padding: 8px;
+  }
+
+  .mensagem {
+    font-size: 1rem;
+  }
 }
