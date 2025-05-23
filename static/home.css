@@ -630,7 +630,7 @@ footer .bottom-footer #copyright{
 }
 
 /*MOBILE*/
-@media screen and (max-width: 320px) {
+@media screen and (min-width: 320px) and (max-width: 500px) {
     #desktop,
     #nome,
     header button{
@@ -886,5 +886,174 @@ footer .bottom-footer #copyright{
     footer .bottom-footer #copyright{
         font-size: 9.7px;
     }
-
   }
+
+/*AJUSTES EM TAMANHOS ESPECÍFICOS*/
+@media screen and (width: 500px) {
+    .nav-mobile{
+        left: 86%;
+    }
+
+    .off-menu.ativado{
+        left: 135px;
+    }
+
+    .acesso button{
+        padding: 20px 100px;
+    }
+
+    #menor{
+        padding-left: 130px !important;
+        padding-right: 130px !important;
+    }
+
+    #menor2{
+        padding-left: 125px !important;
+        padding-right: 125px !important;
+    }
+
+    #menor3{
+        padding-left: 110px !important;
+        padding-right: 110px !important;
+    }
+
+    .juvenal{
+        height: 780px;
+    }
+
+    .rotas a{
+        margin-left: 66px;
+        margin-right: 50px;
+    }
+
+    .saude{
+        height: 560px;
+    }
+
+    .saude .texto a button{
+        transform: translateX(140px) !important;
+    }
+
+    #frase-cta{
+        transform: translateX(50px);
+    }
+}
+
+@media screen and (min-width: 330px) {
+    .saude .texto a button{
+        transform: translateX(60px) !important;
+    }
+
+    .nav-mobile{
+        left: 80%;
+    }
+
+    .off-menu.ativado{
+        left: 70px;
+    }
+
+    .rotas a{
+        margin-left: 43px;
+    }
+
+    footer .links{
+        margin: 0 auto;
+    }
+}
+
+@media screen and (min-width: 340px) {
+    .juvenal{
+        height: 640px;
+    }
+}
+
+@media screen and (min-width: 360px){
+    .off-menu.ativado{
+        left: 75px;
+    }
+
+    .juvenal{
+        height: 670px;
+    }
+
+    .rotas a{
+        margin-left: 47px;
+        margin-right: 36px;
+    }
+
+    .saude .texto a button{
+        transform: translateX(70px) !important;
+    }
+}
+
+@media screen and (min-width: 380px) {
+    .off-menu.ativado{
+        left: 80px;
+    }
+
+    .juvenal{
+        height: 690px;
+    }
+    
+    .rotas a{
+        margin-left: 50px;
+        margin-right: 37px;
+    }
+
+    .saude{
+        height: 520px;
+    }
+
+    .saude .texto a button{
+        margin-top: -5px;
+        transform: translateX(85px) !important;
+    }
+}
+
+@media screen and (min-width: 400px) {
+    .nav-mobile{
+        left: 82%;
+    }
+
+    .off-menu.ativado{
+        left: 95px;
+    }
+
+    .acesso button{
+        padding: 20px 90px;
+    }
+
+    #menor{
+        padding-left: 125px !important;
+        padding-right: 125px !important;
+    }
+
+    #menor2{
+        padding-left: 120px !important;
+        padding-right: 120px !important;
+    }
+
+    #menor3{
+        padding-left: 100px !important;
+        padding-right: 100px !important;
+    }
+
+    .juvenal{
+        height: 725px;
+    }
+
+    .rotas  a{
+        margin-left: 53px;
+        margin-right: 39px;
+    }
+
+    .saude .texto a button{
+        transform: translateX(90px) !important;
+    }
+}
+
+@media screen and (min-width: 430px) {
+    #frase-cta{
+        justify-content: center !important;
+    }
+}
