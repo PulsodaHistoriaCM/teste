@@ -575,6 +575,7 @@ footer .bottom-footer #copyright{
     background-color: #75bd2e; 
 }
 
+/*telas grandes*/
 @media (max-width: 1600px) {
     header button{
         text-shadow: none;
@@ -630,7 +631,7 @@ footer .bottom-footer #copyright{
 }
 
 /*MOBILE*/
-@media screen and (min-width: 320px) and (max-width: 500px) {
+@media screen and (min-width: 320px) and (max-width: 549px) {
     #desktop,
     #nome,
     header button{
@@ -709,6 +710,10 @@ footer .bottom-footer #copyright{
         left: 50%;
         transform: translateX(-50%);
         transition: 0.3s ease;
+    }
+
+    footer .links{
+        margin: 0 auto;
     }
 
     /*posicao span*/
@@ -886,35 +891,41 @@ footer .bottom-footer #copyright{
     footer .bottom-footer #copyright{
         font-size: 9.7px;
     }
-  }
+}
 
 /*AJUSTES EM TAMANHOS ESPECÍFICOS*/
-@media screen and (width: 500px) {
+@media screen and (min-width: 500px) and (max-width: 549px) {
     .nav-mobile{
         left: 86%;
     }
 
+    .off-menu{
+        height: 38%;
+        width: 45%;
+    }
+
     .off-menu.ativado{
-        left: 135px;
+        left: 205px;
     }
 
     .acesso button{
-        padding: 20px 100px;
+        padding: 20px 130px;
+        transform: translateX(-10px);
     }
 
     #menor{
-        padding-left: 130px !important;
-        padding-right: 130px !important;
+        padding-left: 163px !important;
+        padding-right: 163px !important;
     }
 
     #menor2{
-        padding-left: 125px !important;
-        padding-right: 125px !important;
+        padding-left: 156px !important;
+        padding-right: 156px !important;
     }
 
     #menor3{
-        padding-left: 110px !important;
-        padding-right: 110px !important;
+        padding-left: 140px !important;
+        padding-right: 140px !important;
     }
 
     .juvenal{
@@ -922,8 +933,8 @@ footer .bottom-footer #copyright{
     }
 
     .rotas a{
-        margin-left: 66px;
-        margin-right: 50px;
+        margin-left: 67px;
+        margin-right: 51px;
     }
 
     .saude{
@@ -931,6 +942,7 @@ footer .bottom-footer #copyright{
     }
 
     .saude .texto a button{
+        margin-top: -10px;
         transform: translateX(140px) !important;
     }
 
@@ -939,7 +951,85 @@ footer .bottom-footer #copyright{
     }
 }
 
-@media screen and (min-width: 330px) {
+@media screen and (min-width: 521px) and (max-width: 530px) {
+    .off-menu.ativado{
+        left: 214px;
+    }
+
+    .acesso button{
+        padding: 20px 145px;
+        transform: translateX(-20px);
+    }
+
+    #menor{
+        padding-left: 176px !important;
+        padding-right: 176px !important;
+    }
+
+    #menor2{
+        padding-left: 170px !important;
+        padding-right: 170px !important;
+    }
+
+    #menor3{
+        padding-left: 155px !important;
+        padding-right: 155px !important;
+    }
+
+    .juvenal{
+        height: 810px;
+    }
+}
+
+@media screen and (min-width: 531px) and (max-width: 549px) {
+    .off-menu.ativado{
+        left: 225px;
+    }
+
+    .acesso button{
+        padding: 20px 145px;
+        transform: translateX(-20px);
+    }
+
+    #menor{
+        padding-left: 176px !important;
+        padding-right: 176px !important;
+    }
+
+    #menor2{
+        padding-left: 170px !important;
+        padding-right: 170px !important;
+    }
+
+    #menor3{
+        padding-left: 155px !important;
+        padding-right: 155px !important;
+    }
+
+    .juvenal{
+        height: 800px;
+    }
+
+    .rotas a{
+        margin-left: 70px;
+        margin-right: 53px;
+    }
+
+    .saude{
+        height: 580px;
+    }
+
+    .saude .texto a button{
+        margin-top: -10px;
+        transform: translateX(155px) !important;
+    }
+
+    #frase-cta{
+        transform: translateX(55px);
+    }
+}
+
+@media screen and (min-width: 330px) and (max-width: 339px) {
     .saude .texto a button{
         transform: translateX(60px) !important;
     }
@@ -955,21 +1045,38 @@ footer .bottom-footer #copyright{
     .rotas a{
         margin-left: 43px;
     }
-
-    footer .links{
-        margin: 0 auto;
-    }
 }
 
-@media screen and (min-width: 340px) {
+@media screen and (min-width: 340px) and (max-width: 359px) {
+    .nav-mobile{
+        left: 80%;
+    }
+
+    .off-menu.ativado{
+        left: 75px;
+    }
+
     .juvenal{
         height: 640px;
     }
+
+    .rotas a{
+        margin-left: 45px;
+        margin-right: 35px;
+    }
+
+    .saude .texto a button{
+        transform: translateX(65px) !important;
+    }
 }
 
-@media screen and (min-width: 360px){
+@media screen and (min-width: 360px) and (max-width: 379px) {
+    .nav-mobile{
+        left: 80%
+    }
+
     .off-menu.ativado{
-        left: 75px;
+        left: 78px;
     }
 
     .juvenal{
@@ -986,9 +1093,13 @@ footer .bottom-footer #copyright{
     }
 }
 
-@media screen and (min-width: 380px) {
+@media screen and (min-width: 380px) and (max-width: 399px) {
+    .nav-mobile{
+        left: 80%;
+    }
+
     .off-menu.ativado{
-        left: 80px;
+        left: 84px;
     }
 
     .juvenal{
@@ -1010,7 +1121,7 @@ footer .bottom-footer #copyright{
     }
 }
 
-@media screen and (min-width: 400px) {
+@media screen and (min-width: 400px) and (max-width: 429px) {
     .nav-mobile{
         left: 82%;
     }
@@ -1021,6 +1132,7 @@ footer .bottom-footer #copyright{
 
     .acesso button{
         padding: 20px 90px;
+        transform: translateX(-10px);
     }
 
     #menor{
@@ -1047,13 +1159,1338 @@ footer .bottom-footer #copyright{
         margin-right: 39px;
     }
 
+    .saude{
+        height: 530px;
+    }
+
     .saude .texto a button{
         transform: translateX(90px) !important;
     }
+
+    #frase-cta{
+        transform: translateX(10px);
+    }
 }
 
-@media screen and (min-width: 430px) {
-    #frase-cta{
-        justify-content: center !important;
+@media screen and (min-width: 430px) and (max-width: 445px) {
+    .nav-mobile{
+        left: 83%;
     }
+
+    .off-menu.ativado{
+        left: 106px;
+    }
+
+    .acesso button{
+        padding: 20px 110px;
+        transform: translateX(-10px);
+    }
+
+    #menor{
+        padding-left: 143px !important;
+        padding-right: 143px !important;
+    }
+
+    #menor2{
+        padding-left: 135px !important;
+        padding-right: 135px !important;
+    }
+
+    #menor3{
+        padding-left: 120px !important;
+        padding-right: 120px !important;
+    }
+
+    .juvenal{
+        height: 710px;
+    }
+
+    .rotas a{
+        margin-left: 56px;
+        margin-right: 44px;
+    }
+
+    .saude{
+        height: 520px;
+    }
+
+    .saude .texto a button{
+        margin-top: -5px;
+        transform: translateX(115px) !important;
+    }
+
+    #frase-cta{
+        transform: translateX(10px);
+    }
+}
+
+@media screen and (min-width: 446px) and (max-width: 470px) {
+    .nav-mobile{
+        left: 83%;
+    }
+
+    .off-menu.ativado{
+        left: 109px;
+    }
+
+    .acesso button{
+        padding: 20px 110px;
+        transform: translateX(-15px);
+    }
+
+    #menor{
+        padding-left: 143px !important;
+        padding-right: 143px !important;
+    }
+
+    #menor2{
+        padding-left: 135px !important;
+        padding-right: 135px !important;
+    }
+
+    #menor3{
+        padding-left: 120px !important;
+        padding-right: 120px !important;
+    }
+
+    .juvenal{
+        height: 730px;
+    }
+
+    .rotas a{
+        margin-left: 59px;
+        margin-right: 45px;
+    }
+
+    .saude{
+        height: 530px;
+    }
+
+    .saude .texto a button{
+        margin-top: -10px;
+        transform: translateX(120px) !important;
+    }
+
+    #frase-cta{
+        transform: translateX(20px);
+    }
+}
+
+@media screen and (min-width: 471px) and (max-width: 499px) {
+    .nav-mobile{
+        left: 83%;
+    }
+
+    .off-menu.ativado{
+        left: 109px;
+    }
+
+    .acesso button{
+        padding: 20px 120px;
+        transform: translateX(-15px);
+    }
+
+    #menor{
+        padding-left: 153px !important;
+        padding-right: 153px !important;
+    }
+
+    #menor2{
+        padding-left: 145px !important;
+        padding-right: 145px !important;
+    }
+
+    #menor3{
+        padding-left: 130px !important;
+        padding-right: 130px !important;
+    }
+
+    .juvenal{
+        height: 750px;
+    }
+
+    .rotas a{
+        margin-left: 63px;
+        margin-right: 48px;
+    }
+
+    .saude{
+        height: 545px;
+    }
+
+    .saude .texto a button{
+        margin-top: -10px;
+        transform: translateX(130px) !important;
+    }
+
+    #frase-cta{
+        transform: translateX(35px);
+    }
+}
+
+/*com dois artigos lado a lado*/
+@media screen and (min-width: 550px) and (max-width: 779px) {
+    #desktop,
+    #nome,
+    header button{
+        display: none;
+    }
+
+    html, body {
+        width: 100%;
+    }
+   
+    .off-menu button {
+        display: block;
+    }
+
+    header {
+        width: 100%;
+        padding: 10px !important; 
+    }
+
+    #logo{
+        width: 45%;
+        margin-top: -1px;
+    }
+
+    /*fazendo menu hamburguer*/
+    .off-menu {
+        background-color: #75bd2e;
+        height: 38%;
+        width: 45%;
+        position: fixed;
+        top: 0;
+        left: -100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .off-menu.ativado {
+        left: 41%;
+        top: 10px;
+    }
+
+    .off-menu ul li{
+        list-style: none;
+        padding: 3px;
+    }
+
+    header button{
+        color: #050505;
+    }
+
+    .nav-mobile {
+        padding: 2px 5px;
+        display: flex;
+        background-color: #75bd2e;
+        position: fixed;
+        left: 85%;
+    }
+
+    .ham-menu {
+        height: 38px;
+        width: 50px;
+        margin-left: auto;
+        position: relative;
+        cursor: pointer;
+    }
+
+    .ham-menu span {
+        height: 5px;
+        width: 100%;
+        background-color: #7cc644;
+        border-radius: 25px;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        transition: 0.3s ease;
+    }
+
+    /*posicao span*/
+    .ham-menu span:nth-child(1) {
+        top: 7px;
+    }
+
+    .ham-menu span:nth-child(2) {
+        top: 17px;
+    }
+
+    .ham-menu span:nth-child(3) {
+        top: 27px;
+    }
+
+    /*posicao x quando menu está ativado*/
+    .ham-menu.ativado span:nth-child(1) {
+        transform: translateX(-50%) rotate(45deg);
+        top: 17px;
+    }
+
+    .ham-menu.ativado span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .ham-menu.ativado span:nth-child(3) {
+        transform: translateX(-50%) rotate(-45deg);
+        top: 17px;
+    }
+
+    #frase{
+        font-size: 27px;
+        text-align: center;
+    }
+
+    .slider{
+        height: 780px !important;
+    }
+
+    .slide img{
+        object-fit: cover;
+        height: 781px;
+    }
+
+    .cards{
+        margin-left: 15px;
+        margin-right: 15px;
+        gap: 0px;
+        justify-content: space-between;
+    }
+
+    .card{
+        width: 50%;
+        font-size: 16.5px;
+    }
+
+    .card img{
+        width: 80%;
+        object-fit: cover;
+    }
+
+    .card .legenda{
+        text-align: justify;
+    }
+
+    .third{
+        padding-right: 15px;
+    }
+
+    .acesso h2{
+        margin-bottom: 50px;
+    }
+
+    .acesso a{
+        margin: 30px;
+        margin-left: -5px;
+    }
+
+    .acesso button{
+        font-size: 16px;
+        padding: 20px 160px;
+        transform: translateX(-25px);
+    }
+
+    #menor{
+        padding-left: 195px !important;
+        padding-right: 195px !important;
+    }
+
+    #menor2{
+        padding-left: 190px !important;
+        padding-right: 190px !important;
+    }
+
+    #menor3{
+        padding-left: 170px !important;
+        padding-right: 170px !important;
+    }
+
+    .juvenal{
+        flex-direction: column;
+        height: 680px;
+    }
+
+    .juvenal img{
+        width: 60%;
+        object-fit: cover;
+        margin: 0 auto !important;
+        margin-top: 30px !important;
+    }
+
+    .juvenal .texto h2{
+        font-size: 30px;
+        text-align: center;
+        margin-left: -165px;
+        margin-top: -50px;
+        padding-bottom: 5px;
+    }
+
+    .juvenal .texto p{
+        margin-left: -160px;
+        padding-right: 10px;
+        padding-bottom: 20px;
+        font-size: 17.8px;
+        text-align: center;
+    }
+
+    .juvenal .texto a{
+        font-size: 17px;
+        margin-left: -160px;
+    }
+
+    .rotas a{
+        font-size: 18px;
+        margin-left: 72px;
+        margin-right: 55px;
+    }
+
+    .saude{
+        flex-direction: column;
+        gap: 0;
+        height: 600px;
+        padding: 10px;
+    }
+
+    .saude img{
+        width: 75%;
+        margin-top: 20px !important;
+        margin: 0 auto;
+        object-fit: cover;
+    }
+
+    .saude .texto h2{
+        font-size: 25px;
+    }
+
+    .saude .texto p{
+        font-size: 17.8px;
+        padding-top: 20px;
+        padding-bottom: 25px;
+    }
+
+    .saude .texto a button{
+        font-size: 16px;
+        padding: 10px 50px;
+        transform: translateX(160px) !important;
+    }
+
+    footer .content{
+        flex-direction: column;
+    }
+
+    #frase-cta{
+        margin: 0 auto;
+        margin-bottom: 20px;
+        font-size: 30px;
+        transform: translateX(65px);
+    }
+
+    footer .links{
+        margin: 0 auto;
+    }
+
+    footer .links p{
+        font-size: 15px;
+    }
+
+    footer .sobre{
+        margin-left: 0;
+        margin: 0 auto;
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    footer .sobre h3{
+        font-size: 22px;
+    }
+
+    footer .sobre a{
+        font-size: 18px;
+    }
+
+    footer .bottom-footer #copyright{
+        font-size: 9.7px;
+    }
+}
+
+@media screen and  (min-width: 570px) and (max-width: 590px) {
+    .nav-mobile{
+        left: 87%;
+    }
+
+    .off-menu.ativado{
+        left: 43%;
+    }
+
+    .acesso button{
+        padding: 20px 180px;
+        transform: translateX(-30px);
+    }
+
+    #menor{
+        padding-left: 215px !important;
+        padding-right: 215px !important;
+    }
+
+    #menor2{
+        padding-left: 210px !important;
+        padding-right: 210px !important;
+    }
+
+    #menor3{
+        padding-left: 190px !important;
+        padding-right: 190px !important;
+    }
+
+    .juvenal{
+        height: 700px;
+    }
+
+    .saude{
+        height: 615px;
+    }
+
+    .rotas a{
+        margin-left: 75px;
+        margin-right: 58px;
+    }
+
+    .saude .texto a button{
+        transform: translateX(180px) !important;
+    }
+
+    #frase-cta{
+        transform: translateX(75px);
+    }
+}
+
+@media screen and  (min-width: 591px) and (max-width: 615px) {
+    .nav-mobile{
+        left: 87%;
+    }
+
+    .off-menu.ativado{
+        left: 42%;
+    }
+
+    .acesso button{
+        padding: 20px 180px;
+        transform: translateX(-30px);
+    }
+
+    #menor{
+        padding-left: 215px !important;
+        padding-right: 215px !important;
+    }
+
+    #menor2{
+        padding-left: 210px !important;
+        padding-right: 210px !important;
+    }
+
+    #menor3{
+        padding-left: 190px !important;
+        padding-right: 190px !important;
+    }
+
+    .juvenal{
+        height: 710px;
+    }
+
+    .saude{
+        height: 620px;
+    }
+
+    .rotas a{
+        margin-left: 78px;
+        margin-right: 60px;
+    }
+
+    .saude .texto a button{
+        transform: translateX(190px) !important;
+    }
+
+    #frase-cta{
+        transform: translateX(90px);
+    }
+}
+
+@media screen and  (min-width: 616px) and (max-width: 645px) {
+    .nav-mobile{
+        left: 88%;
+    }
+
+    .off-menu{
+        width: 38%;
+        height: 40%;
+    }
+
+    .off-menu.ativado{
+        left: 50%;
+    }
+
+    .acesso button{
+        padding: 20px 200px;
+        transform: translateX(-35px);
+    }
+
+    #menor{
+        padding-left: 234px !important;
+        padding-right: 234px !important;
+    }
+
+    #menor2{
+        padding-left: 226px !important;
+        padding-right: 226px !important;
+    }
+
+    #menor3{
+        padding-left: 210px !important;
+        padding-right: 210px !important;
+    }
+
+    .juvenal{
+        height: 730px;
+    }
+
+    .saude{
+        height: 625px;
+    }
+
+    .rotas a{
+        margin-left: 81px;
+        margin-right: 63px;
+    }
+
+    .saude .texto a button{
+        transform: translateX(200px) !important;
+    }
+
+    #frase-cta{
+        transform: translateX(35%);
+    }
+}
+
+@media screen and  (min-width: 646px) and (max-width: 665px) {
+    .nav-mobile{
+        left: 88%;
+    }
+
+    .off-menu{
+        width: 38%;
+        height: 40%;
+    }
+
+    .off-menu.ativado{
+        left: 50%;
+    }
+
+    .card .legenda{
+        text-align: center;
+    }
+
+    .acesso button{
+        padding: 20px 200px;
+        transform: translateX(-35px);
+    }
+
+    #menor{
+        padding-left: 234px !important;
+        padding-right: 234px !important;
+    }
+
+    #menor2{
+        padding-left: 226px !important;
+        padding-right: 226px !important;
+    }
+
+    #menor3{
+        padding-left: 210px !important;
+        padding-right: 210px !important;
+    }
+
+    .juvenal{
+        height: 760px;
+    }
+
+    .saude{
+        height: 635px;
+    }
+
+    .rotas a{
+        margin-left: 85px; 
+        margin-right: 65px;
+    }
+
+    .saude .texto a button{
+        transform: translateX(215px) !important;
+    }
+
+    #frase-cta{
+        transform: translateX(40%);
+    }
+}
+
+@media screen and  (min-width: 666px) and (max-width: 680px) {
+    .nav-mobile{
+        left: 88%;
+    }
+
+    .off-menu{
+        width: 38%;
+        height: 40%;
+    }
+
+    .off-menu.ativado{
+        left: 50%;
+    }
+
+    .card .legenda{
+        text-align: center;
+    }
+
+    .acesso button{
+        padding: 20px 200px;
+        transform: translateX(-35px);
+    }
+
+    #menor{
+        padding-left: 234px !important;
+        padding-right: 234px !important;
+    }
+
+    #menor2{
+        padding-left: 226px !important;
+        padding-right: 226px !important;
+    }
+
+    #menor3{
+        padding-left: 210px !important;
+        padding-right: 210px !important;
+    }
+
+    .juvenal{
+        height: 770px;
+    }
+
+    .saude{
+        height: 645px;
+    }
+
+    .rotas a{
+        margin-left: 87px; 
+        margin-right: 67px;
+    }
+
+    .saude .texto a button{
+        transform: translateX(225px) !important;
+    }
+
+    #frase-cta{
+        transform: translateX(40%);
+    }
+}
+
+@media screen and  (min-width: 681px) and (max-width: 700px) {
+    .nav-mobile{
+        left: 88%;
+    }
+
+    .off-menu{
+        width: 38%;
+        height: 40%;
+    }
+
+    .off-menu.ativado{
+        left: 50%;
+    }
+
+    .manual-navegacao{
+        width: 50%;
+    }
+
+    #frase{
+        right: 12%;
+    }
+
+    .poema{
+        padding-top: 20px;
+        height: 450px;
+        background-color: #8ac44f;
+    }
+
+    .card .legenda{
+        text-align: center;
+    }
+
+    .acesso button{
+        padding: 20px 200px;
+        transform: translateX(-35px);
+    }
+
+    #menor{
+        padding-left: 234px !important;
+        padding-right: 234px !important;
+    }
+
+    #menor2{
+        padding-left: 226px !important;
+        padding-right: 226px !important;
+    }
+
+    #menor3{
+        padding-left: 210px !important;
+        padding-right: 210px !important;
+    }
+
+    .juvenal{
+        height: 780px;
+    }
+
+    .saude{
+        height: 660px;
+    }
+
+    .rotas a{
+        margin-left: 89px; 
+        margin-right: 69px;
+    }
+
+    .saude .texto a button{
+        transform: translateX(225px) !important;
+    }
+
+    #frase-cta{
+        transform: translateX(45%);
+    }
+
+    footer .bottom-footer #copyright{
+        font-size: 13px;
+    }
+}
+
+@media screen and  (min-width: 701px) and (max-width: 715px) {
+    .nav-mobile{
+        left: 88%;
+    }
+
+    .off-menu{
+        width: 38%;
+        height: 40%;
+    }
+
+    .off-menu.ativado{
+        left: 50%;
+    }
+
+    .manual-navegacao{
+        width: 50%;
+    }
+
+    #frase{
+        right: 12%;
+    }
+
+    .poema{
+        padding-top: 20px;
+        height: 450px;
+        background-color: #8ac44f;
+    }
+
+    .card .legenda{
+        text-align: center;
+    }
+
+    .acesso button{
+        padding: 20px 200px;
+        transform: translateX(-35px);
+    }
+
+    #menor{
+        padding-left: 234px !important;
+        padding-right: 234px !important;
+    }
+
+    #menor2{
+        padding-left: 226px !important;
+        padding-right: 226px !important;
+    }
+
+    #menor3{
+        padding-left: 210px !important;
+        padding-right: 210px !important;
+    }
+
+    .juvenal{
+        height: 780px;
+    }
+
+    .saude{
+        height: 660px;
+    }
+
+    .rotas a{
+        margin-left: 92px; 
+        margin-right: 70px;
+    }
+
+    .saude .texto a button{
+        transform: translateX(225px) !important;
+    }
+
+    #frase-cta{
+        transform: translateX(45%);
+    }
+
+    footer .bottom-footer #copyright{
+        font-size: 13px;
+    }
+}
+
+@media screen and  (min-width: 716px) and (max-width: 740px) {
+    .nav-mobile{
+        left: 88%;
+    }
+
+    .off-menu{
+        width: 38%;
+        height: 40%;
+    }
+
+    .off-menu.ativado{
+        left: 50%;
+    }
+
+    .manual-navegacao{
+        width: 50%;
+    }
+
+    #frase{
+        right: 12%;
+    }
+
+    .poema{
+        padding-top: 20px;
+        height: 450px;
+        background-color: #8ac44f;
+    }
+
+    .card .legenda{
+        text-align: center;
+    }
+
+    .acesso button{
+        padding: 20px 220px;
+        transform: translateX(-35px);
+    }
+
+    #menor{
+        padding-left: 259px !important;
+        padding-right: 259px !important;
+    }
+
+    #menor2{
+        padding-left: 250px !important;
+        padding-right: 250px !important;
+    }
+
+    #menor3{
+        padding-left: 235px !important;
+        padding-right: 226px !important;
+    }
+
+    .juvenal{
+        height: 810px;
+    }
+
+    .saude{
+        height: 700px;
+    }
+
+    .rotas a{
+        margin-left: 95px; 
+        margin-right: 72px;
+    }
+
+    .saude .texto a button{
+        padding: 15px 55px;
+        transform: translateX(250px) !important;
+    }
+
+    #frase-cta{
+        transform: translateX(51%);
+    }
+
+    footer .bottom-footer #copyright{
+        font-size: 13px;
+    }
+}
+
+@media screen and  (min-width: 741px) and (max-width: 755px) {
+    .nav-mobile{
+        left: 88%;
+    }
+
+    .off-menu{
+        width: 38%;
+        height: 40%;
+    }
+
+    .off-menu.ativado{
+        left: 50%;
+    }
+
+    .manual-navegacao{
+        width: 50%;
+    }
+
+    #frase{
+        right: 14%;
+    }
+
+    .poema{
+        padding-top: 20px;
+        height: 450px;
+        background-color: #8ac44f;
+    }
+
+    .card .legenda{
+        text-align: center;
+    }
+
+    .acesso button{
+        padding: 20px 220px;
+        transform: translateX(-35px);
+    }
+
+    #menor{
+        padding-left: 259px !important;
+        padding-right: 259px !important;
+    }
+
+    #menor2{
+        padding-left: 250px !important;
+        padding-right: 250px !important;
+    }
+
+    #menor3{
+        padding-left: 235px !important;
+        padding-right: 226px !important;
+    }
+
+    .juvenal{
+        height: 830px;
+    }
+
+    .saude{
+        height: 700px;
+    }
+
+    .rotas a{
+        margin-left: 98px; 
+        margin-right: 73px;
+    }
+
+    .saude .texto a button{
+        padding: 15px 55px;
+        transform: translateX(250px) !important;
+    }
+
+    #frase-cta{
+        transform: translateX(51%);
+    }
+
+    footer .bottom-footer #copyright{
+        font-size: 13px;
+    }
+}
+
+@media screen and  (min-width: 756px) and (max-width: 779px) {
+    .nav-mobile{
+        left: 88%;
+    }
+
+    .off-menu{
+        width: 38%;
+        height: 40%;
+    }
+
+    .off-menu.ativado{
+        left: 50%;
+    }
+
+    .manual-navegacao{
+        width: 50%;
+        bottom: 83px;
+    }
+
+    #frase{
+        right: 14%;
+    }
+
+    .poema{
+        padding-top: 20px;
+        height: 450px;
+        background-color: #8ac44f;
+    }
+
+    .card .legenda{
+        text-align: center;
+    }
+
+    .acesso button{
+        padding: 20px 240px;
+        transform: translateX(-50px);
+    }
+
+    #menor{
+        padding-left: 275px !important;
+        padding-right: 278px !important;
+    }
+
+    #menor2{
+        padding-left: 270px !important;
+        padding-right: 266px !important;
+    }
+
+    #menor3{
+        padding-left: 250px !important;
+        padding-right: 250px !important;
+    }
+
+    .juvenal{
+        height: 750px;
+    }
+
+    .juvenal img{
+        width: 50%;
+    }
+
+    .saude{
+        height: 620px;
+    }
+
+    .rotas a{
+        margin-left: 99px; 
+        margin-right: 76px;
+    }
+
+    .saude img{
+        width: 58%;
+    }
+
+    .saude .texto a button{
+        padding: 15px 55px;
+        transform: translateX(260px) !important;
+    }
+
+    #frase-cta{
+        transform: translateX(54%);
+    }
+
+    footer .bottom-footer #copyright{
+        font-size: 13px;
+    }
+}
+
+/*laptops menores que 1366x780*/
+@media screen and (min-width: 780px) and (max-width: 1365px) {
+    header {
+        width: 100%;
+        padding: 15px 10px !important; 
+    }
+
+    header nav ul{
+        gap: 20px;
+    }
+
+    #frase{
+        font-size: 34px;
+        text-align: center;
+        right: 9%;
+    }
+
+    .manual-navegacao{
+        width: 50%;
+    }
+
+    .slider{
+        height: 780px !important;
+    }
+
+    .slide img{
+        object-fit: cover;
+        height: 781px;
+    }
+
+    .card img{
+        width: 100%;
+        object-fit: cover;
+    }
+
+    .card .legenda{
+        text-align: justify;
+    }
+
+    .acesso h2{
+        margin-bottom: 50px;
+    }
+
+    .acesso a{
+        margin: 30px;
+        margin-left: -5px;
+    }
+
+    .acesso button{
+        font-size: 16px;
+        padding: 20px 250px;
+        transform: translateX(-45px);
+    }
+
+    #menor{
+        padding-left: 285px !important;
+        padding-right: 285px !important;
+    }
+
+    #menor2{
+        padding-left: 277px !important;
+        padding-right: 278px !important;
+    }
+
+    #menor3{
+        padding-left: 260px !important;
+        padding-right: 260px !important;
+    }
+
+    .juvenal{
+        flex-direction: column;
+        height: 720px;
+    }
+
+    .juvenal img{
+        width: 45%;
+        object-fit: cover;
+        margin: 0 auto !important;
+        margin-top: 30px !important;
+    }
+
+    .juvenal .texto h2{
+        font-size: 30px;
+        text-align: center;
+        margin-left: -165px;
+        margin-top: -50px;
+        padding-bottom: 5px;
+    }
+
+    .juvenal .texto p{
+        margin-left: -160px;
+        padding-right: 10px;
+        padding-bottom: 20px;
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .juvenal .texto a{
+        font-size: 19px;
+        margin-left: -160px;
+    }
+
+    .rotas a{
+        font-size: 18px;
+        margin-left: 102px;
+        margin-right: 78px;
+    }
+
+    .saude{
+        flex-direction: column;
+        gap: 0;
+        height: 600px;
+        padding: 10px;
+    }
+
+    .saude img{
+        width: 48%;
+        margin-top: 20px !important;
+        margin: 0 auto;
+        object-fit: cover;
+    }
+
+    .saude .texto h2{
+        font-size: 30px;
+    }
+
+    .saude .texto p{
+        font-size: 20px;
+        padding-top: 20px;
+        padding-bottom: 25px;
+    }
+
+    .saude .texto a button{
+        font-size: 16px;
+        padding: 15px 55px;
+        transform: translateX(270px) !important;
+    }
+
+    #frase-cta{
+        margin: 0 auto;
+        margin-top: 60px;
+        text-align: center;
+    }
+
+    footer .links{
+        margin: 0 auto;
+    }
+
+    footer .links p{
+        font-size: 15px;
+    }
+
+    footer .sobre{
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    footer .sobre h3{
+        font-size: 22px;
+    }
+
+    footer .sobre a{
+        font-size: 18px;
+    }
+
+    footer .bottom-footer #copyright{
+        font-size: 9.7px;
+    }
+}
+
+@media screen and (min-width: 801px) and  (max-width: 830px) {
+    .rotas a{
+        margin-left: 105px;
+        margin-right: 80px;
+    }
+}
+
+@media screen and (min-width: 831px) and (max-width: 850px) {
+    .juvenal{
+        height: 750px;
+    }
+
+    .rotas a{
+        margin-left: 109px;
+        margin-right: 83px;
+    }
+
+    .saude{
+        height: 615px;
+    }
+
+    .saude .texto a button{
+        transform: translateX(290px) !important;
+    }
+}
+
+@media screen and (min-width: 851px) {
+    /*aumentar gap no header; aumentar acesso button, juvenal e saude; rotas*/
 }
