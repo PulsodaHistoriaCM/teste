@@ -110,7 +110,7 @@
         </div>
     </section>
 
-    <h2 id="frase">Descubra Ceará-Mirim:Tradição, cultura<br>e os verdes canavias esperam por você</h2>
+    <h2 id="frase">Descubra Ceará-Mirim: Tradição, cultura<br>e os verdes canavias esperam por você</h2>
 
     <main>
         <section class="poema">
@@ -136,7 +136,7 @@
                     <a href="#"> <!--como tô apresentando cada artigo, vai direto pra lá. a seção de artigos em si fica pro veja mais-->
                         <p>Conheça a cidade >></p>
                     </a>
-                    <p class="legenda">Às margens do Rio Ceará-Mirim,<br>teve início a história da cidade.</p>
+                    <p class="legenda">Às margens do Rio Ceará-Mirim,<br class="brA"> teve início a história da cidade.</p>
                 </div>
 
                 <!--CARD 2-->
@@ -163,7 +163,7 @@
                     <a href="#">
                         <p>Conheça a cidade >></p>
                     </a>
-                    <p class="legenda">Os verdes canaviais guardam as <br> memórias do período escravocrata.</p>
+                    <p class="legenda">Os verdes canaviais guardam as <br class="brA"> memórias do período escravocrata.</p>
                 </div>
 
                 <!--CARD 5-->
@@ -172,7 +172,7 @@
                     <a href="#">
                         <p>Conheça a cidade >></p>
                     </a>
-                    <p class="legenda">Nossa Senhora da Conceição, <br> a padroeira que guia Ceará-Mirim.</p>
+                    <p class="legenda">Nossa Senhora da Conceição, <br class="brA"> a padroeira que guia Ceará-Mirim.</p>
                 </div>
 
                 <!--CARD 6-->
@@ -287,5 +287,25 @@
     <script src="/static/javascript/scroll.js"></script>
     <script src="/static/javascript/voltar.js"></script>
     <script src="/static/javascript/burguer.js"></script>
+
+    <script>
+        function removeBr() {
+            const brTag = document.querySelectorAll(".brA");
+            
+            brTag.forEach(br => {
+                if (window.innerWidth >= 780 && window.innerWidth <= 1365) {
+                    br.style.display = 'none';
+                } else {
+                    br.style.display = 'inline';
+                }
+            });
+        }
+
+        // Executa ao carregar a página
+        window.addEventListener('load', removeBr);
+
+        // Executa ao redimensionar a janela
+        window.addEventListener('resize', removeBr);
+    </script>
 </body>
 </html>

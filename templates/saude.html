@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="/static/img/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="/static/home.css">
-    <link rel="stylesheet" href="/static/secao.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
 
@@ -14,12 +12,215 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!--biblioteca Chart.js-->
-    
-    <title>Saúde</title>
+    <title>Gráfico de Frequência Cardíaca</title>
 
-    <style>
-        main{
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+   <style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(to bottom right, #e0f7fa, #f1f8e9);
+        text-align: center;
+    }
+
+    header button {
+        font-size: 13px;
+    }
+
+    main {
+        margin-top: 125px;
+    }
+
+    h1 {
+        font-size: 28px;
+        margin-top: 20px;
+    }
+
+    #heartContainer {
+        position: relative;
+        width: 150px;
+        margin: 0 auto;
+        animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+        100% { transform: scale(1); }
+    }
+
+    #heartContainer img {
+        width: 100%;
+    }
+
+    #bpmText {
+        position: absolute;
+        top: 45%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 20px;
+        font-weight: bold;
+        color: white;
+    }
+
+    #chartContainer, #weeklyChartContainer {
+        width: 90%;
+        max-width: 800px;
+        margin: 30px auto;
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+        padding: 20px;
+    }
+
+    canvas {
+        width: 100% !important;
+        height: 300px !important;
+    }
+
+    .infoContent {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 800px;
+        margin: 30px auto;
+        padding: 20px;
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+        gap: 20px;
+    }
+
+    .infoContent p {
+        text-align: left;
+        font-size: 16px;
+        flex: 1;
+    }
+
+    .infoContent button {
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #228B22;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .infoContent button:hover {
+        background-color: #1e7a1e;
+    }
+
+    .historico-container {
+        max-width: 800px;
+        margin: 30px auto;
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+        padding: 20px;
+    }
+
+    .historico-container h2 {
+        margin-bottom: 15px;
+    }
+
+    .tabela-batimentos {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+
+    .tabela-batimentos th, .tabela-batimentos td {
+        padding: 10px;
+        border: 1px solid #ddd;
+        text-align: center;
+    }
+
+    button {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        margin: 8px 5px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+        background-color: #45a049;
+    }
+
+    @media (max-width: 1366px) {
+        h1 {
+            font-size: 24px;
+        }
+
+        #bpmText {
+            font-size: 18px;
+        }
+
+        .infoContent p {
+            font-size: 15px;
+        }
+
+        .infoContent button {
+            font-size: 15px;
+            padding: 8px 18px;
+        }
+    }
+
+    @media (max-width: 780px) {
+        main {
+            margin-top: 80px;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 22px;
+            margin-top: 10px;
+        }
+
+        #heartContainer {
+            width: 120px;
+        }
+
+        #bpmText {
+            font-size: 16px;
+        }
+
+        .infoContent {
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+        }
+
+        .infoContent p {
+            font-size: 14px;
+        }
+
+        .infoContent button {
+            width: 100%;
+            text-align: center;
+        }
+
+        .tabela-batimentos th,
+        .tabela-batimentos td {
+            font-size: 13px;
+            padding: 8px;
+        }
+
+        canvas {
+            height: 250px !important;
+        }
+    }
+
+    /*main{
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -39,13 +240,14 @@
                 text-align: center;
                 font-size: 30px;
             }
-        }
-    </style>
+        }*/
+</style>
+
 </head>
 
 <body>
     <header id="header">
-        <a class="empresa" href="/templates/home.html">
+        <a class="empresa" href="/templates/logado.html">
             <img id="logo" src="/static/img/logo.png" alt="logo">
             <p id="nome">Pulso da História CM</p>
         </a>
@@ -62,6 +264,7 @@
                 </li>
                 <li><a href="/templates/secaoE.html">Engenhos</a></li>
                 <li><a href="/templates/rotas.html">Rotas</a></li>
+                <li><a href="/templates/chat.html">Chat</a></li>
                 <li><a href="/templates/about.html">Sobre Nós</a></li>
             </ul>
         </nav>
@@ -83,6 +286,7 @@
                 <li><a href="/templates/secaoF.html">Folclore</a></li>
                 <li><a href="/templates/secaoE.html">Engenhos</a></li>
                 <li><a href="/templates/rotas.html">Rotas</a></li>
+                <li><a href="/templates/chat.html">Chat</a></li>
                 <li><a href="/templates/about.html">Sobre Nós</a></li>
             </ul>
             <a href="/templates/login.html"><button>Login</button></a>
@@ -92,85 +296,161 @@
         <a href="/templates/login.html"><button>Login</button></a>
     </header>
 
-    <div class="caminho">
-        <h6>
-            <a href="/templates/logado.html"><i class="fa-solid fa-house"></i></a> > <a href="saude.html">SAÚDE</a>
-        </h6>
-    </div>
-
     <main>
         <h1>Gráfico de Frequência Cardíaca</h1>
-        
+        <div id="heartContainer">
+            <img src="/static/img/coracao.png" alt="Coração Verde">
+            <div id="bpmText">75 BPM</div>
+        </div>
+
         <div id="chartContainer">
             <canvas id="heartRateChart"></canvas>
         </div>
 
+        <div class="infoContent">
+            <p><strong>Não possui o protótipo?</strong> Não tem problema!<br>
+            Verifique seus batimentos por minuto usando a câmera do celular.</p>
+            <button onclick="usarCamera()">Usar a Câmera</button>
+        </div>
+
+        <div class="historico-container">
+            <h2>Veja seu histórico</h2>
+            <table class="tabela-batimentos">
+                <tr>
+                    <th>Mínimo</th>
+                    <th>Média</th>
+                    <th>Máximo</th>
+                </tr>
+                <tr>
+                    <td>65</td>
+                    <td>78</td>
+                    <td>92</td>
+                </tr>
+            </table>
+
+            <!-- Adiciona o botão abaixo do gráfico -->
+            <canvas id="weeklyChart" width="400" height="200"></canvas>
+            <br>
+            <button onclick="baixarDados()">Baixar CSV</button>
+            <button onclick="baixarGrafico()">Baixar Gráfico</button>
+
+        </div>
+
         <script>
-            // Configuração inicial do gráfico de batimentos cardíacos
             const ctx = document.getElementById('heartRateChart').getContext('2d');
+            const bpmText = document.getElementById('bpmText');
+
             const heartRateChart = new Chart(ctx, {
-              type: 'line',
-              data: {
-                labels: ['10:00', '10:01', '10:02', '10:03', '10:04'], // Etiquetas fixas
-                datasets: [{
-                  label: 'Batimentos por Minuto (BPM)',
-                  backgroundColor: 'rgba(144, 238, 144, 0.2)', // Cor de fundo verde claro
-                  borderColor: 'rgba(0, 128, 0, 1)',           // Cor da borda verde vibrante
-                  data: [75, 80, 78, 82, 76], // Dados fixos
-                  tension: 0.4, // curva suave para simular um ritmo cardíaco
-                  pointRadius: 0 // remove os pontos visíveis
-                }]
-              },
-              options: {
-                responsive: true,
-                scales: {
-                  x: {
-                    title: {
-                      display: true,
-                      text: 'Tempo'
-                    }
-                  },
-                  y: {
-                    beginAtZero: true,
-                    title: {
-                      display: true,
-                      text: 'Batimentos por Minuto (BPM)'
+                type: 'line',
+                data: {
+                    labels: ['10:00', '10:01', '10:02', '10:03', '10:04'],
+                    datasets: [{
+                        label: 'Batimentos por Minuto (BPM)',
+                        backgroundColor: 'rgba(144, 238, 144, 0.2)',
+                        borderColor: 'rgba(0, 128, 0, 1)',
+                        data: [75, 85, 72, 90, 78],
+                        tension: 0.3,
+                        pointRadius: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        tooltip: {
+                            backgroundColor: '#2e7d32',
+                            titleFont: { weight: 'bold' },
+                            bodyColor: '#fff'
+                        }
                     },
-                    suggestedMax: 120 // valor máximo sugerido para batimentos cardíacos
-                  }
+                    scales: {
+                        x: { title: { display: true, text: 'Tempo' } },
+                        y: { beginAtZero: false, title: { display: true, text: 'BPM' }, suggestedMin: 60, suggestedMax: 120 }
+                    }
                 }
-              }
             });
-        
-            // Função para gerar valores de batimentos cardíacos simulados
+
             function generateHeartRate() {
-              const baseRate = 75; // Batimento cardíaco base
-              const variation = Math.floor(Math.random() * 10) - 5; // Variação aleatória entre -5 e 5
-              return baseRate + variation;
+                return 70 + Math.floor(Math.random() * 20);
             }
-        
-            // Função para atualizar os dados do gráfico
+
             function updateChart() {
-              const newTime = new Date().toLocaleTimeString(); // Novo rótulo de tempo
-              const newBPM = generateHeartRate(); // Novo valor de BPM simulado
-        
-              // Adiciona novos dados ao gráfico
-              heartRateChart.data.labels.push(newTime);
-              heartRateChart.data.datasets[0].data.push(newBPM);
-        
-              // Remove o primeiro dado se houver mais de 10 pontos
-              if (heartRateChart.data.labels.length > 10) {
-                heartRateChart.data.labels.shift();
-                heartRateChart.data.datasets[0].data.shift();
-              }
-        
-              // Atualiza o gráfico
-              heartRateChart.update();
+                const newTime = new Date().toLocaleTimeString();
+                const newBPM = generateHeartRate();
+
+                heartRateChart.data.labels.push(newTime);
+                heartRateChart.data.datasets[0].data.push(newBPM);
+
+                if (heartRateChart.data.labels.length > 10) {
+                    heartRateChart.data.labels.shift();
+                    heartRateChart.data.datasets[0].data.shift();
+                }
+
+                heartRateChart.update();
+                bpmText.textContent = newBPM + ' BPM';
             }
-        
-            // Atualiza o gráfico a cada 2 segundos
-            setInterval(updateChart, 3000);
-          </script>
+
+            setInterval(updateChart, 60000);
+
+            const weeklyChart = new Chart(document.getElementById('weeklyChart'), {
+                type: 'bar',
+                data: {
+                    labels: ['1ª Sem', '2ª Sem', '3ª Sem', '4ª Sem'],
+                    datasets: [{
+                        label: 'Média semanal de BPM',
+                        backgroundColor: '#81c784',
+                        borderColor: '#388e3c',
+                        data: [75, 78, 80, 76],
+                        borderWidth: 1,
+                        borderRadius: 10
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: false,
+                            suggestedMin: 60,
+                            suggestedMax: 100
+                        }
+                    }
+                }
+            });
+
+            function usarCamera() {
+                alert('Função de câmera será implementada futuramente!');
+            }
+
+            function baixarDados() {
+                    const labels = weeklyChart.data.labels;
+                    const data = weeklyChart.data.datasets[0].data;
+
+                    let csvContent = "Histórico Semanal de Frequência Cardíaca\n";
+                    csvContent += "------------------------------------------\n";
+                    csvContent += "Período,Frequência Cardíaca Média (BPM)\n";
+
+                    for (let i = 0; i < labels.length; i++) {
+                        csvContent += `${labels[i]},${data[i]}\n`;
+                    }
+
+                    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+                    const url = URL.createObjectURL(blob);
+
+                    const a = document.createElement("a");
+                    a.href = url;
+                    a.download = "historico_frequencia_cardiaca.csv";
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                }
+            function baixarGrafico() {
+                    const link = document.createElement('a');
+                    link.download = 'grafico_frequencia_cardiaca.png';
+                    link.href = weeklyChart.toBase64Image();  // gera imagem do gráfico
+                    link.click();
+                }
+            
+
+        </script>
     </main>
 
     <footer>
@@ -206,7 +486,7 @@
 
                 <ul>
                     <li>
-                        <a href="templates/politica.html">
+                        <a href="/templates/politica.html">
                             Políticas e Termos
                         </a>
                     </li>
@@ -232,7 +512,12 @@
         </div>
     </footer>
 
+    <!-- Botão Voltar ao  Topo-->
+    <button id="btnTopo" onclick="voltarAoTopo()"><i class="fa-solid fa-arrow-up"></i></button>
+
+    <!--SCRIPTS-->
     <script src="/static/javascript/headerColorido.js"></script>
     <script src="/static/javascript/burguer.js"></script>
+    <script src="/static/javascript/voltar.js"></script>
 </body>
 </html>
