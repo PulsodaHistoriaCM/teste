@@ -158,7 +158,7 @@ header button:hover{
 .slider{
     margin: 0 auto;
     width: 100%; 
-    height: 633px !important; 
+    height: 781px !important; 
     overflow: hidden;
 }
 
@@ -179,11 +179,12 @@ header button:hover{
 .slide img{
     width: 100vw;
     opacity: 95%;
+    height: 785px !important;
 }
 
 .manual-navegacao{
     position: sticky; /*absolute deu problema no mobile*/
-    width: 676px;
+    width: 50%;
     bottom: 30px;
     display: flex;
     justify-content: center;
@@ -587,7 +588,8 @@ footer .bottom-footer #copyright{
     }
 
     .manual-navegacao{
-        transform: translateX(50%);
+        width: 100%;
+        bottom: 38px;
     }
 
     .poema p{
@@ -627,6 +629,12 @@ footer .bottom-footer #copyright{
 
     .texto a button{
         transform: translateX(270px);
+    }
+}
+
+@media screen and (max-width: 1800px) {
+    .manual-navegacao{
+        width: 100% !important;
     }
 }
 
@@ -1628,6 +1636,14 @@ footer .bottom-footer #copyright{
         left: 43%;
     }
 
+    #frase{
+        right: 5%;
+    }
+
+    .manual-navegacao{
+        width: 50%;
+    }
+
     .acesso button{
         padding: 20px 180px;
         transform: translateX(-30px);
@@ -1680,7 +1696,11 @@ footer .bottom-footer #copyright{
     }
 
     #frase{
-        right: 9%;
+        right: 6%;
+    }
+
+    .manual-navegacao{
+        width: 50%;
     }
 
     .acesso button{
@@ -1740,7 +1760,11 @@ footer .bottom-footer #copyright{
     }
 
     #frase{
-        right: 9.5%;
+        right: 8%;
+    }
+
+    .manual-navegacao{
+        width: 50%;
     }
 
     .acesso button{
@@ -1800,7 +1824,11 @@ footer .bottom-footer #copyright{
     }
 
     #frase{
-        right: 9.5%;
+        right: 10%;
+    }
+
+    .manual-navegacao{
+        width: 50%;
     }
 
     .card .legenda{
@@ -1864,7 +1892,11 @@ footer .bottom-footer #copyright{
     }
 
     #frase{
-        right: 9.5%;
+        right: 10%;
+    }
+
+    .manual-navegacao{
+        width: 50%;
     }
 
     .card .legenda{
@@ -2243,11 +2275,10 @@ footer .bottom-footer #copyright{
 
     .manual-navegacao{
         width: 50%;
-        bottom: 83px;
     }
 
     #frase{
-        right: 14%;
+        right: 15%;
     }
 
     .poema{
@@ -3419,7 +3450,7 @@ footer .bottom-footer #copyright{
     }
 
     #frase{
-        right: 23%;
+        right: 25%;
     }
 
     .acesso button{
