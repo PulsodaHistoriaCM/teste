@@ -607,7 +607,7 @@ footer .bottom-footer #copyright{
     }
 
     .juvenal img{
-        margin-left: 220px;
+        margin-left: 250px !important;
     }
 
     .juvenal .texto{
@@ -618,13 +618,22 @@ footer .bottom-footer #copyright{
         transform: translateX(17%);
     }
 
-    .rotas a button{
-        margin-left: 208px;
-        padding: 20px 567px;
+    .rotas a{
+        margin-left: 207px !important;
+        margin-right: 158px !important;
     }
 
     .saude{
         padding: 30px 185px;
+    }
+
+    .saude img{
+        margin-left: 25px;
+    }
+
+    .saude .texto a button{
+        margin-top: 20px;
+        transform: translateX(18vw) !important;
     }
 
     .texto a button{
