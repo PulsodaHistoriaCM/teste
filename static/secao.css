@@ -68,6 +68,7 @@ a{
 
 #access{
     font-size: 15px;
+    margin-top: -10px;
 }
 
 .artigos{
@@ -77,7 +78,7 @@ a{
     gap: 30px;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (min-width: 320px) and (max-width: 699px) {
     .caminho {
         margin-top: 70px;
         margin-bottom: 30px;
@@ -116,7 +117,7 @@ a{
     }
 }
 
-@media screen and (max-width: 1366px) {
+@media screen and (min-width: 700px) and (max-width: 1366px) {
     .caminho h2 {
         font-size: 1.5rem;
     }
@@ -129,6 +130,13 @@ a{
         width: 95%;
     }
 
+    .artigo img{
+        object-fit: cover;
+        width: 30% !important;
+        padding-left: 20px !important;
+        padding-top: 35px !important;
+    }
+
     .content {
         padding: 30px;
     }
@@ -139,5 +147,73 @@ a{
 
     #access {
         font-size: 15px;
+    }
+}
+
+@media screen and (min-width: 700px) and (max-width: 730px) {
+    .artigo img{
+        width: 40% !important;
+    }
+
+    #cm{
+        height: 330px;
+    }
+
+    #vale{
+        height: 295px;
+    }
+
+    #usina{
+        width: 100% !important;
+    }
+}
+
+@media screen and (min-width: 731px) and (max-width: 827px) {
+    .artigo img{
+        width: 40% !important;
+    }
+
+    #cm{
+        height: 305px;
+    }
+
+    #vale{
+        height: 295px;
+    }
+
+    #usina{
+        width: 100% !important;
+    }
+}
+
+@media screen and (min-width: 828px) and (max-width: 979px) {
+    .artigo img{
+        width: 40% !important;
+    }
+
+    #cm{
+        height: 260px;
+    }
+
+    #vale{
+        height: 225px;
+    }
+
+    #usina{
+        width: 90% !important;
+    }
+}
+
+@media screen and (min-width: 980px) and (max-width: 1127px) {
+    .artigo img{
+        width: 40% !important;
+    }
+
+    #cm{
+        height: 250px;
+    }
+
+    #usina{
+        width: 90% !important;
     }
 }
