@@ -577,7 +577,7 @@ footer .bottom-footer #copyright{
 }
 
 /*telas grandes*/
-@media (max-width: 1600px) {
+@media (min-width: 1600px) and (max-width: 1619px) {
     header button{
         text-shadow: none;
     }
@@ -608,6 +608,7 @@ footer .bottom-footer #copyright{
 
     .juvenal img{
         margin-left: 250px !important;
+        height: 350px;
     }
 
     .juvenal .texto{
@@ -641,9 +642,67 @@ footer .bottom-footer #copyright{
     }
 }
 
-@media screen and (max-width: 1800px) {
+@media screen and (min-width: 1620px) and (max-width: 1800px) {
+    .slider,
+    .slide img{
+        height: 100vh !important;
+    }
+
     .manual-navegacao{
         width: 100% !important;
+    }
+
+    .poema p{
+        height: 400px;
+        padding-top: 80px;
+    }
+
+    .acesso a{
+        margin:  110px;
+        transform: translateX(18%);
+    }
+
+    .juvenal{
+        height: 455px;
+    }
+
+    .juvenal img{
+        margin-left: 240px !important;
+        height: 400px;
+    }
+
+    .juvenal .texto{
+        padding-left: 380px;
+    }
+
+    .rotas iframe{
+        margin-left: 260px;
+        width: 75%;
+        height: 650px;
+    }
+
+    .rotas a{
+        margin-left: 260px !important;
+        margin-right: 190px !important;
+    }
+
+    .saude{
+        padding: 30px 185px;
+        height: 400px;
+    }
+
+    .saude img{
+        margin-left: 80px;
+    }
+
+    .saude .texto a button{
+        margin-top: 20px;
+        transform: translateX(16vw) !important;
+    }
+
+    .saude .texto p{
+        padding-top: 60px;
+        letter-spacing: 0.5px;
     }
 }
 
