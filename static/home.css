@@ -599,12 +599,12 @@ footer .bottom-footer #copyright{
 
     .slider,
     .slide img{
-        height: 775px;
+        height: 775px !important;
     }
 
     .manual-navegacao{
-        width: 100%;
-        bottom: 38px;
+        width: 100% !important;
+        bottom: 32px !important;
     }
 
     .poema p{
@@ -613,37 +613,55 @@ footer .bottom-footer #copyright{
         letter-spacing: 1.5px;
     }
 
+    .veja{
+        margin-left: -230px;
+    }
+
     .acesso{
-        margin-left: 2%;
+        margin-left: 15%;
     }
 
     .acesso button{
         margin-left: 12.5%;
     }
 
+    #first{
+        margin-left: -330px !important;
+        margin-right: -100px;
+    }
+
+    #menor{
+        margin-left: 50px;
+    }
+
     .juvenal{
-        padding-left: 250px;
+        padding-left: 150px;
     }
 
     .juvenal .texto{
-        padding-left: 40px
+        padding-left: 150px
     }
 
     .rotas iframe{
-        transform: translateX(17%);
+        width: 72.5%;
+        transform: translateX(4%);
     }
 
     .rotas a{
-        margin-left: 207px !important;
-        margin-right: 158px !important;
+        margin-left: 222px !important;
+        margin-right: 215px !important;
     }
 
     .saude{
-        padding: 30px 185px;
+        padding: 30px 195px;
     }
 
     .saude img{
         margin-left: 25px;
+    }
+
+    .saude .texto p{
+        padding-right: 25px;
     }
 
     .saude .texto a button{
@@ -881,6 +899,7 @@ footer .bottom-footer #copyright{
     }
 
     .acesso button{
+        transform: translateX(-30px);
         padding: 20px 69px;
     }
 
@@ -899,16 +918,71 @@ footer .bottom-footer #copyright{
         padding-right: 76px !important;
     }
 
+    .acesso button{
+        transform: translateX(-30px);
+    }
+
+    #menor, #menor2, #menor3{
+        transform: translateX(35px);
+    }
+
     .juvenal{
-        flex-direction: column;
-        height: 625px;
+        padding-top: 20px;
+        height: 460px;
     }
 
     .juvenal img{
-        width: 80%;
-        object-fit: cover;
-        margin: 0 auto !important;
-        margin-top: 30px !important;
+        margin-left: -22% !important;
+        margin-top: 15px !important;
+        margin-bottom: 0;
+        width: 100%;
+    }
+
+    .juvenal .texto h2{
+        font-size: 23px;
+    }
+
+    .juvenal .texto p{
+        padding-left: 15px;
+    }
+
+    #link{
+        font-size: 17px;
+        margin-left: -20vw;
+    }
+
+    .saude{
+        height: 600px;
+    }
+
+    .rotas iframe{
+        margin-left: 40px;
+    }
+
+    .rotas a{
+        margin-left: 40px; 
+        margin-right: 35px;
+    }
+
+    .saude{
+        height: 670px;
+    }
+
+    .saude .texto p{
+        padding-top: 20px;
+        padding-bottom: 25px;
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    .saude .texto a button{
+        margin-top: -5px;
+        padding: 15px 55px;
+        transform: translateX(50px) !important;
+    }
+
+    .juvenal{
+        flex-direction: column;
     }
 
     .juvenal .texto h2{
@@ -926,19 +1000,9 @@ footer .bottom-footer #copyright{
         font-size: 17px;
     }
 
-    .juvenal .texto a{
-        margin-left: -160px;
-    }
-
-    .rotas a{
-        margin-left: 41px;
-        margin-right: 32px;
-    }
-
     .saude{
         flex-direction: column;
         gap: 0;
-        height: 500px;
         padding: 10px;
     }
 
@@ -949,18 +1013,9 @@ footer .bottom-footer #copyright{
         object-fit: cover;
     }
 
-     .saude .texto h2{
+    .saude .texto h2{
         font-size: 22px;
-    }
-
-    .saude .texto p{
-        padding-top: 20px;
-        padding-bottom: 25px;
-    }
-
-    .saude .texto a button{
-        padding: 10px 50px;
-        transform: translateX(50px) !important;
+        padding-left: 7px;
     }
 
     footer .content{
@@ -1136,8 +1191,71 @@ footer .bottom-footer #copyright{
         left: 70px;
     }
 
+    .acesso button{
+        transform: translateX(-30px);
+    }
+
+    #menor, #menor2, #menor3{
+        transform: translateX(35px);
+    }
+
+    .juvenal{
+        padding-top: 20px;
+        height: 440px;
+    }
+
+    .juvenal img{
+        margin-left: -22% !important;
+        margin-top: 15px !important;
+        width: 100%;
+    }
+
+    .juvenal .texto h2{
+        font-size: 23px;
+    }
+
+    .juvenal .texto p{
+        padding-left: 30px;
+        padding-right: 35px;
+    }
+
+    #link{
+        font-size: 17px;
+        margin-left: -20vw;
+    }
+
+    .saude{
+        height: 600px;
+    }
+
+    .rotas iframe{
+        margin-left: 50px;
+    }
+
     .rotas a{
-        margin-left: 43px;
+        margin-left: 51px; 
+        margin-right: 37px;
+    }
+
+    .saude{
+        height: 630px;
+    }
+
+    .saude img{
+        width: 58%;
+    }
+
+    .saude .texto p{
+        padding-top: 20px;
+        padding-bottom: 25px;
+        padding-left: 55px;
+        padding-right: 55px;
+    }
+
+    .saude .texto a button{
+        margin-top: -5px;
+        padding: 15px 55px;
+        transform: translateX(75px) !important;
     }
 }
 
@@ -1150,17 +1268,71 @@ footer .bottom-footer #copyright{
         left: 75px;
     }
 
+    .acesso button{
+        transform: translateX(-30px);
+    }
+
+    #menor, #menor2, #menor3{
+        transform: translateX(35px);
+    }
+
     .juvenal{
-        height: 640px;
+        padding-top: 20px;
+        height: 430px;
+    }
+
+    .juvenal img{
+        margin-left: -20% !important;
+        margin-top: 15px !important;
+        width: 100%;
+    }
+
+    .juvenal .texto h2{
+        font-size: 24px;
+    }
+
+    .juvenal .texto p{
+        padding-left: 30px;
+        padding-right: 35px;
+    }
+
+    #link{
+        font-size: 17px;
+        margin-left: -16vw;
+    }
+
+    .saude{
+        height: 600px;
+    }
+
+    .rotas iframe{
+        margin-left: 50px;
     }
 
     .rotas a{
-        margin-left: 45px;
-        margin-right: 35px;
+        margin-left: 51px; 
+        margin-right: 37px;
+    }
+
+    .saude{
+        height: 630px;
+    }
+
+    .saude img{
+        width: 58%;
+    }
+
+    .saude .texto p{
+        padding-top: 20px;
+        padding-bottom: 25px;
+        padding-left: 55px;
+        padding-right: 55px;
     }
 
     .saude .texto a button{
-        transform: translateX(65px) !important;
+        margin-top: -5px;
+        padding: 15px 55px;
+        transform: translateX(75px) !important;
     }
 }
 
@@ -1173,17 +1345,71 @@ footer .bottom-footer #copyright{
         left: 78px;
     }
 
+    .acesso button{
+        transform: translateX(-30px);
+    }
+
+    #menor, #menor2, #menor3{
+        transform: translateX(35px);
+    }
+
     .juvenal{
-        height: 670px;
+        padding-top: 20px;
+        height: 440px;
+    }
+
+    .juvenal img{
+        margin-left: -15% !important;
+        margin-top: 15px !important;
+        width: 95%;
+    }
+
+    .juvenal .texto h2{
+        font-size: 26px;
+    }
+
+    .juvenal .texto p{
+        padding-left: 30px;
+        padding-right: 35px;
+    }
+
+    #link{
+        font-size: 17px;
+        margin-left: -13vw;
+    }
+
+    .saude{
+        height: 600px;
+    }
+
+    .rotas iframe{
+        margin-left: 50px;
     }
 
     .rotas a{
-        margin-left: 47px;
-        margin-right: 36px;
+        margin-left: 51px; 
+        margin-right: 33px;
+    }
+
+    .saude{
+        height: 650px;
+    }
+
+    .saude img{
+        width: 58%;
+    }
+
+    .saude .texto p{
+        padding-top: 20px;
+        padding-bottom: 25px;
+        padding-left: 55px;
+        padding-right: 55px;
     }
 
     .saude .texto a button{
-        transform: translateX(70px) !important;
+        margin-top: -5px;
+        padding: 15px 55px;
+        transform: translateX(65px) !important;
     }
 }
 
@@ -1196,22 +1422,71 @@ footer .bottom-footer #copyright{
         left: 84px;
     }
 
-    .juvenal{
-        height: 690px;
+    .acesso button{
+        transform: translateX(-30px);
     }
-    
-    .rotas a{
+
+    #menor, #menor2, #menor3{
+        transform: translateX(35px);
+    }
+
+    .juvenal{
+        padding-top: 20px;
+        height: 430px;
+    }
+
+    .juvenal img{
+        margin-left: -15% !important;
+        margin-top: 15px !important;
+        width: 95%;
+    }
+
+    .juvenal .texto h2{
+        font-size: 26px;
+    }
+
+    .juvenal .texto p{
+        padding-left: 30px;
+        padding-right: 35px;
+    }
+
+    #link{
+        font-size: 17px;
+        margin-left: -7vw;
+    }
+
+    .saude{
+        height: 600px;
+    }
+
+    .rotas iframe{
         margin-left: 50px;
+    }
+
+    .rotas a{
+        margin-left: 51px; 
         margin-right: 37px;
     }
 
     .saude{
-        height: 520px;
+        height: 630px;
+    }
+
+    .saude img{
+        width: 58%;
+    }
+
+    .saude .texto p{
+        padding-top: 20px;
+        padding-bottom: 25px;
+        padding-left: 55px;
+        padding-right: 55px;
     }
 
     .saude .texto a button{
         margin-top: -5px;
-        transform: translateX(85px) !important;
+        padding: 15px 55px;
+        transform: translateX(75px) !important;
     }
 }
 
@@ -1226,7 +1501,7 @@ footer .bottom-footer #copyright{
 
     .acesso button{
         padding: 20px 90px;
-        transform: translateX(-10px);
+        transform: translateX(-30px);
     }
 
     #menor{
@@ -1244,20 +1519,66 @@ footer .bottom-footer #copyright{
         padding-right: 100px !important;
     }
 
-    .juvenal{
-        height: 725px;
+    #menor, #menor2, #menor3{
+        transform: translateX(35px);
     }
 
-    .rotas  a{
-        margin-left: 53px;
-        margin-right: 39px;
+    .juvenal{
+        padding-top: 20px;
+        height: 450px;
+    }
+
+    .juvenal img{
+        margin-left: -15% !important;
+        margin-top: 15px !important;
+        width: 95%;
+    }
+
+    .juvenal .texto h2{
+        font-size: 28px;
+    }
+
+    .juvenal .texto p{
+        padding-left: 30px;
+        padding-right: 35px;
+    }
+
+    #link{
+        font-size: 17px;
+        margin-left: -7vw;
     }
 
     .saude{
-        height: 530px;
+        height: 600px;
+    }
+
+    .rotas iframe{
+        margin-left: 50px;
+    }
+
+    .rotas a{
+        margin-left: 51px; 
+        margin-right: 41px;
+    }
+
+    .saude{
+        height: 630px;
+    }
+
+    .saude img{
+        width: 58%;
+    }
+
+    .saude .texto p{
+        padding-top: 20px;
+        padding-bottom: 25px;
+        padding-left: 55px;
+        padding-right: 55px;
     }
 
     .saude .texto a button{
+        margin-top: -5px;
+        padding: 15px 55px;
         transform: translateX(90px) !important;
     }
 
@@ -1277,7 +1598,7 @@ footer .bottom-footer #copyright{
 
     .acesso button{
         padding: 20px 110px;
-        transform: translateX(-10px);
+        transform: translateX(-30px);
     }
 
     #menor{
@@ -1295,22 +1616,63 @@ footer .bottom-footer #copyright{
         padding-right: 120px !important;
     }
 
-    .juvenal{
-        height: 710px;
+    #menor, #menor2, #menor3{
+        transform: translateX(35px);
     }
 
-    .rotas a{
-        margin-left: 56px;
-        margin-right: 44px;
+    .juvenal{
+        padding-top: 20px;
+        height: 480px;
+    }
+
+    .juvenal img{
+        margin-left: -10% !important;
+        margin-top: 15px !important;
+        width: 90%;
+    }
+
+    .juvenal .texto p{
+        padding-left: 30px;
+        padding-right: 35px;
+    }
+
+    #link{
+        font-size: 17px;
+        margin-left: -3vw;
     }
 
     .saude{
-        height: 520px;
+        height: 600px;
+    }
+
+    .rotas iframe{
+        margin-left: 60px;
+    }
+
+    .rotas a{
+        margin-left: 60px; 
+        margin-right: 40px;
+    }
+
+    .saude{
+        height: 600px;
+    }
+
+    .saude img{
+        width: 58%;
+    }
+
+    .saude .texto p{
+        padding-top: 20px;
+        padding-bottom: 25px;
+        padding-left: 55px;
+        padding-right: 55px;
     }
 
     .saude .texto a button{
         margin-top: -5px;
-        transform: translateX(115px) !important;
+        padding: 15px 55px;
+        transform: translateX(110px) !important;
     }
 
     #frase-cta{
@@ -1329,7 +1691,7 @@ footer .bottom-footer #copyright{
 
     .acesso button{
         padding: 20px 110px;
-        transform: translateX(-15px);
+        transform: translateX(-30px);
     }
 
     #menor{
@@ -1347,21 +1709,62 @@ footer .bottom-footer #copyright{
         padding-right: 120px !important;
     }
 
-    .juvenal{
-        height: 730px;
+    #menor, #menor2, #menor3{
+        transform: translateX(35px);
     }
 
-    .rotas a{
-        margin-left: 59px;
-        margin-right: 45px;
+    .juvenal{
+        padding-top: 20px;
+        height: 480px;
+    }
+
+    .juvenal img{
+        margin-left: -10% !important;
+        margin-top: 15px !important;
+        width: 90%;
+    }
+
+    .juvenal .texto p{
+        padding-left: 30px;
+        padding-right: 35px;
+    }
+
+    #link{
+        font-size: 17px;
+        margin-left: -2vw;
     }
 
     .saude{
-        height: 530px;
+        height: 600px;
+    }
+
+    .rotas iframe{
+        margin-left: 60px;
+    }
+
+    .rotas a{
+        margin-left: 60px; 
+        margin-right: 44px;
+    }
+
+    .saude{
+        height: 600px;
+    }
+
+    .saude img{
+        width: 58%;
+    }
+
+    .saude .texto p{
+        padding-top: 20px;
+        padding-bottom: 25px;
+        padding-left: 55px;
+        padding-right: 55px;
     }
 
     .saude .texto a button{
-        margin-top: -10px;
+        margin-top: -5px;
+        padding: 15px 55px;
         transform: translateX(120px) !important;
     }
 
@@ -1370,7 +1773,6 @@ footer .bottom-footer #copyright{
     }
 }
 
-/*ajeitei até aqui*/
 @media screen and (min-width: 471px) and (max-width: 499px) {
     .nav-mobile{
         left: 83%;
