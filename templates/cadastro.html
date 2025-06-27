@@ -2,117 +2,132 @@
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="/static/img/logo.png" type="image/x-icon">
-    <link rel="stylesheet" href="/static/cadastro.css">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
-    
-    <title>Cadastro</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="/static/img/logo.png" type="image/x-icon" />
+  <link rel="stylesheet" href="/static/cadastro.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans&family=Open+Sans&family=Quicksand&display=swap" rel="stylesheet" />
+  <title>Cadastro</title>
 </head>
 
 <body>
-    <main>
-        <form>
-            <h1>Cadastre-se</h1>
+  <main>
+    <form id="cadastro-form">
+      <h1>Cadastre-se</h1>
 
-            <div class="input-group">
-                <div class="input-box">
-                    <label for="name">Nome Completo</label>
-                    <input type="text" id="nome" placeholder="Nome Completo" required>
-                </div>
+      <div class="input-group">
+        <div class="input-box"><label for="nome">Nome Completo</label><input type="text" id="nome" required /></div>
+        <div class="input-box"><label for="dataNascimento">Data de nascimento</label><input type="date" id="dataNascimento" required /></div>
+        <div class="input-box"><label for="email">Email</label><input type="email" id="email" required /></div>
+        <div class="input-box"><label for="phone">Celular</label><input type="tel" id="phone" required /></div>
+        <div class="input-box"><label for="phoneEmergencia">Celular Emergência</label><input type="tel" id="phoneEmergencia" required /></div>
+        <div class="input-box"><label for="endereco">Endereço</label><input type="text" id="endereco" required /></div>
+        <div class="input-box"><label for="sangue">Tipo Sanguíneo</label><input type="text" id="sangue" required /></div>
+        <div class="input-box"><label for="alergia">Alergias</label><input type="text" id="alergia" /></div>
+        <div class="input-box"><label for="senha">Senha</label><input type="password" id="senha" maxlength="20" required /></div>
+        <div class="input-box"><label for="confirmeSenha">Confirme sua senha</label><input type="password" id="confirmeSenha" maxlength="20" required /></div>
+      </div>
 
-                <div class="input-box">
-                    <label for="date">Data de nascimento</label>
-                    <input type="date" id="dataNascimento" required>
-                </div>
+      <div class="bottom-form">
+        <div class="gender-inputs">
+          <h6>Gênero</h6>
+          <div class="gender-group">
+            <div class="gender-input"><input type="radio" id="female" name="gender" /><label for="female">Feminino</label></div>
+            <div class="gender-input"><input type="radio" id="male" name="gender" /><label for="male">Masculino</label></div>
+            <div class="gender-input"><input type="radio" id="none" name="gender" /><label for="none">Prefiro não dizer</label></div>
+          </div>
+        </div>
+        <div class="heart">
+          <div class="heart-title"><h6>Cardíaco?</h6></div>
+          <div class="heart-radios">
+            <div class="heart-input"><input type="radio" id="sim" name="cardiaco" value="sim" /><label for="sim">Sim</label></div>
+            <div class="heart-input"><input type="radio" id="nao" name="cardiaco" value="nao" /><label for="nao">Não</label></div>
+          </div>
+        </div>
+      </div>
 
-                <div class="input-box">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" placeholder="Email" required>
-                </div>
+      <button type="submit">Continuar</button>
+      <div id="mensagemErro" style="color: red; margin-top: 10px;"></div>
+    </form>
+  </main>
 
-                <div class="input-box">
-                    <label for="phone">Celular</label>
-                    <input  type="tel" id="phone" placeholder="xx xxxx-xxxx" required>
-                </div>
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 
-                <div class="input-box">
-                    <label for="phone">Celular Emergência</label>
-                    <input  type="tel" id="phoneEmergencia" placeholder="xx xxxx-xxxx" required>
-                </div>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyCMCR42h8ZM4ao4D5MSTZkg99PIhspSAZE",
+      authDomain: "pulso-da-historia.firebaseapp.com",
+      projectId: "pulso-da-historia",
+      storageBucket: "pulso-da-historia.appspot.com",
+      messagingSenderId: "285634655113",
+      appId: "1:285634655113:web:7e97210e9c6b2878d96758"
+    };
 
-                <div class="input-box">
-                    <label for="address">Endereço</label>
-                    <input type="text" id="endereco" placeholder="Endereço" required>
-                </div>
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const db = firebase.firestore();
 
-                <div class="input-box">
-                    <label for="blood-type">Tipo Sanguíneo</label>
-                    <input type="text" id="sangue" placeholder="Tipo Sanguíneo" required>
-                </div>
+    async function cadastrarUsuario(email, senha, dadosExtras) {
+      const userCredential = await auth.createUserWithEmailAndPassword(email, senha);
+      const uid = userCredential.user.uid;
+      await db.collection("usuarios").doc(uid).set({
+        ...dadosExtras,
+        criadoEm: new Date()
+      });
+    }
 
-                <div class="input-box">
-                    <label for="allergy">Alergias</label>
-                    <input type="text" id="alergia" placeholder="Alergias">
-                </div>
-                    
-                <div class="input-box">
-                    <label for="password">Senha</label>
-                    <input type="password" id="senha" maxlength="6" placeholder="Até 6 caracteres" required>
-                </div>
+    function mostrarErro(mensagem) {
+      const erroDiv = document.getElementById("mensagemErro");
+      erroDiv.textContent = mensagem;
+    }
 
-                <div class="input-box">
-                    <label for="Confirepassword">Confirme sua senha</label>
-                    <input type="password" id="confirmeSenha" maxlength="6" placeholder="Digite novamente" required>
-                </div>
-            </div>
+    document.getElementById("cadastro-form").addEventListener("submit", async function (e) {
+      e.preventDefault();
 
-            <div class="bottom-form">
-                <div class="gender-inputs">
-                    <h6>Gênero</h6>
-                    <div class="gender-group">
-                        <div class="gender-input">
-                            <input type="radio" id="female" name="gender">
-                            <label for="female">Feminino</label>
-                        </div>
-                        <div class="gender-input">
-                            <input type="radio" id="male" name="gender">
-                            <label for="male">Masculino</label>
-                        </div>
-                        <div class="gender-input">
-                            <input type="radio">
-                            <label for="none">Prefiro não dizer</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="heart">
-                    <div class="heart-title">
-                        <h6>Cardíaco?</h6>
-                    </div>
-                
-                    <div class="heart-radios">
-                        <div class="heart-input">
-                            <input type="radio" id="sim" name="cardiaco" value="sim">
-                            <label for="yes">Sim</label>
-                        </div>
-                        <div class="heart-input">
-                            <input type="radio" id="nao" name="cardiacoNao" value="nao">
-                            <label for="no">Não</label>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      const nome = document.getElementById("nome").value.trim();
+      const nascimento = document.getElementById("dataNascimento").value;
+      const email = document.getElementById("email").value.trim();
+      const celular = document.getElementById("phone").value.trim();
+      const celularEmergencia = document.getElementById("phoneEmergencia").value.trim();
+      const endereco = document.getElementById("endereco").value.trim();
+      const sangue = document.getElementById("sangue").value.trim();
+      const alergia = document.getElementById("alergia").value.trim();
+      const senha = document.getElementById("senha").value;
+      const confirmeSenha = document.getElementById("confirmeSenha").value;
+      const genero = document.querySelector('input[name="gender"]:checked')?.id || "";
+      const cardiaco = document.querySelector('input[name="cardiaco"]:checked')?.value || "não";
 
-            <button type="submit">Continuar</button>
-        </form>
-    </main>
+      if (!email.includes('@') || senha.length < 6) {
+        mostrarErro("Email inválido ou senha muito curta.");
+        return;
+      }
 
-    <script src="/static/javascript/cadastro.js"></script>
+      if (senha !== confirmeSenha) {
+        mostrarErro("As senhas não coincidem.");
+        return;
+      }
+
+      try {
+        await cadastrarUsuario(email, senha, {
+          nome, nascimento, email, celular,
+          celularEmergencia, endereco, sangue,
+          alergia, genero, cardiaco
+        });
+        alert("Cadastro realizado com sucesso!");
+        window.location.href = "/templates/logado.html";
+      } catch (error) {
+        const erros = {
+          "auth/email-already-in-use": "Este email já está em uso.",
+          "auth/invalid-email": "Email inválido.",
+          "auth/weak-password": "Senha fraca, use pelo menos 6 caracteres."
+        };
+        mostrarErro(erros[error.code] || "Erro ao cadastrar: " + error.message);
+      }
+    });
+  </script>
 </body>
 </html>
