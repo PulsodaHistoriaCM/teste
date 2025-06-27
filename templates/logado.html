@@ -21,6 +21,7 @@
             <img id="logo" src="/static/img/logo.png" alt="logo">
             <p id="nome">Pulso da História CM</p>
         </a>
+        <div id="user-name" style="position: absolute; top: 15px; right: 20px; font-weight: 600; color: #333; font-family: 'Nunito Sans', sans-serif; font-size: 1rem;"></div>
 
         <!--DESKTOP-->
         <nav id="desktop">
@@ -290,24 +291,51 @@
     <script src="/static/javascript/voltar.js"></script>
     <script src="/static/javascript/burguer.js"></script>
 
-    <script>
-        function removeBr() {
-            const brTag = document.querySelectorAll(".brA");
-            
-            brTag.forEach(br => {
-                if (window.innerWidth >= 550 && window.innerWidth <= 951) {
-                    br.style.display = 'none';
-                } else {
-                    br.style.display = 'inline';
-                }
-            });
+     <script>
+    function removeBr() {
+      const brTag = document.querySelectorAll(".brA");
+      brTag.forEach((br) => {
+        if (window.innerWidth >= 550 && window.innerWidth <= 951) {
+          br.style.display = "none";
+        } else {
+          br.style.display = "inline";
         }
+      });
+    }
 
-        // Executa ao carregar a página
-        window.addEventListener('load', removeBr);
+    window.addEventListener("load", removeBr);
+    window.addEventListener("resize", removeBr);
+  </script>
 
-        // Executa ao redimensionar a janela
-        window.addEventListener('resize', removeBr);
-    </script>
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyCMCR42h8ZM4ao4D5MSTZkg99PIhspSAZE",
+      authDomain: "pulso-da-historia.firebaseapp.com",
+      databaseURL: "https://pulso-da-historia-default-rtdb.firebaseio.com",
+      projectId: "pulso-da-historia",
+      storageBucket: "pulso-da-historia.appspot.com",
+      messagingSenderId: "285634655113",
+      appId: "1:285634655113:web:7e97210e9c6b2878d96758"
+    };
+
+    // Inicializa Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    const userNameDiv = document.getElementById("user-name");
+
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        const nome = user.displayName || user.email || "Usuário";
+        userNameDiv.textContent = `Olá, ${nome}`;
+      } else {
+        userNameDiv.textContent = "";
+        
+      }
+    });
+  </script>
 </body>
 </html>
