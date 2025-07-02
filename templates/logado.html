@@ -36,6 +36,9 @@
                 <li><a href="/templates/secaoE.html">Engenhos</a></li>
                 <li><a href="/templates/rotas.html">Rotas</a></li>
                 <li><a href="/templates/about.html">Sobre Nós</a></li>
+                <li><a href="/templates/saude.html">Saúde</a></li>
+                <li><a href="/templates/chat.html">Chat</a></li>
+                
             </ul>
         </nav>
 
@@ -62,7 +65,7 @@
         </div>
 
         <!--aqui fica o nome do usuário logado-->
-        <a href="/templates/login.html"><button>Login</button></a>
+        
     </header>
 
     <section class="slider">
@@ -236,7 +239,7 @@
                 </a>
 
                 <a href="https://www.facebook.com/people/ACLA-Pedro-Sim%C3%B5es-Neto/100064889582779/" target="_blank">
-                    <img src="/static/img/ACLA.png">
+                    <img src="/static/javascript/img/ACLA.png">
                     <p>ACLA</p>
                 </a>
 
@@ -290,7 +293,11 @@
     <script src="/static/javascript/scroll.js"></script>
     <script src="/static/javascript/voltar.js"></script>
     <script src="/static/javascript/burguer.js"></script>
+<<<<<<< HEAD
+    
+=======
 
+>>>>>>> 3d41984ae21ed8a57837f958be57b0af80b36757
      <script>
     function removeBr() {
       const brTag = document.querySelectorAll(".brA");
@@ -306,6 +313,54 @@
     window.addEventListener("load", removeBr);
     window.addEventListener("resize", removeBr);
   </script>
+<<<<<<< HEAD
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+
+  <script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyCMCR42h8ZM4ao4D5MSTZkg99PIhspSAZE",
+    authDomain: "pulso-da-historia.firebaseapp.com",
+    databaseURL: "https://pulso-da-historia-default-rtdb.firebaseio.com",
+    projectId: "pulso-da-historia",
+    storageBucket: "pulso-da-historia.appspot.com",
+    messagingSenderId: "285634655113",
+    appId: "1:285634655113:web:7e97210e9c6b2878d96758"
+  };
+
+  // Inicializa Firebase
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+
+  const userNameDiv = document.getElementById("user-name");
+
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      const uid = user.uid;
+
+      db.collection("usuarios").doc(uid).get().then((doc) => {
+        if (doc.exists) {
+          const nomeCompleto = doc.data().nome || "Usuário";
+          const primeiroNome = nomeCompleto.split(" ")[0];
+          userNameDiv.textContent = `Olá, ${primeiroNome}`;
+        } else {
+          userNameDiv.textContent = "Olá!";
+        }
+      }).catch((error) => {
+        console.error("Erro ao buscar nome:", error);
+        userNameDiv.textContent = "Olá!";
+      });
+    } else {
+      userNameDiv.textContent = "";
+    }
+  });
+</script>
+
+=======
 
   <!-- Firebase SDKs -->
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
@@ -337,5 +392,6 @@
       }
     });
   </script>
+>>>>>>> 3d41984ae21ed8a57837f958be57b0af80b36757
 </body>
 </html>
