@@ -14,7 +14,60 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
     
-    <title>Conheça a Cidade</title>
+    <title>Centro - Ceará Mirim</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css" />
+    <style>
+        main{
+            margin: 100px;
+        }
+        h1 {
+            text-align: center;
+        }
+        #map {
+            height: 450px;
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.15);
+            margin-bottom: 20px;
+            background: white;
+        }
+        #centro-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+        }
+        #centro-list button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 8px;
+            background-color: #32cd32;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        #centro-list button:hover {
+            background-color: #2ba82b;
+        }
+        #info {
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+        .leaflet-routing-container {
+            width: 260px !important;
+            max-height: 300px;
+            overflow-y: auto;
+            font-size: 13px;
+            background: #ffffffde;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+            padding: 10px;
+        }
+    </style>
 </head>
 
 <body>
@@ -65,8 +118,117 @@
     </header>
 
     <main>
-        <!--mapa-->
-        <!--roteiro e explicação estilo do texto de artigo-->
+        <h1>Centro - Ceará Mirim</h1>
+        <div id="info">Tentando obter sua localização...</div>
+        <div id="map"></div>
+        <div id="centro-list"></div>
+
+        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+        <script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.min.js"></script>
+        <script>
+            const pontosCentro = [
+            { nome: 'Prefeitura Municipal', latitude: -5.636710, longitude: -35.422885 },
+            { nome: 'Mercado Público', latitude: -5.636541, longitude: -35.423123 },
+            { nome: 'Biblioteca Municipal', latitude: -5.634773, longitude: -35.422825 },
+            { nome: 'Câmara Municipal', latitude: -5.632600, longitude: -35.422232 },
+            { nome: 'Estação de CM', latitude: -5.632175, longitude: -35.421547 },
+            { nome: 'Monumento Santa Cruz', latitude: -5.637367, longitude: -35.424836 }
+            ];
+
+            let map = L.map('map').setView([-5.636, -35.423], 15);
+
+            const baseLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+            });
+            baseLayer.addTo(map);
+
+            let controleRota = null;
+            let posicaoUsuario = null;
+            let popupAberto = null;
+            let markerUsuario = null;
+            const allMarkers = [];
+
+            pontosCentro.forEach((ponto, index) => {
+            const marker = L.marker([ponto.latitude, ponto.longitude]).bindPopup(ponto.nome);
+            marker.on('click', () => mostrarSomente(marker));
+            allMarkers.push(marker);
+            });
+
+            allMarkers.forEach(m => map.removeLayer(m));
+            allMarkers[0].addTo(map);
+            allMarkers[0].openPopup();
+            popupAberto = allMarkers[0];
+
+            function mostrarSomente(markerSelecionado) {
+            allMarkers.forEach(m => map.removeLayer(m));
+            markerSelecionado.addTo(map);
+            markerSelecionado.openPopup();
+            popupAberto = markerSelecionado;
+            }
+
+            function traçarRota(destino) {
+            if (!posicaoUsuario) {
+                alert('Não foi possível obter sua localização.');
+                return;
+            }
+            if (controleRota) map.removeControl(controleRota);
+            controleRota = L.Routing.control({
+                waypoints: [
+                L.latLng(posicaoUsuario.latitude, posicaoUsuario.longitude),
+                L.latLng(destino.latitude, destino.longitude)
+                ],
+                routeWhileDragging: false,
+                show: true,
+                addWaypoints: false,
+                draggableWaypoints: false,
+                fitSelectedRoutes: true,
+                createMarker: (i, wp) => L.marker(wp.latLng).bindPopup(i === 0 ? "Você está aqui" : destino.nome).openPopup()
+            }).addTo(map);
+            }
+
+            function obterLocalizacao() {
+            if (!navigator.geolocation) {
+                document.getElementById('info').textContent = 'Geolocalização não suportada.';
+                return;
+            }
+            navigator.geolocation.getCurrentPosition(pos => {
+                posicaoUsuario = {
+                latitude: pos.coords.latitude,
+                longitude: pos.coords.longitude
+                };
+                document.getElementById('info').textContent = 'Localização obtida!';
+
+                if (markerUsuario) map.removeLayer(markerUsuario);
+
+                markerUsuario = L.marker([posicaoUsuario.latitude, posicaoUsuario.longitude])
+                .addTo(map)
+                .bindPopup("Você está aqui")
+                .openPopup();
+
+                markerUsuario.on('click', () => {
+                const destino = pontosCentro.find(p => p.nome === popupAberto.getPopup().getContent());
+                if (destino) traçarRota(destino);
+                });
+
+                map.setView([posicaoUsuario.latitude, posicaoUsuario.longitude], 14);
+            }, err => {
+                document.getElementById('info').textContent = 'Erro ao obter localização: ' + err.message;
+            });
+            }
+
+            obterLocalizacao();
+
+            const listaDiv = document.getElementById('centro-list');
+            pontosCentro.forEach((ponto, index) => {
+            const btn = document.createElement('button');
+            btn.textContent = ponto.nome;
+            btn.addEventListener('click', () => {
+                mostrarSomente(allMarkers[index]);
+                traçarRota(ponto);
+            });
+            listaDiv.appendChild(btn);
+            });
+        </script>
     </main>
 
     <footer>

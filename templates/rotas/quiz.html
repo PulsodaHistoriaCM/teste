@@ -14,58 +14,42 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
     
-    <title>Praias - Ceará Mirim</title>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css" />
+    <title>Quiz Temas de Ceará-Mirim</title>
     <style>
         main{
             margin: 100px;
         }
         h1 {
             text-align: center;
+            color: #2c3e50;
         }
-        #map {
-            height: 450px;
-            width: 100%;
-            border-radius: 10px;
-            box-shadow: 2px 2px 8px rgba(0,0,0,0.15);
+        .pergunta {
             margin-bottom: 20px;
-            background: white;
         }
-        #praias-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            justify-content: center;
+        .pergunta p {
+            font-weight: bold;
         }
-        #praias-list button {
-            padding: 10px 15px;
-            border: none;
-            border-radius: 8px;
+        label {
+            display: block;
+            margin: 5px 0;
+            cursor: pointer;
+        }
+        button {
             background-color: #32cd32;
             color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
             font-size: 16px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            display: block;
+            margin: 20px auto;
         }
-        #praias-list button:hover {
-            background-color: #2ba82b;
-        }
-        #info {
+        #resultado {
             text-align: center;
-            margin-bottom: 20px;
+            font-size: 18px;
             font-weight: bold;
-            color: #333;
-        }
-        .leaflet-routing-container {
-            width: 260px !important;
-            max-height: 300px;
-            overflow-y: auto;
-            font-size: 13px;
-            background: #ffffffde;
-            border-radius: 10px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-            padding: 10px;
+            margin-top: 30px;
         }
     </style>
 </head>
@@ -118,111 +102,92 @@
     </header>
 
     <main>
-        <h1>Praias - Ceará Mirim</h1>
-        <div id="info">Tentando obter sua localização...</div>
-        <div id="map"></div>
-        <div id="praias-list"></div>
+        <h1>Quiz: O Que Você Mais Gosta Sobre Ceará-Mirim?</h1>
 
-        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-        <script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.min.js"></script>
+        <form id="quizForm">
+            <div class="pergunta">
+            <p>1. Você já ouviu falar sobre alguma parte de Ceará-Mirim que te chamou atenção?</p>
+            <label><input type="radio" name="q1" value="engenho" /> Engenho</label>
+            <label><input type="radio" name="q1" value="praias" /> Praias</label>
+            <label><input type="radio" name="q1" value="igreja" /> Igreja</label>
+            <label><input type="radio" name="q1" value="centro" /> Centro</label>
+            </div>
+
+            <div class="pergunta">
+            <p>2. Se você fosse visitar um lugar em Ceará-Mirim, qual desses te interessaria mais?</p>
+            <label><input type="radio" name="q2" value="praias" /> Praia de Muriú</label>
+            <label><input type="radio" name="q2" value="engenho" /> Antigos Engenhos</label>
+            <label><input type="radio" name="q2" value="igreja" /> Igrejas históricas</label>
+            <label><input type="radio" name="q2" value="centro" /> Centro Histórico</label>
+            </div>
+
+            <div class="pergunta">
+            <p>3. Qual dessas atividades você acha mais interessante?</p>
+            <label><input type="radio" name="q3" value="centro" /> Passear pelo centro da cidade</label>
+            <label><input type="radio" name="q3" value="praias" /> Curtir as praias</label>
+            <label><input type="radio" name="q3" value="engenho" /> Conhecer os engenhos</label>
+            <label><input type="radio" name="q3" value="igreja" /> Visitar igrejas históricas</label>
+            </div>
+
+            <button type="button" onclick="avaliarQuiz()">Enviar Respostas</button>
+        </form>
+
+        <div id="resultado"></div>
+
         <script>
-            const praias = [
-            { nome: 'Praia de Muriú', latitude: -5.620, longitude: -35.400 }
-            ];
+            function avaliarQuiz() {
+            const temas = {
+                engenho: 0,
+                praias: 0,
+                igreja: 0,
+                centro: 0
+            };
 
-            let map = L.map('map').setView([-5.62, -35.40], 13);
+            const perguntas = ["q1", "q2", "q3"];
 
-            const baseLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; OpenStreetMap contributors'
-            });
-            baseLayer.addTo(map);
-
-            let controleRota = null;
-            let posicaoUsuario = null;
-            let popupAberto = null;
-            let markerUsuario = null;
-            const allMarkers = [];
-
-            praias.forEach((praia, index) => {
-            const marker = L.marker([praia.latitude, praia.longitude]).bindPopup(praia.nome);
-            marker.on('click', () => mostrarSomente(marker));
-            allMarkers.push(marker);
-            });
-
-            allMarkers.forEach(m => map.removeLayer(m));
-            allMarkers[0].addTo(map);
-            allMarkers[0].openPopup();
-            popupAberto = allMarkers[0];
-
-            function mostrarSomente(markerSelecionado) {
-            allMarkers.forEach(m => map.removeLayer(m));
-            markerSelecionado.addTo(map);
-            markerSelecionado.openPopup();
-            popupAberto = markerSelecionado;
-            }
-
-            function traçarRota(destino) {
-            if (!posicaoUsuario) {
-                alert('Não foi possível obter sua localização.');
+            for (const q of perguntas) {
+                const resposta = document.querySelector(`input[name="${q}"]:checked`);
+                if (!resposta) {
+                alert("Por favor, responda todas as perguntas!");
                 return;
-            }
-            if (controleRota) map.removeControl(controleRota);
-            controleRota = L.Routing.control({
-                waypoints: [
-                L.latLng(posicaoUsuario.latitude, posicaoUsuario.longitude),
-                L.latLng(destino.latitude, destino.longitude)
-                ],
-                routeWhileDragging: false,
-                show: true,
-                addWaypoints: false,
-                draggableWaypoints: false,
-                fitSelectedRoutes: true,
-                createMarker: (i, wp) => L.marker(wp.latLng).bindPopup(i === 0 ? "Você está aqui" : destino.nome).openPopup()
-            }).addTo(map);
+                }
+                temas[resposta.value]++;
             }
 
-            function obterLocalizacao() {
-            if (!navigator.geolocation) {
-                document.getElementById('info').textContent = 'Geolocalização não suportada.';
-                return;
-            }
-            navigator.geolocation.getCurrentPosition(pos => {
-                posicaoUsuario = {
-                latitude: pos.coords.latitude,
-                longitude: pos.coords.longitude
-                };
-                document.getElementById('info').textContent = 'Localização obtida!';
-
-                if (markerUsuario) map.removeLayer(markerUsuario);
-
-                markerUsuario = L.marker([posicaoUsuario.latitude, posicaoUsuario.longitude])
-                .addTo(map)
-                .bindPopup("Você está aqui")
-                .openPopup();
-
-                markerUsuario.on('click', () => {
-                const destino = praias.find(p => p.nome === popupAberto.getPopup().getContent());
-                if (destino) traçarRota(destino);
-                });
-
-                map.setView([posicaoUsuario.latitude, posicaoUsuario.longitude], 13);
-            }, err => {
-                document.getElementById('info').textContent = 'Erro ao obter localização: ' + err.message;
-            });
+            let temaPreferido = null;
+            let maxVotos = 0;
+            for (const tema in temas) {
+                if (temas[tema] > maxVotos) {
+                maxVotos = temas[tema];
+                temaPreferido = tema;
+                }
             }
 
-            obterLocalizacao();
+            const mensagens = {
+                engenho: "Você tem interesse nos Engenhos históricos de Ceará-Mirim! Que tal visitar alguns e conhecer sua história?",
+                praias: "Você curte as praias de Ceará-Mirim! Um ótimo lugar para relaxar e aproveitar a natureza.",
+                igreja: "Você se interessa pelas igrejas históricas da cidade! Lugares cheios de cultura e fé.",
+                centro: "Você gosta do centro histórico de Ceará-Mirim! Um passeio que mistura cultura e tradição."
+            };
 
-            const listaDiv = document.getElementById('praias-list');
-            praias.forEach((praia, index) => {
-            const btn = document.createElement('button');
-            btn.textContent = praia.nome;
-            btn.addEventListener('click', () => {
-                mostrarSomente(allMarkers[index]);
-                traçarRota(praia);
-            });
-            listaDiv.appendChild(btn);
-            });
+            const resultadoFinal = `Você se identificou mais com: <strong>${temaPreferido.charAt(0).toUpperCase() + temaPreferido.slice(1)}</strong>.<br>${mensagens[temaPreferido]}`;
+            
+            // Exibe no quiz
+            document.getElementById("resultado").innerHTML = resultadoFinal;
+
+            // Salva no localStorage
+            localStorage.setItem("quizResultado", resultadoFinal);
+
+
+            // Adiciona botão para voltar
+            if (!document.getElementById("btnVoltar")) {
+                const btnVoltar = document.createElement("button");
+                btnVoltar.textContent = "Voltar";
+                btnVoltar.id = "btnVoltar";
+                btnVoltar.onclick = () => window.history.back();
+                document.body.appendChild(btnVoltar);
+            }
+            }
         </script>
     </main>
 

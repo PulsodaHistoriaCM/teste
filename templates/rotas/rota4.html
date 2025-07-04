@@ -14,11 +14,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
     
-    <title>Engenhos - Ceará Mirim</title>
+    <title>Locais Religiosos - Ceará Mirim</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css" />
     <style>
-        main {
+        main{
             margin: 100px;
         }
         h1 {
@@ -32,13 +32,13 @@
             margin-bottom: 20px;
             background: white;
         }
-        #engenhos-list {
+        #religiosos-list {
             display: flex;
             flex-wrap: wrap;
             gap: 15px;
             justify-content: center;
         }
-        #engenhos-list button {
+        #religiosos-list button {
             padding: 10px 15px;
             border: none;
             border-radius: 8px;
@@ -48,7 +48,7 @@
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
-        #engenhos-list button:hover {
+        #religiosos-list button:hover {
             background-color: #2ba82b;
         }
         #info {
@@ -58,7 +58,6 @@
             color: #333;
         }
 
-        /* Estilo para o painel de rotas */
         .leaflet-routing-container {
             width: 260px !important;
             max-height: 300px;
@@ -120,31 +119,21 @@
     </header>
 
     <main>
-        <h1>Engenhos - Ceará Mirim</h1>
+        <h1>Locais Religiosos - Ceará Mirim</h1>
         <div id="info">Tentando obter sua localização...</div>
         <div id="map"></div>
-        <div id="engenhos-list"></div>
+        <div id="religiosos-list"></div>
 
         <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
         <script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.min.js"></script>
         <script>
-            const engenhos = [
-            { nome: 'Engenho Carnaubal', latitude: -5.622729, longitude: -35.422608 },
-            { nome: 'Engenho Cruzeiro', latitude: -5.605930, longitude: -35.401702 },
+            const religiosos = [
+            { nome: 'Santuário', latitude: -5.634429, longitude: -35.425091 },
             { nome: 'Capela do Engenho Cruzeiro', latitude: -5.609325, longitude: -35.402356 },
-            { nome: 'Engenho Mucuripe', latitude: -5.598568, longitude: -35.394239 },
-            { nome: 'Antigo Engenho Cumbe', latitude: -5.591729, longitude: -35.473893 },
-            { nome: 'Engenho Alagoas', latitude: -5.590680, longitude: -35.373300 },
-            { nome: 'Engenho São Leopoldo', latitude: -5.593327, longitude: -35.372691 },
-            { nome: 'Casa Grande do Engenho Umburana', latitude: -5.611959, longitude: -35.408594 },
-            { nome: 'Engenho Timbó', latitude: -5.634729, longitude: -35.336999 },
-            { nome: 'Engenho Pedregulho', latitude: -5.598703, longitude: -35.473904 },
-            { nome: 'Engenho Oiteiro', latitude: -5.602018, longitude: -35.399724 },
-            { nome: 'Casa Grande do Engenho Trigueiro', latitude: -5.614908, longitude: -35.410795 },
-            { nome: 'Engenho Nascença', latitude: -5.664140, longitude: -35.421809 }
+            { nome: 'Casa Grande do Engenho Umburana', latitude: -5.611959, longitude: -35.408594 }
             ];
 
-            let map = L.map('map').setView([-5.61, -35.41], 13);
+            let map = L.map('map').setView([-5.63, -35.42], 13);
 
             const esriImagery = L.tileLayer(
             'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
@@ -177,10 +166,9 @@
             let markerUsuario = null;
             const allMarkers = [];
 
-            // Cria todos os marcadores mas só mostra o primeiro no início
-            engenhos.forEach((engenho, index) => {
-            const marker = L.marker([engenho.latitude, engenho.longitude])
-                .bindPopup(engenho.nome);
+            religiosos.forEach((ponto, index) => {
+            const marker = L.marker([ponto.latitude, ponto.longitude])
+                .bindPopup(ponto.nome);
 
             marker.on('click', () => {
                 mostrarSomente(marker);
@@ -189,16 +177,15 @@
             allMarkers.push(marker);
             });
 
-            // Exibir apenas o primeiro engenho no carregamento
             allMarkers.forEach(m => map.removeLayer(m));
             allMarkers[0].addTo(map);
             allMarkers[0].openPopup();
             popupAberto = allMarkers[0];
 
             function mostrarSomente(markerSelecionado) {
-            allMarkers.forEach(m => map.removeLayer(m)); // remove todos
-            markerSelecionado.addTo(map);               // adiciona o clicado
-            markerSelecionado.openPopup();              // abre popup
+            allMarkers.forEach(m => map.removeLayer(m));
+            markerSelecionado.addTo(map);
+            markerSelecionado.openPopup();
             popupAberto = markerSelecionado;
             }
 
@@ -250,10 +237,9 @@
                     .bindPopup("Você está aqui")
                     .openPopup();
 
-                // Evento de clique na seta azul (marker usuário)
                 markerUsuario.on('click', () => {
                     if (popupAberto) {
-                    const destino = engenhos.find(eng => eng.nome === popupAberto.getPopup().getContent());
+                    const destino = religiosos.find(r => r.nome === popupAberto.getPopup().getContent());
                     if (destino) {
                         traçarRota(destino);
                     } else {
@@ -279,14 +265,14 @@
 
             obterLocalizacao();
 
-            const listaDiv = document.getElementById('engenhos-list');
-            engenhos.forEach((engenho, index) => {
+            const listaDiv = document.getElementById('religiosos-list');
+            religiosos.forEach((ponto, index) => {
             const btn = document.createElement('button');
-            btn.textContent = engenho.nome;
+            btn.textContent = ponto.nome;
             btn.addEventListener('click', () => {
                 const marker = allMarkers[index];
                 mostrarSomente(marker);
-                traçarRota(engenho);
+                traçarRota(ponto);
             });
             listaDiv.appendChild(btn);
             });
