@@ -207,13 +207,10 @@
             </div>
         </div>
 
-
         <button id="localizacao-btn">Permitir acessar minha localização</button>
         <div id="erro-localizacao"></div>
 
-
         <div id="map"></div>
-
 
         <div id="quiz-container">
             <h3>Você está fora da área de 10km dos pontos turísticos.</h3>
@@ -222,7 +219,6 @@
             <button type="button">Ir para o Quiz</button>
             </a>
         </div>
-
 
         <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
         <script>
@@ -253,20 +249,16 @@
             { nome: 'Estação de CM', latitude: -5.632175, longitude: -35.421547 }
             ];
 
-
             const raioLimiteKm = 10;
             const btnLocalizacao = document.getElementById('localizacao-btn');
             const mapDiv = document.getElementById('map');
             const quizDiv = document.getElementById('quiz-container');
             const erroDiv = document.getElementById('erro-localizacao');
 
-
             let map;
-
 
             btnLocalizacao.addEventListener('click', () => {
             erroDiv.textContent = '';
-
 
             if (!navigator.geolocation) {
                 alert('Geolocalização não suportada pelo navegador.');
@@ -274,15 +266,12 @@
                 return;
             }
 
-
             navigator.geolocation.getCurrentPosition(pos => {
                 const userLat = pos.coords.latitude;
                 const userLon = pos.coords.longitude;
 
-
                 let pontoMaisProximo = null;
                 let menorDistancia = Infinity;
-
 
                 pontosTuristicos.forEach(ponto => {
                 const d = calcularDistancia(userLat, userLon, ponto.latitude, ponto.longitude);
@@ -292,13 +281,11 @@
                 }
                 });
 
-
                 if (pontoMaisProximo && menorDistancia <= raioLimiteKm) {
                 mostrarMapa(userLat, userLon, pontoMaisProximo);
                 } else {
                 mostrarQuiz();
                 }
-
 
             }, erro => {
                 if (erro.code === erro.PERMISSION_DENIED) {
@@ -313,12 +300,10 @@
             });
             });
 
-
             function mostrarMapa(lat, lon, ponto) {
             erroDiv.textContent = '';
             quizDiv.style.display = 'none';
             mapDiv.style.display = 'block';
-
 
             if (!map) {
                 map = L.map('map').setView([lat, lon], 13);
@@ -334,7 +319,6 @@
                 });
             }
 
-
             L.marker([lat, lon]).addTo(map).bindPopup("Você está aqui").openPopup();
             L.marker([ponto.latitude, ponto.longitude])
                 .addTo(map)
@@ -343,7 +327,6 @@
 
             btnLocalizacao.style.display = 'none';
             }
-
 
             function mostrarQuiz() {
             erroDiv.textContent = '';
@@ -355,7 +338,6 @@
             quizDiv.style.display = 'block';
             btnLocalizacao.style.display = 'none';
             }
-
 
             function calcularDistancia(lat1, lon1, lat2, lon2) {
             const R = 6371;
@@ -369,11 +351,9 @@
             return R * c;
             }
 
-
             function toRad(deg) {
             return deg * Math.PI / 180;
             }
-
 
             // Opcional: exibir resultado do quiz guardado no localStorage
             window.addEventListener("DOMContentLoaded", () => {
