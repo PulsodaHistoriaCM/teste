@@ -13,6 +13,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
 
     <title>Pulso da História CM</title>
+
+    <style>
+        #user-name .rola{
+            color: black ;
+        }
+    </style>
 </head>
 
 <body>
@@ -21,7 +27,6 @@
             <img id="logo" src="/static/img/logo.png" alt="logo">
             <p id="nome">Pulso da História CM</p>
         </a>
-        <div id="user-name" style="position: absolute; top: 15px; right: 20px; font-weight: 600; color: #333; font-family: 'Nunito Sans', sans-serif; font-size: 1rem;"></div>
 
         <!--DESKTOP-->
         <nav id="desktop">
@@ -38,9 +43,11 @@
                 <li><a href="/templates/about.html">Sobre Nós</a></li>
                 <li><a href="/templates/saude.html">Saúde</a></li>
                 <li><a href="/templates/chat.html">Chat</a></li>
-                
             </ul>
         </nav>
+
+        <p id="user-name" style="position: fixed; top: 30px; right: 80px; font-weight: 500; font-size: 18px; color: #fff;"></p>
+        <a href="/templates/home.html"><button style="background-color: rgba(255, 136, 0, 0.747); position: fixed; right: 20px;">Sair</button></a>
 
         <!--MOBILE-->
         <div class="nav-mobile">
@@ -51,8 +58,8 @@
             </div>
         </div>
 
-        <!--aqui fica o nome do usuário logado-->
         <div class="off-menu" id="menu">
+            <p id="user-name" style="text-align: center; font-weight: 500; padding-top: 10px; padding-bottom: 5px; font-size: 22px;"></p>
             <ul>
                 <li><a href="/templates/secaoCM.html">Conheça CM</a></li>
                 <li><a href="/templates/secaoP.html">Personalidades</a></li>
@@ -61,11 +68,8 @@
                 <li><a href="/templates/rotas.html">Rotas</a></li>
                 <li><a href="/templates/about.html">Sobre Nós</a></li>
             </ul>
-            <a href="/templates/login.html"><button>Login</button></a>
+            <a href="/templates/home.html"><button style="background-color: rgba(255, 136, 0, 0.747);">Sair</button></a>  
         </div>
-
-        <!--aqui fica o nome do usuário logado-->
-        
     </header>
 
     <section class="slider">
@@ -380,17 +384,39 @@
     // Inicializa Firebase
     firebase.initializeApp(firebaseConfig);
 
-    const userNameDiv = document.getElementById("user-name");
+    const user = document.querySelectorAll("user-name");
+
 
     firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-        const nome = user.displayName || user.email || "Usuário";
-        userNameDiv.textContent = `Olá, ${nome}`;
-      } else {
-        userNameDiv.textContent = "";
-        
-      }
-    });
+        if (user) {
+            const uid = user.uid;
+
+            db.collection("usuarios").doc(uid).get().then((doc) => {
+            let nomeExibir = "Usuário";
+            if (doc.exists) {
+                const nomeCompleto = doc.data().nome || "Usuário";
+                nomeExibir = nomeCompleto.split(" ")[0];
+            }
+
+            document.querySelectorAll(".user-name").forEach(el => {
+                el.textContent = `Olá, ${nomeExibir}`;
+            });
+
+            }).catch((error) => {
+            console.error("Erro ao buscar nome:", error);
+            document.querySelectorAll(".user-name").forEach(el => {
+                el.textContent = "Olá!";
+            });
+            });
+
+        } else {
+            document.querySelectorAll(".user-name").forEach(el => {
+            el.textContent = "";
+            });
+        }
+        });
+
+
   </script>
 >>>>>>> 3d41984ae21ed8a57837f958be57b0af80b36757
 </body>

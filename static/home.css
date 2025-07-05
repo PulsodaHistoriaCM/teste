@@ -751,10 +751,6 @@ footer .bottom-footer #copyright{
     html, body {
         width: 100%;
     }
-   
-    .off-menu button {
-        display: block;
-    }
 
     header {
         width: 100%;
@@ -790,6 +786,11 @@ footer .bottom-footer #copyright{
     .off-menu ul li{
         list-style: none;
         padding: 3px;
+    }
+
+    .off-menu button{
+        margin-top: 10px;
+        display: block;
     }
 
     header button{
