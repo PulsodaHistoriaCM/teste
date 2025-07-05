@@ -14,7 +14,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
     
-    <title>Praias - Ceará Mirim</title>
+    <title>Praias Ceará-Mirim</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css" />
     <style>
@@ -31,6 +31,7 @@
             box-shadow: 2px 2px 8px rgba(0,0,0,0.15);
             margin-bottom: 20px;
             background: white;
+            margin-bottom: 30px;
         }
         #praias-list {
             display: flex;
@@ -118,7 +119,7 @@
     </header>
 
     <main>
-        <h1>Praias - Ceará Mirim</h1>
+        <h1>Praias Ceará-Mirim</h1>
         <div id="info">Tentando obter sua localização...</div>
         <div id="map"></div>
         <div id="praias-list"></div>
@@ -206,9 +207,16 @@
                 });
 
                 map.setView([posicaoUsuario.latitude, posicaoUsuario.longitude], 13);
-            }, err => {
-                document.getElementById('info').textContent = 'Erro ao obter localização: ' + err.message;
-            });
+                },
+                (err) => {
+                const info = document.getElementById('info');
+                if (err.code === err.PERMISSION_DENIED) {
+                    info.textContent = 'Você negou o acesso à localização.';
+                } else {
+                    info.textContent = 'Erro ao obter localização: ' + err.message;
+                }
+                }
+            );
             }
 
             obterLocalizacao();

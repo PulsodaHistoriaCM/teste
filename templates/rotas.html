@@ -14,26 +14,31 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
     
-    <title>Locais de Interesse - Ceará Mirim</title>
+    <title>Locais de Interesse - Ceará-Mirim</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <style>
         main{
             margin: 100px;
+            margin-bottom: 50px;
         }
         h1 {
             text-align: center;
+            margin-bottom: 50px;
         }
         .card-container {
+            position:relative;
+            left: 150px;
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 20px;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
         }
         .card {
             border: 1px solid #ccc;
             border-radius: 10px;
             background-color: white;
             padding: 15px;
+            width: 50%;
             box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
             display: flex;
             flex-direction: column;
@@ -50,21 +55,18 @@
             text-align: center;
         }
         .card-content h2 {
-            margin: 0 0 10px;
+            margin: 0 0;
             font-size: 20px;
         }
         .card-content p {
-            color: #333;
             margin: 0 0 10px;
         }
         .card-content a {
             text-decoration: none;
-            color: #2a6496;
             font-weight: bold;
             transition: color 0.3s;
         }
         .card-content a:hover {
-            color: #32cd32;
             text-decoration: underline;
         }
         #localizacao-btn {
@@ -168,11 +170,11 @@
     </header>
 
     <main>
-        <h1>Locais de Interesse em Ceará Mirim</h1>
+        <h1>Locais de Interesse em Ceará-Mirim</h1>
 
         <div class="card-container">
             <div class="card">
-            <img src="/static/img/engenhos.jpg" alt="Engenhos" />
+            <img src="/static/img/rio.jpg" alt="Engenhos" />
             <div class="card-content">
                 <h2><a href="/templates/rotas/rota1.html">Engenhos</a></h2>
                 <p>Conheça os antigos engenhos, suas historias.</p>
@@ -180,7 +182,7 @@
             </div>
             </div>
             <div class="card">
-            <img src="/static/img/centro.jpg" alt="Centro" />
+            <img src="/static/img/rio.jpg" alt="Centro" />
             <div class="card-content">
                 <h2><a href="/templates/rotas/rota2.html">Centro</a></h2>
                 <p>Explore o centro de Ceará-Mirim, que movimentaram a economia local.</p>
@@ -188,7 +190,7 @@
             </div>
             </div>
             <div class="card">
-            <img src="/static/img/praias.jpg" alt="Praias" />
+            <img src="/static/img/rio.jpg" alt="Praias" />
             <div class="card-content">
                 <h2><a href="/templates/rotas/rota3.html">Praias</a></h2>
                 <p>Relaxe nas belas praias da região.</p>
@@ -196,7 +198,7 @@
             </div>
             </div>
             <div class="card">
-            <img src="/static/img/religioso.jpg" alt="Religioso" />
+            <img src="/static/img/rio.jpg" alt="Religioso" />
             <div class="card-content">
                 <h2><a href="/templates/rotas/rota4.html">Religioso</a></h2>
                 <p>Visite os locais religiosos mais tradicionais da cidade.</p>

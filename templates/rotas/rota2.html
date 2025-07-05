@@ -31,11 +31,12 @@
             box-shadow: 2px 2px 8px rgba(0,0,0,0.15);
             margin-bottom: 20px;
             background: white;
+            margin-bottom: 30px;
         }
         #centro-list {
             display: flex;
             flex-wrap: wrap;
-            gap: 15px;
+            gap: 20px;
             justify-content: center;
         }
         #centro-list button {
@@ -118,7 +119,7 @@
     </header>
 
     <main>
-        <h1>Centro - Ceará Mirim</h1>
+        <h1>Centro Ceará-Mirim</h1>
         <div id="info">Tentando obter sua localização...</div>
         <div id="map"></div>
         <div id="centro-list"></div>
@@ -210,10 +211,17 @@
                 if (destino) traçarRota(destino);
                 });
 
-                map.setView([posicaoUsuario.latitude, posicaoUsuario.longitude], 14);
-            }, err => {
-                document.getElementById('info').textContent = 'Erro ao obter localização: ' + err.message;
-            });
+                map.setView([posicaoUsuario.latitude, posicaoUsuario.longitude], 13);
+                },
+                (err) => {
+                const info = document.getElementById('info');
+                if (err.code === err.PERMISSION_DENIED) {
+                    info.textContent = 'Você negou o acesso à localização.';
+                } else {
+                    info.textContent = 'Erro ao obter localização: ' + err.message;
+                }
+                }
+            );
             }
 
             obterLocalizacao();
