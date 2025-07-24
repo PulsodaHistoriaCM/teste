@@ -67,163 +67,180 @@
     </header>
 
     <div class="chat-container">
-    <div class="side-image">
-      <p class="sugestao" id="sugestaoTexto"> Descubra a história da nossa Biblioteca</p>
+      <div class="side-image">
+        <p class="sugestao" id="sugestaoTexto"> Descubra a história da nossa Biblioteca</p>
+      </div>
+
+      <div class="chat-box" id="chatBox">
+        <!-- Mensagens aparecem aqui -->
+      </div>
+
+      <div class="input-container">
+        <input type="text" id="userInput" placeholder="Compartilhe sua experiência ou dica!" required />
+        <button onclick="enviarMensagem()">Enviar</button>
+      </div>
     </div>
 
-    <div class="chat-box" id="chatBox">
-      <!-- Mensagens aparecem aqui -->
-    </div>
+  
 
-    <div class="input-container">
-      <input type="text" id="userName" placeholder="Seu nome" required />
-      <input type="text" id="userInput" placeholder="Compartilhe sua experiência ou dica!" required />
-      <button onclick="enviarMensagem()">Enviar</button>
-    </div>
-  </div>
+  <!-- Firebase compat libs -->
+<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
 
-  <script>
-    // Firebase Configuração
-    const firebaseConfig = {
-      apiKey: "AIzaSyCMCR42h8ZM4ao4D5MSTZkg99PIhspSAZE",
-      authDomain: "pulso-da-historia.firebaseapp.com",
-      databaseURL: "https://pulso-da-historia-default-rtdb.firebaseio.com",
-      projectId: "pulso-da-historia",
-      storageBucket: "pulso-da-historia.appspot.com",
-      messagingSenderId: "285634655113",
-      appId: "1:285634655113:web:7e97210e9c6b2878d96758"
-    };
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyCMCR42h8ZM4ao4D5MSTZkg99PIhspSAZE",
+    authDomain: "pulso-da-historia.firebaseapp.com",
+    databaseURL: "https://pulso-da-historia-default-rtdb.firebaseio.com",
+    projectId: "pulso-da-historia",
+    storageBucket: "pulso-da-historia.appspot.com",
+    messagingSenderId: "285634655113",
+    appId: "1:285634655113:web:7e97210e9c6b2878d96758"
+  };
 
-    // Inicializar Firebase
-    firebase.initializeApp(firebaseConfig);
-    const db = firebase.firestore();
-  </script>
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
 
-  <script>
-    const sugestoes = [
-      "🌴 Descubra o Engenho Mucuripe!",
-      "⛪ Visite a bela Igreja Matriz de N. Sra. da Conceição!",
-      "🎭 Explore o Centro Cultural de Ceará-Mirim!"
-    ];
-  
-    let index = 0;
-    function trocarSugestao() {
-      index = (index + 1) % sugestoes.length;
-      document.getElementById('sugestaoTexto').textContent = sugestoes[index];
+  let nomeUsuario = "Anônimo";
+
+  firebase.auth().onAuthStateChanged(user => {
+    if (!user) {
+      window.location.href = "/templates/login.html";
+    } else {
+      nomeUsuario = user.displayName || "Usuário sem nome";
+
+      // Exibir no header
+      const header = document.getElementById("header");
+      const saudacao = document.createElement("p");
+      saudacao.textContent = `Olá, ${nomeUsuario}`;
+      saudacao.style.color = "#fff";
+      saudacao.style.fontWeight = "bold";
+      saudacao.style.marginLeft = "auto";
+      header.appendChild(saudacao);
     }
-    setInterval(trocarSugestao, 8000);
-  
-    function enviarMensagem() {
-      const nome = document.getElementById('userName').value.trim();
-      const texto = document.getElementById('userInput').value.trim();
-      if (!nome || !texto) return alert("Por favor, preencha todos os campos.");
-  
-      db.collection("mensagens").add({
-        nome,
-        mensagem: texto,
-        curtidas: 0,
-        timestamp: firebase.firestore.FieldValue.serverTimestamp()
-      }).then(() => {
-        document.getElementById('userInput').value = '';
-      }).catch(erro => {
-        alert("Erro ao enviar: " + erro.message);
-      });
+  });
+
+  const sugestoes = [
+    "🌴 Descubra o Engenho Mucuripe!",
+    "⛪ Visite a bela Igreja Matriz de N. Sra. da Conceição!",
+    "🎭 Explore o Centro Cultural de Ceará-Mirim!"
+  ];
+
+  let index = 0;
+  function trocarSugestao() {
+    index = (index + 1) % sugestoes.length;
+    document.getElementById('sugestaoTexto').textContent = sugestoes[index];
+  }
+  setInterval(trocarSugestao, 8000);
+
+  function enviarMensagem() {
+    const texto = document.getElementById('userInput').value.trim();
+    if (!texto) return alert("Por favor, digite uma mensagem.");
+
+    db.collection("mensagens").add({
+      nome: nomeUsuario,
+      mensagem: texto,
+      curtidas: 0,
+      timestamp: firebase.firestore.FieldValue.serverTimestamp()
+    }).then(() => {
+      document.getElementById('userInput').value = '';
+    }).catch(erro => {
+      alert("Erro ao enviar: " + erro.message);
+    });
+  }
+
+  function curtir(idMensagem) {
+    db.collection("mensagens").doc(idMensagem).update({
+      curtidas: firebase.firestore.FieldValue.increment(1)
+    });
+  }
+
+  function mostrarCampoComentario(id) {
+    const campo = document.getElementById(`campo-comentario-${id}`);
+    campo.style.display = campo.style.display === "none" ? "block" : "none";
+  }
+
+  function comentar(idMensagem) {
+    const input = document.getElementById(`resposta-${idMensagem}`);
+    const texto = input.value.trim();
+    if (!texto) return;
+
+    db.collection("mensagens").doc(idMensagem).collection("respostas").add({
+      texto,
+      timestamp: firebase.firestore.FieldValue.serverTimestamp()
+    }).then(() => {
+      input.value = "";
+    });
+  }
+
+  function editarComentario(idMsg, idResp, textoAtual) {
+    const novoTexto = prompt("Editar comentário:", textoAtual);
+    if (novoTexto && novoTexto !== textoAtual) {
+      db.collection("mensagens")
+        .doc(idMsg)
+        .collection("respostas")
+        .doc(idResp)
+        .update({ texto: novoTexto });
     }
-  
-    function curtir(idMensagem) {
-      const mensagemRef = db.collection("mensagens").doc(idMensagem);
-      mensagemRef.update({
-        curtidas: firebase.firestore.FieldValue.increment(1)
-      });
+  }
+
+  function deletarComentario(idMsg, idResp) {
+    if (confirm("Deseja excluir este comentário?")) {
+      db.collection("mensagens")
+        .doc(idMsg)
+        .collection("respostas")
+        .doc(idResp)
+        .delete();
     }
-  
-    function mostrarCampoComentario(idMensagem) {
-      const campo = document.getElementById(`campo-comentario-${idMensagem}`);
-      campo.style.display = campo.style.display === 'none' ? 'block' : 'none';
-    }
-  
-    function comentar(idMensagem) {
-      const input = document.getElementById(`resposta-${idMensagem}`);
-      const texto = input.value.trim();
-      if (!texto) return;
-  
-      db.collection("mensagens").doc(idMensagem).collection("respostas").add({
-        texto,
-        timestamp: firebase.firestore.FieldValue.serverTimestamp()
-      }).then(() => {
-        input.value = '';
-      });
-    }
-  
-    function editarComentario(idMensagem, idResposta, textoAtual) {
-      const novoTexto = prompt("Editar comentário:", textoAtual);
-      if (novoTexto && novoTexto !== textoAtual) {
-        db.collection("mensagens")
-          .doc(idMensagem)
-          .collection("respostas")
-          .doc(idResposta)
-          .update({
-            texto: novoTexto
-          });
-      }
-    }
-  
-    function deletarComentario(idMensagem, idResposta) {
-      if (confirm("Tem certeza que deseja deletar este comentário?")) {
-        db.collection("mensagens")
-          .doc(idMensagem)
-          .collection("respostas")
-          .doc(idResposta)
-          .delete();
-      }
-    }
-  
-    db.collection("mensagens").orderBy("timestamp", "desc")
-      .onSnapshot(snapshot => {
-        const chatBox = document.getElementById("chatBox");
-        chatBox.innerHTML = "";
-        snapshot.forEach(doc => {
-          const dados = doc.data();
-          const data = dados.timestamp?.toDate().toLocaleDateString() || "data desconhecida";
-          const hora = dados.timestamp?.toDate().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) || "";
-  
-          const mensagemDiv = document.createElement('div');
-          mensagemDiv.className = 'mensagem';
-          mensagemDiv.innerHTML = `
-            <strong>${dados.nome}</strong><br>
-            <span>${dados.mensagem}</span><br>
-            <small>${data} às ${hora}</small><br>
-            <i class="fa-solid fa-heart" style="cursor: pointer; color: red;" onclick="curtir('${doc.id}')"></i>
-            <span id="curtidas-${doc.id}">${dados.curtidas || 0}</span>
-            &nbsp;&nbsp;
-            <i class="fa-solid fa-comment" style="cursor: pointer;" onclick="mostrarCampoComentario('${doc.id}')"></i>
-            <div id="campo-comentario-${doc.id}" style="display: none; margin-top: 5px;">
-              <input type="text" id="resposta-${doc.id}" placeholder="Escreva um comentário">
-              <i class="fa-solid fa-paper-plane" style="cursor: pointer;" onclick="comentar('${doc.id}')"></i>
-            </div>
-            <div id="comentarios-${doc.id}" style="margin-top: 5px;"></div>
+  }
+
+  db.collection("mensagens").orderBy("timestamp", "desc").onSnapshot(snapshot => {
+    const chatBox = document.getElementById("chatBox");
+    chatBox.innerHTML = "";
+    snapshot.forEach(doc => {
+      const dados = doc.data();
+      const data = dados.timestamp?.toDate().toLocaleDateString() || "data desconhecida";
+      const hora = dados.timestamp?.toDate().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) || "";
+
+      const div = document.createElement("div");
+      div.className = "mensagem";
+      div.innerHTML = `
+        <strong>${dados.nome}</strong><br>
+        <span>${dados.mensagem}</span><br>
+        <small>${data} às ${hora}</small><br>
+        <i class="fa-solid fa-heart" style="cursor: pointer; color: red;" onclick="curtir('${doc.id}')"></i>
+        <span id="curtidas-${doc.id}">${dados.curtidas || 0}</span>
+        &nbsp;&nbsp;
+        <i class="fa-solid fa-comment" style="cursor: pointer;" onclick="mostrarCampoComentario('${doc.id}')"></i>
+        <div id="campo-comentario-${doc.id}" style="display: none; margin-top: 5px;">
+          <input type="text" id="resposta-${doc.id}" placeholder="Escreva um comentário">
+          <i class="fa-solid fa-paper-plane" style="cursor: pointer;" onclick="comentar('${doc.id}')"></i>
+        </div>
+        <div id="comentarios-${doc.id}" style="margin-top: 5px;"></div>
+      `;
+      chatBox.appendChild(div);
+
+      const comentariosDiv = document.getElementById(`comentarios-${doc.id}`);
+      db.collection("mensagens").doc(doc.id).collection("respostas").orderBy("timestamp", "asc").onSnapshot(resps => {
+        comentariosDiv.innerHTML = "";
+        resps.forEach(resp => {
+          const d = resp.data();
+          const dt = d.timestamp?.toDate().toLocaleString() || "";
+          const p = document.createElement("p");
+          p.innerHTML = `
+            ↳ ${d.texto} <br><small>${dt}</small>
+            &nbsp; <i class="fa-solid fa-pen" onclick="editarComentario('${doc.id}', '${resp.id}', '${d.texto.replace(/'/g, "\\'")}')" title="Editar"></i>
+            &nbsp; <i class="fa-solid fa-trash" onclick="deletarComentario('${doc.id}', '${resp.id}')" title="Excluir"></i>
           `;
-          chatBox.appendChild(mensagemDiv);
-  
-          const comentariosDiv = document.getElementById(`comentarios-${doc.id}`);
-          db.collection("mensagens").doc(doc.id).collection("respostas").orderBy("timestamp", "asc")
-            .onSnapshot(respostasSnap => {
-              comentariosDiv.innerHTML = "";
-              respostasSnap.forEach(resposta => {
-                const dado = resposta.data();
-                const dataResposta = dado.timestamp?.toDate().toLocaleString() || "";
-                const p = document.createElement('p');
-                p.innerHTML = `
-                  ↳ ${dado.texto} <br><small>${dataResposta}</small>
-                  &nbsp; <i class="fa-solid fa-pen" style="cursor: pointer;" title="Editar" onclick="editarComentario('${doc.id}', '${resposta.id}', '${dado.texto.replace(/'/g, "\\'")}')"></i>
-                  &nbsp; <i class="fa-solid fa-trash" style="cursor: pointer;" title="Excluir" onclick="deletarComentario('${doc.id}', '${resposta.id}')"></i>
-                `;
-                comentariosDiv.appendChild(p);
-              });
-            });
+          comentariosDiv.appendChild(p);
         });
       });
-  </script>
+    });
+  });
+</script>
+
+  
 
     <footer>
         <div class="content">
