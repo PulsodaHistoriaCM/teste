@@ -36,6 +36,7 @@
                 </li>
                 <li><a href="/templates/secaoE.html">Engenhos</a></li>
                 <li><a href="/templates/rotas.html">Rotas</a></li>
+                <li><a href="static/templates/saude.html">Saúde</a></li>
                 <li><a href="/templates/about.html">Sobre Nós</a></li>
             </ul>
         </nav>
@@ -49,7 +50,6 @@
             </div>
         </div>
 
-        <!--aqui fica o nome do usuário logado-->
         <div class="off-menu" id="menu">
             <ul>
                 <li><a href="/templates/secaoCM.html">Conheça CM</a></li>
@@ -57,13 +57,10 @@
                 <li><a href="/templates/secaoF.html">Folclore</a></li>
                 <li><a href="/templates/secaoE.html">Engenhos</a></li>
                 <li><a href="/templates/rotas.html">Rotas</a></li>
+                <li><a href="static/templates/saude.html">Saúde</a></li>
                 <li><a href="/templates/about.html">Sobre Nós</a></li>
             </ul>
-            <a href="/templates/login.html"><button>Login</button></a>
         </div>
-
-        <!--aqui fica o nome do usuário logado-->
-        <a href="/templates/login.html"><button>Login</button></a>
     </header>
 
     <div class="chat-container">
@@ -114,9 +111,9 @@
       const header = document.getElementById("header");
       const saudacao = document.createElement("p");
       saudacao.textContent = `Olá, ${nomeUsuario}`;
-      saudacao.style.color = "#fff";
+      saudacao.style.color = "#000";
       saudacao.style.fontWeight = "bold";
-      saudacao.style.marginLeft = "auto";
+      saudacao.style.marginTop = "15px";
       header.appendChild(saudacao);
     }
   });

@@ -72,12 +72,17 @@
     const db = firebase.firestore();
 
     async function cadastrarUsuario(email, senha, dadosExtras) {
-      const userCredential = await auth.createUserWithEmailAndPassword(email, senha);
-      const uid = userCredential.user.uid;
-      await db.collection("usuarios").doc(uid).set({
-        ...dadosExtras,
-        criadoEm: new Date()
+    const userCredential = await auth.createUserWithEmailAndPassword(email, senha);
+    const user = userCredential.user;
+
+    await user.updateProfile({
+        displayName: dadosExtras.nome
       });
+
+    await db.collection("usuarios").doc(user.uid).set({
+    ...dadosExtras,
+    criadoEm: new Date()
+    });
     }
 
     function mostrarErro(mensagem) {
