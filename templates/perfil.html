@@ -1,12 +1,10 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="/static/img/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="/static/home.css">
-    <link rel="stylesheet" href="/static/secao.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
 
@@ -14,9 +12,43 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
     
-    <title>Conheça a Cidade</title>
-</head>
+    <title>Meu Perfil</title>
 
+    <style>
+        .container {
+            margin-top: 100px;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            gap: 20px;
+        }
+
+        .main-content {
+            width: 95%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .section {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .section h3 {
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        .history-item {
+            border-left: 4px solid #7cc644;
+            padding-left: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
 <body>
     <header id="header">
         <a class="empresa" href="/templates/home.html">
@@ -44,9 +76,9 @@
                 <li><a href="/templates/about.html">Sobre Nós</a></li>
             </ul>
         </nav>
-
+        
         <span class="saudacao-usuario"></span>
-        <a href="/templates/login.html" class="btn-login">Login</a>
+        <a href="./login.html" class="btn-login">Login</a>
 
         <!--MOBILE-->
         <div class="nav-mobile">
@@ -71,86 +103,82 @@
                 <li><a href="/templates/chat.html">Chat</a></li>
                 <li><a href="/templates/about.html">Sobre Nós</a></li>
             </ul>
-
+            
             <span class="saudacao-usuario"></span>
             <a href="./login.html" class="btn-login">Login</a>
         </div>
     </header>
 
-    <main>
-        <div class="caminho">
-            <h6>
-                <a href="/templates/home.html"><i class="fa-solid fa-house"></i></a> > <a href="secaoCM.html">CONHEÇA A CIDADE</a>
-            </h6>
-        </div>
-    
-        <section class="artigos">
-            <article class="artigo">
-                <img id="cm" src="/static/img/aerea2.png" style="width: 30%; padding: 30px 0px 25px 50px;">
-                <div class="content">
-                    <a href="/templates/artigosCM/art.html"><h3>História de Ceará-Mirim</h3></a>
-                    <p class="description">Obtendo o status de cidade no dia 09/06/1882, Ceará-Mirim é rica em cultura e possui muitas histórias de um passado próspero através da economia açucareira que influencia o local até os dias de hoje. <br> Conheça a história da Cidade dos Verdes Canaviais.</p>
-                    <p>Publicado em 30/08/2024</p>
-                    <a id="access" href="/templates/artigosCM/art.html">Ler matéria &gt;&gt;</a>
-                </div>
-            </article>
-    
-            <article class="artigo">
-                <img id="hino" src="/static/img/hino.png" style="width: 30%; padding: 30px 0px 25px 50px;">
-                <div class="content">
-                    <a href="/templates/artigosCM/art2.html"><h3>Hino Municipal</h3></a>
-                    <p class="description">Instituído pela Lei nº 818 do ano de 1973 pelo prefeito Ruy Pereira Júnior, o hino de Ceará-Mirim foi escrito por José Luiz, cearamirinense nato que nasceu em Ponta do Mato no ano de 1915. <br> Conheça o compositor e a sua mais importante obra que atravessa gerações.</p>
-                    <p>Publicado em 30/08/2024</p>
-                    <a id="access" href="/templates/artigosCM/art2.html">Ler matéria &gt;&gt;</a>
-                </div>
-            </article>
-    
-            <article class="artigo">
-                <img src="/static/img/bandeira2.png" style="width: 30%; padding: 30px 0px 25px 50px;">
-                <div class="content">
-                    <a href="/templates/artigosCM/art3.html"><h3>Bandeira e Brasão Municipais</h3></a>
-                    <p class="description">Criados pelo heraldista Arcinoé Antônio Peixoto de Faria, a bandeira e brasão municipais identificam o município, tendo sido a primeira estabelecida pela Lei nº 851 do dia 25 de julho de 1974. <br> Entenda os significados por trás desses símbolos.</p>
-                    <a id="access" href="/templates/artigosCM/art3.html">Ler matéria &gt;&gt;</a>
-                </div>
-            </article>
-    
-            <article class="artigo">
-                <img src="/static/img/rio2.png" style="width: 30%; padding: 30px 0px 25px 50px;">
-                <div class="content">
-                    <a href="/templates/artigosCM/art4.html"><h3>O Rio Ceará-Mirim</h3></a>
-                    <p class="description">Anteriormente conhecido como Baquipe, que significa Rio Pequeno, o hoje Rio Ceará-Mirim ainda é uma importante bacia hidrográfica para a região, apesar da poluição que vem sofrendo nos últimos anos.</p>
-                    <a id="access" href="/templates/artigosCM/art4.html">Ler matéria &gt;&gt;</a>
-                </div>
-            </article>
-    
-            <article class="artigo">
-                <img id="vale" src="/static/img/timbo2.png" style="width: 30%; padding: 30px 0px 25px 50px;">
-                <div class="content">
-                    <a href="/templates/artigosCM/art5.html"><h3>Escravatura no Vale dos Verdes Canaviais</h3></a>
-                    <p class="description">No auge do açúcar, Ceará-Mirim chegou a ter 3.000 escravizados nos mais de 150 engenhos instalados no vale. Marcada pelos cruéis castigos, resistência e decadência do açúcar, entenda como funcionou a escravatura nas terras do Barão Manoel Varela.</p>
-                    <a id="access" href="/templates/artigosCM/art5.html">Ler matéria &gt;&gt;</a>
-                </div>
-            </article>
-    
-            <article class="artigo">
-                <img src="/static/img/cruz_redimensionada.png" style="width: 30%; padding: 30px 0px 25px 50px;">
-                <div class="content">
-                    <a href="/templates/artigosCM/art6.html"><h3>Monumento da Santa Cruz</h3></a>
-                    <p class="description">Motivo de muitas controvérias no passado, o Monumento da Santa Cruz demostra a forte religiosidade local. Neste artigo explicamos como ela surgiu e a sua transferência para a Rua José Eustáquio Ferreira, antiga Rua da Cruz.</p>
-                    <a id="access" href="/templates/artigosCM/art6.html">Ler matéria &gt;&gt;</a>
-                </div>
-            </article>
+    <div class="container">
+        <section class="main-content">
+            <div class="section">
+                <h3>Dados Cadastrados</h3>
+                <p id="perfil-nome"></p>
+                <p id="perfil-dataNascimento"></p>
+                <p id="perfil-email"></p>
+                <p id="perfil-phone"></p>
+                <p id="perfil-phoneEmergencia"></p>
+                <p id="perfil-endereco"></p>
+                <p id="perfil-sangue"></p>
+                <p id="perfil-alergia"></p>
+                <p id="perfil-cardiaco"></p>
+            </div>
 
-            <article class="artigo">
-                <img src="/static/img/nssenhora2.png" style="width: 30%; padding: 30px 0px 25px 50px;">
-                <div class="content">
-                    <a href="/templates/artigosCM/art7.html"><h3>Monumento da Santa Cruz</h3></a>
-                    <p class="description">Motivo de muitas controvérias no passado, o Monumento da Santa Cruz demostra a forte religiosidade local. Neste artigo explicamos como ela surgiu e a sua transferência para a Rua José Eustáquio Ferreira, antiga Rua da Cruz.</p>
-                    <a id="access" href="/templates/artigosCM/art7.html">Ler matéria &gt;&gt;</a>
+            <div class="section">
+                <h3>Histórico de Rotas</h3>
+
+                <div class="history-item">
+                    <p><strong>21/08/2025</strong> — Rota Religiosa</p>
                 </div>
-            </article>
+
+                <div class="history-item">
+                    <p><strong>10/09/2025</strong> — Rota dos Engenhos</p>
+                </div>
+
+                <div class="history-item">
+                    <p><strong>12/10/2025</strong> — Rota do Centro</p>
+                </div>
+
+            </div>
+
+            <script type="module">
+                import { app, auth } from "/static/javascript/firebase-init.js";
+                import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+                import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+
+                const db = getFirestore(app);
+
+                function preencherPerfil(dados) {
+                    document.getElementById("perfil-nome").textContent = "Nome: " + dados.nome;
+                    document.getElementById("perfil-dataNascimento").textContent = "Data de nascimento: " + dados.dataNascimento;
+                    document.getElementById("perfil-email").textContent = "Email: " + dados.email;
+                    document.getElementById("perfil-phone").textContent = "Celular: " + dados.phone;
+                    document.getElementById("perfil-phoneEmergencia").textContent = "Emergência: " + dados.phoneEmergencia;
+                    document.getElementById("perfil-endereco").textContent = "Endereço: " + dados.endereco;
+                    document.getElementById("perfil-sangue").textContent = "Tipo sanguíneo: " + dados.sangue;
+                    document.getElementById("perfil-alergia").textContent = "Alergias: " + (dados.alergia || "Nenhuma");
+                    document.getElementById("perfil-cardiaco").textContent = "Cardíaco: " + (dados.cardiaco || "Não informado");
+                }
+
+                async function carregarPerfil(uid) {
+                    const refDoc = doc(db, "usuarios", uid);
+                    const snap = await getDoc(refDoc);
+
+                    if (snap.exists()) {
+                    preencherPerfil(snap.data());
+                    } else {
+                    console.warn("Nenhum dado encontrado no Firestore para esse UID.");
+                    }
+                }
+
+                onAuthStateChanged(auth, (user) => {
+                    if (user) {
+                    carregarPerfil(user.uid);
+                    }
+                });
+            </script>
         </section>
-    </main>
+    </div>
 
     <footer>
         <div class="content">

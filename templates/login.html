@@ -51,30 +51,17 @@
         </div>
     </main>
 
-    <!-- Firebase SDKs -->
-    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
-    
-    <script>
-        const firebaseConfig = {
-            apiKey: "AIzaSyCMCR42h8ZM4ao4D5MSTZkg99PIhspSAZE",
-            authDomain: "pulso-da-historia.firebaseapp.com",
-            databaseURL: "https://pulso-da-historia-default-rtdb.firebaseio.com",
-            projectId: "pulso-da-historia",
-            storageBucket: "pulso-da-historia.appspot.com",
-            messagingSenderId: "285634655113",
-            appId: "1:285634655113:web:7e97210e9c6b2878d96758"
-            };
+    <script type="module" src="/static/javascript/auth.js"></script>
 
-        firebase.initializeApp(firebaseConfig);
-
-        
+    <script type="module">
+        import { auth } from "/static/javascript/firebase-init.js";
+        import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 
         const loginForm = document.getElementById('login-form');
         const messageDiv = document.getElementById('message');
         const mensagemAguarde = document.getElementById('mensagem');
 
-        loginForm.addEventListener('submit', (e) => {
+        loginForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             const email = document.getElementById('email').value.trim();
             const password = document.getElementById('password').value;
@@ -82,22 +69,23 @@
             mensagemAguarde.style.display = 'block';
             messageDiv.textContent = '';
 
-            firebase.auth().signInWithEmailAndPassword(email, password)
-                .then(userCredential => {
-                    const user = userCredential.user;
-                    console.log('Login realizado com sucesso:', user);
-                    messageDiv.style.color = 'green';
-                    messageDiv.textContent = 'Login realizado com sucesso! Redirecionando...';
+            try {
+                const userCredential = await signInWithEmailAndPassword(auth, email, password);
+                const user = userCredential.user;
 
-                    setTimeout(() => {
-                        window.location.href = "/templates/logado.html";
-                    }, 2000);
-                })
-                .catch(error => {
-                    mensagemAguarde.style.display = 'none';
-                    messageDiv.style.color = 'red';
-                    messageDiv.textContent = 'Erro no login: ' + error.message;
-                });
+                console.log('Login realizado com sucesso:', user.email);
+                messageDiv.style.color = 'green';
+                messageDiv.textContent = 'Login realizado com sucesso! Redirecionando...';
+
+                setTimeout(() => {
+                    window.location.href = "/templates/home.html";
+                }, 2000);
+
+            } catch (error) {
+                mensagemAguarde.style.display = 'none';
+                messageDiv.style.color = 'red';
+                messageDiv.textContent = 'Erro no login: ' + error.message;
+            }
         });
     </script>
 </body>

@@ -47,50 +47,36 @@
         </div>
       </div>
 
-      <button type="submit">Continuar</button>
+      <button type="submit">Cadastrar</button>
       <div id="mensagemErro" style="color: red; margin-top: 10px;"></div>
     </form>
   </main>
 
-  <!-- Firebase SDK -->
-  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script type="module">
+    import { auth, app } from "/static/javascript/firebase-init.js";
+    import { getFirestore, doc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+    import { createUserWithEmailAndPassword, updateProfile } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 
-  <script>
-    const firebaseConfig = {
-      apiKey: "AIzaSyCMCR42h8ZM4ao4D5MSTZkg99PIhspSAZE",
-      authDomain: "pulso-da-historia.firebaseapp.com",
-      projectId: "pulso-da-historia",
-      storageBucket: "pulso-da-historia.appspot.com",
-      messagingSenderId: "285634655113",
-      appId: "1:285634655113:web:7e97210e9c6b2878d96758"
-    };
-
-    firebase.initializeApp(firebaseConfig);
-    const auth = firebase.auth();
-    const db = firebase.firestore();
+    const db = getFirestore(app);
 
     async function cadastrarUsuario(email, senha, dadosExtras) {
-    const userCredential = await auth.createUserWithEmailAndPassword(email, senha);
-    const user = userCredential.user;
+      const userCredential = await createUserWithEmailAndPassword(auth, email, senha);
+      const user = userCredential.user;
 
-    await user.updateProfile({
-        displayName: dadosExtras.nome
+      await updateProfile(user, { displayName: dadosExtras.nome });
+
+      await setDoc(doc(db, "usuarios", user.uid), {
+        ...dadosExtras,
+        criadoEm: serverTimestamp()
       });
-
-    await db.collection("usuarios").doc(user.uid).set({
-    ...dadosExtras,
-    criadoEm: new Date()
-    });
     }
 
     function mostrarErro(mensagem) {
       const erroDiv = document.getElementById("mensagemErro");
-      erroDiv.textContent = mensagem;
+      if (erroDiv) erroDiv.textContent = mensagem;
     }
-   
-    document.getElementById("cadastro-form").addEventListener("submit", async function (e) {
+
+    document.getElementById("cadastro-form").addEventListener("submit", async (e) => {
       e.preventDefault();
 
       const nome = document.getElementById("nome").value.trim();
@@ -106,8 +92,8 @@
       const genero = document.querySelector('input[name="gender"]:checked')?.id || "";
       const cardiaco = document.querySelector('input[name="cardiaco"]:checked')?.value || "não";
 
-      if (!email.includes('@') || senha.length < 6) {
-        mostrarErro("Email inválido ou senha muito curta.");
+      if (!email.includes("@") || senha.length < 6) {
+        mostrarErro("Email inválido ou senha deve ter no mínimo 6 caracteres.");
         return;
       }
 
@@ -122,14 +108,17 @@
           celularEmergencia, endereco, sangue,
           alergia, genero, cardiaco
         });
+
         alert("Cadastro realizado com sucesso!");
-        window.location.href = "/templates/logado.html";
+        window.location.href = "/templates/login.html";
+
       } catch (error) {
         const erros = {
           "auth/email-already-in-use": "Este email já está em uso.",
           "auth/invalid-email": "Email inválido.",
           "auth/weak-password": "Senha fraca, use pelo menos 6 caracteres."
         };
+
         mostrarErro(erros[error.code] || "Erro ao cadastrar: " + error.message);
       }
     });
