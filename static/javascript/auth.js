@@ -19,7 +19,7 @@ onAuthStateChanged(auth, async (user) => {
     const userRef = ref(db, "users/" + user.uid);
     const snapshot = await get(userRef);
 
-    let nome = "Usuário";
+    let nome = user.displayName || "Usuário sem nome";
 
     if (snapshot.exists()) {
       const data = snapshot.val();
